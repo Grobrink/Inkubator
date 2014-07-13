@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Inkubator : Another NPC generator for D&D</title>
+		<meta name="author" content="Pierre Lefèvre">
+
+		<link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-52714903-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</head>
+
+	<body>
+
+		<!-- Markup from http://jsfiddle.net/basmith7/Z2sQK/
+				 Use as a template
+		 -->
+		<div class="template stat-block">
+			<div class="name">
+			</div>
+
+			<div class="description">
+			</div>
+
+			<div class="divider"></div>
+
+			<div class="red">
+
+				<div>
+					<span class="bold red">Alignment</span> <span class="alignment"></span>
+				</div>
+
+				<div>
+					<span class="bold red">Armor Class</span> <span>10</span>
+				</div>
+
+				<div>
+					<span class="bold red">Hit Points <span class="hitpoints"></span></span> <span>(2d8+2)</span>
+				</div>
+
+				<div>
+					<span class="bold red">Speed</span> <span>30 ft.</span>
+				</div>
+			</div>
+
+			<div class="divider"></div>
+
+			<table>
+				<tr>
+					<th>STR</th>
+					<th>DEX</th>
+					<th>CON</th>
+					<th>INT</th>
+					<th>WIS</th>
+					<th>CHA</th>
+				</tr>
+
+				<tr>
+					<td><span class="stat str"></span> (<span class="str-modifier"></span>)</td>
+					<td><span class="stat dex"></span> (<span class="dex-modifier"></span>)</td>
+					<td><span class="stat con"></span> (<span class="con-modifier"></span>)</td>
+					<td><span class="stat int"></span> (<span class="int-modifier"></span>)</td>
+					<td><span class="stat wis"></span> (<span class="wis-modifier"></span>)</td>
+					<td><span class="stat cha"></span> (<span class="cha-modifier"></span>)</td>
+				</tr>
+			</table>
+
+			<div class="divider"></div>
+
+			<div>
+				<span class="bold">Senses</span>
+				Passive Perception <span class="perception"></span>
+			</div>
+
+			<div>
+				<span class="bold">Languages</span>
+				<span class="languages"></span>
+			</div>
+
+			<div>
+				<span class="bold">Challenge</span>
+				<span>1 (120 XP)</span>
+			</div>
+
+			<div class="divider"></div>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="./js/Utils.js"></script>
+		<script type="text/javascript" src="./js/Inkubator.js"></script>
+		<script type="text/javascript" src="./js/script.js"></script>
+	</body>
+</html>
