@@ -2,7 +2,7 @@ $(function () {
 
 	// Import Inkubator
 	var inkubator = new Inkubator();
-	var npc = inkubator.getNpc();
+	var npc;
 
 	// Import Utils
 	var utils = new Utils();
@@ -57,7 +57,26 @@ $(function () {
 		$('.alignment').text(npc.alignment);
 	};
 
-	fillBlock();
+	/**
+	 * Cal lstuff to generate a new NPC
+	 */
+	var generateNpc = function() {
+		npc = inkubator.getNpc();
+		fillBlock();
 
-	console.log(npc);
+		console.log(npc);
+	}
+
+	// Trigger the generate NPC event on click
+	$(document).on('click', '#new-npc', function() {
+		$(document).trigger('generateNpcEvent');
+	});
+
+	// Generate a new npc on the generate button
+	$(document).on('generateNpcEvent', function() {
+		generateNpc();
+	});
+
+	// Generate a NPC at start
+	$(document).trigger('generateNpcEvent');
 });
