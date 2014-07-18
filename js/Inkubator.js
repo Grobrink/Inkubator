@@ -317,14 +317,6 @@ Inkubator.prototype.setAttributes = function() {
 	return totalRoll;
 };
 
-// Set all attributes
-Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
-Inkubator.prototype.npc.attributes.dex = Inkubator.prototype.setAttributes();
-Inkubator.prototype.npc.attributes.con = Inkubator.prototype.setAttributes();
-Inkubator.prototype.npc.attributes.int = Inkubator.prototype.setAttributes();
-Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
-Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
-
 /**
  * Get attribute modifier
  * @param  {int} An attribute value
@@ -444,6 +436,14 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.setHP();
 	Inkubator.prototype.setPerception();
 	Inkubator.prototype.setLanguages();
+
+	// Set all attributes
+	Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.dex = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.con = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.int = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
 
 	return Inkubator.prototype.npc;
 }
