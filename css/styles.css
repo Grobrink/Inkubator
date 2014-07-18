@@ -2193,15 +2193,19 @@ a:focus {
 /*
  * CSS from http://jsfiddle.net/basmith7/Z2sQK/
  */
+#npc-template {
+  display: none;
+}
 .stat-block {
   width: 310px;
+  background: linear-gradient(90deg, #a73335, #ffffff);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
 }
-.divider {
-  background: linear-gradient(10deg, #a73335, #ffffff);
-  height: 5px;
-  margin: 7px 0px;
+.stat-block > * {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background: white;
 }
 .name {
   font-size: 225%;
