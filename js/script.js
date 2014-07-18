@@ -12,9 +12,6 @@ $(function () {
 	 */
 	var fillBlock = function() {
 
-		// Set name
-		$('.name').text(npc.name);
-
 		// Set description
 		var $description = $('.description'),
 			subraceString = '';
@@ -26,35 +23,26 @@ $(function () {
 		if (npc.subrace != '') {
 			subraceString = ', ' + npc.subrace;
 		}
-		$description.text(npc.race + ' ' + npc.gender + subraceString);
-
-		// Set hit points
-		$('.hitpoints').text(npc.hitPoints);
-
-		// Set caracteristics
-		$('.str').text(npc.attributes.str);
-		$('.dex').text(npc.attributes.dex);
-		$('.con').text(npc.attributes.con);
-		$('.int').text(npc.attributes.int);
-		$('.wis').text(npc.attributes.wis);
-		$('.cha').text(npc.attributes.cha);
-
-		// Set caracteristics modifier
-		$('.str-modifier').text(inkubator.getAttributeModifier(npc.attributes.str));
-		$('.dex-modifier').text(inkubator.getAttributeModifier(npc.attributes.dex));
-		$('.con-modifier').text(inkubator.getAttributeModifier(npc.attributes.con));
-		$('.int-modifier').text(inkubator.getAttributeModifier(npc.attributes.int));
-		$('.wis-modifier').text(inkubator.getAttributeModifier(npc.attributes.wis));
-		$('.cha-modifier').text(inkubator.getAttributeModifier(npc.attributes.cha));
-
-		// Set passive perception
-		$('.perception').text(npc.perception);
-
-		// Set languages
-		$('.languages').text(npc.languages);
-
-		// Set Alignment
-		$('.alignment').text(npc.alignment);
+		dna.clone('npc-template', {
+			name: npc.name,
+			description: npc.race + ' ' + npc.gender + subraceString,
+			hitpoints: npc.hitPoints,
+			str: npc.attributes.str,
+			strm: inkubator.getAttributeModifier(npc.attributes.str),
+			dex: npc.attributes.dex,
+			dexm: inkubator.getAttributeModifier(npc.attributes.dex),
+			con: npc.attributes.con,
+			conm: inkubator.getAttributeModifier(npc.attributes.con),
+			int: npc.attributes.int,
+			intm: inkubator.getAttributeModifier(npc.attributes.int),
+			wis: npc.attributes.wis,
+			wism: inkubator.getAttributeModifier(npc.attributes.wis),
+			cha: npc.attributes.cha,
+			cham: inkubator.getAttributeModifier(npc.attributes.cha),
+			perception: npc.perception,
+			languages: npc.languages,
+			alignment: npc.alignment
+		});
 	};
 
 	/**

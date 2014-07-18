@@ -23,11 +23,13 @@
 		<!-- Markup from http://jsfiddle.net/basmith7/Z2sQK/
 				 Use as a template
 		 -->
-		<div class="template stat-block">
+		<div id="npc-template" class="dna-template stat-block">
 			<div class="name">
+				~~name~~
 			</div>
 
-			<div class="description">
+			<div>
+				~~description~~
 			</div>
 
 			<div class="divider"></div>
@@ -35,15 +37,24 @@
 			<div class="red">
 
 				<div>
-					<span class="bold red">Alignment</span> <span class="alignment"></span>
+					<span class="bold red">Alignment</span> <span>
+						~~alignment~~
+					</span>
 				</div>
 
 				<div>
-					<span class="bold red">Armor Class</span> <span>10</span>
+					<span class="bold red">Armor Class</span> <span>
+						~~ac~~
+					</span>
 				</div>
 
 				<div>
-					<span class="bold red">Hit Points <span class="hitpoints"></span></span> <span>(2d8+2)</span>
+					<span class="bold red">Hit Points
+						<span>
+							~~hitpoints~~
+						</span>
+					</span>
+					<span>(2d8+2)</span>
 				</div>
 
 				<div>
@@ -64,12 +75,36 @@
 				</tr>
 
 				<tr>
-					<td><span class="stat str"></span> (<span class="str-modifier"></span>)</td>
-					<td><span class="stat dex"></span> (<span class="dex-modifier"></span>)</td>
-					<td><span class="stat con"></span> (<span class="con-modifier"></span>)</td>
-					<td><span class="stat int"></span> (<span class="int-modifier"></span>)</td>
-					<td><span class="stat wis"></span> (<span class="wis-modifier"></span>)</td>
-					<td><span class="stat cha"></span> (<span class="cha-modifier"></span>)</td>
+					<td><span>
+							~~str~~
+						</span>
+						(<span>~~strm~~</span>)
+					</td>
+					<td><span>
+							~~dex~~
+						</span>
+						(<span>~~dexm~~</span>)
+					</td>
+					<td><span>
+							~~con~~
+						</span>
+						(<span>~~conm~~</span>)
+					</td>
+					<td><span>
+							~~int~~
+						</span>
+						(<span>~~intm~~</span>)
+					</td>
+					<td><span>
+							~~wis~~
+						</span>
+						(<span>~~wism~~</span>)
+					</td>
+					<td><span>
+							~~cha~~
+						</span>
+						(<span>~~cham~~</span>)
+					</td>
 				</tr>
 			</table>
 
@@ -77,12 +112,12 @@
 
 			<div>
 				<span class="bold">Senses</span>
-				Passive Perception <span class="perception"></span>
+				Passive Perception <span class="perception">~~perception~~</span>
 			</div>
 
 			<div>
 				<span class="bold">Languages</span>
-				<span class="languages"></span>
+				<span class="languages">~~languages~~</span>
 			</div>
 
 			<div>
@@ -97,6 +132,7 @@
 
 		<!-- SCRIPTS -->
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="./js/dna.min.js"></script>
 		<script type="text/javascript" src="./js/Utils.js"></script>
 		<script type="text/javascript" src="./js/Inkubator.js"></script>
 		<script type="text/javascript" src="./js/script.js"></script>
