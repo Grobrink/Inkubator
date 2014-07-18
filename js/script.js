@@ -40,6 +40,7 @@ $(function () {
 			cha: npc.attributes.cha,
 			cham: inkubator.getAttributeModifier(npc.attributes.cha),
 			perception: npc.perception,
+			perception: npc.perception,
 			languages: npc.languages,
 			alignment: npc.alignment
 		});
