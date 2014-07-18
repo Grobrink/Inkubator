@@ -45,7 +45,7 @@ Inkubator.prototype.races = {
 	1: {
 		ratio: 85,
 		name: 'Dwarf',
-		language: 'Dwarfish'
+		language: 'Dwarvish'
 	},
 	2: {
 		ratio: 93,
