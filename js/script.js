@@ -43,11 +43,13 @@ $(function () {
 			perception: npc.perception,
 			languages: npc.languages,
 			alignment: npc.alignment
-		});
+		},
+		{callback: function() {$(document).trigger('npcAddedEvent')} }
+		);
 	};
 
 	/**
-	 * Cal lstuff to generate a new NPC
+	 * Call stuff to generate a new NPC
 	 */
 	var generateNpc = function() {
 		npc = inkubator.getNpc();
