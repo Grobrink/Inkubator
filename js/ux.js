@@ -21,8 +21,14 @@ $(function () {
 			var pos = e.gesture.deltaX;
 
 			if (Math.abs(pos) > 80) {
-				$(this).fadeOut(500, function() {
+				$(this).fadeOut(0, function() {
 					$(this).remove();
+
+					if (!$('.stat-block').length) {
+
+						// Generate a NPC at start
+						$(document).trigger('generateNpcEvent');
+					}
 				});
 			}
 			else {
