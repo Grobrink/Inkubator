@@ -86,7 +86,7 @@ Inkubator.prototype.languages = {
 	}
 };
 
-Inkubator.prototype.nameList = {
+Inkubator.prototype.basicNameList = {
 	Human: {
 		subraces: {
 			Calishite: {
@@ -153,6 +153,73 @@ Inkubator.prototype.nameList = {
 	},
 };
 
+Inkubator.prototype.nameList = {
+	Human: {
+		subraces: {
+			Calishite: {
+				male: ['Aseir', 'Aiseir', 'Ahreid', 'Bardeid', 'Haseid', 'Khemed', 'Khamed', 'Medhmen', 'Sudjeiman', 'Mehmen', 'Sudeiman', 'Zasheir', 'Zemhen'],
+				female: ['Atala', 'Ceidil', 'Hama', 'Jasmal', 'Meilil', 'Seipora', 'Yasheira', 'Zasheida'],
+				lastnames: ['Basha', 'Dumein', 'Jassan', 'Khalid', 'Mostana', 'Pashar', 'Rein', 'Rashar', 'Ashab', 'Malaq', 'Iben']
+			},
+			Chondathan: {
+				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
+				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
+				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', , 'Tallstag', 'Southroad']
+			},
+			Damaran: {
+				male: ['Bor', 'Fodel', 'Glar', 'Grigor', 'Igan', 'Ivor', 'Kosef', 'Mival', 'Orel', 'Pavel', 'Sergor'],
+				female: ['Alethra', 'Kara', 'Katernin', 'Mara', 'Natali', 'Olma', 'Tana', 'Zora'],
+				lastnames: ['Bersk', 'Chernin', 'Dotsk', 'Kulenov', 'Marsk', 'Nemetsk', 'Shemov', 'Starag']
+			},
+			Illuskan: {
+				male: ['Ander', 'Blath', 'Bran', 'Frath', 'Geth', 'Lander', 'Luth', 'Malcer', 'Stor', 'Taman', 'Urth'],
+				female: ['Amafrey', 'Betha', 'Cefrey', 'Kethra', 'Mara', 'Olga', 'Silifrey', 'Westra'],
+				lastnames: ['Brightwood', 'Helder', 'Hornraven', 'Lackman', 'Stormwind', 'Windrivver']
+			},
+			Mulan: {
+				male: ['Aoth', 'Bareris', 'Ehput-Ki', 'Kethoth', 'Mumed', 'Ramas', 'So-Kehur', 'Thazar-De', 'Urhur'],
+				female: ['Arizima', 'Chathi', 'Nephis', 'Nulara', 'Murithi', 'Sefris', 'Thola', 'Umara', 'Zolis'],
+				lastnames: ['Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem', 'Sepret', 'Uuthrakt']
+			},
+			Rashemi: {
+				male: ['Borivik', 'Faurgar', 'Jandar', 'Kanithar', 'Madislak', 'Ralmevik', 'Shaumar', 'Vladislak'],
+				female: ['Fyevarra', 'Hulmarra', 'Immith', 'Imzel', 'Navarra', 'Shevarra', 'Tammith', 'Yuldra'],
+				lastnames: ['Chergoba', 'Dyernina', 'Iltazyara', 'Murnyethara',  'Stayanoga', 'Ulmokina']
+			},
+			Shou: {
+				male: ['An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian', 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen'],
+				female: ['Bai', 'Chao', 'Jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai'],
+				lastnames: ['Chien', 'Huang', 'Kao', 'Kung', 'Lao', 'Ling', 'Mei', 'Pin', 'Shin', 'Sum', 'Tan', 'Wan']
+			},
+			Tethyrian: {
+				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
+				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
+				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', , 'Tallstag', 'Southroad']
+			},
+			Turami: {
+				male: ['Anton', 'Diero', 'Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero'],
+				female: ['Balama', 'Dona', 'Faila', 'Jalana', 'Luisa', 'Marta', 'Quara', 'Selise', 'Vonda'],
+				lastnames: ['Agosto', 'Astorio', 'Calabra', 'Domine',  'Falone', 'Marivaldi', 'Pisacar', 'Ramondo']
+			}
+		}
+	},
+	Dwarf: {
+		male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
+		female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
+		lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
+	},
+	Halfling: {
+		male: ['Alton', 'Ander', 'Cade', 'Corrin', 'Eldon', 'Errich', 'Finnan', 'Garret', 'Lindal', 'Lyle', 'Merric', 'Milo', 'Osborn', 'Perrin', 'Reed', 'Roscoe', 'Wellby'],
+		female: ['Andry', 'Bree', 'Callie', 'Cora', 'Euphemia', 'Jillian', 'Kithri', 'Lavinia', 'Lidda', 'Merla', 'Nedda', 'Paela', 'Portia', 'Seraphina', 'Shaena', 'Trym', 'Vani', 'Verna'],
+		lastnames: ['Brushgather', 'Goodbarrel', 'Greenbottle', 'High-hill', 'Hilltopple', 'Leagallow', 'Tealeaf', 'Thorngage', 'Tosscobble', 'Underbough']
+	},
+	Elf: {
+		male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
+		female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
+		lastnames: ['Amakiir (Gemflower)', 'Amastacia (Starflower)', 'Galanodel (Moonwhisper)', 'Holimion (Diamonddew)', 'Ilphelkiir (Gemblossom)', 'Liadon (Silverfrond)', 'Meliamne (Oakenheel)', 'Naïlo (Nightbreeze)', 'Siannodel (Moonbrook)', 'Xiloscient (Goldpetal)']
+	},
+};
+
 Inkubator.prototype.alignment = {
 	ge: ['Good', 'Neutral', 'Evil'],
 	lc: ['Lawful', 'Neutral', 'Chaotic']
@@ -192,16 +259,23 @@ Inkubator.prototype.setSubrace = function(race) {
 	var subrace = '',
 		subraceRoll = utils.roll(0, 100, 0);
 
+
+	// From official 3.5 books
+	// Tethyrian : 80%
+	// Calishite : 10%
+	// Chondathan : 5%
+	// Illuskan : 3%
+
 	switch(race) {
 		case 'Human':
 			if (subraceRoll <= 45) {
-				subrace = 'Chondathan';
-			}
-			else if (subraceRoll <= 60){
 				subrace = 'Tethyrian';
 			}
-			else if (subraceRoll <= 75){
+			else if (subraceRoll <= 60){
 				subrace = 'Calishite';
+			}
+			else if (subraceRoll <= 75){
+				subrace = 'Chondathan';
 			}
 			else if (subraceRoll <= 82){
 				subrace = 'Illuskan';
@@ -213,16 +287,19 @@ Inkubator.prototype.setSubrace = function(race) {
 				subrace = 'Rashemi';
 			}
 			else if (subraceRoll <= 96){
-				subrace = 'Shou';
-			}
-			else if (subraceRoll <= 98){
 				subrace = 'Damaran';
 			}
-			else if (subraceRoll <= 100){
+			else if (subraceRoll <= 98){
 				subrace = 'Mulan';
+			}
+			else if (subraceRoll <= 100){
+				subrace = 'Shou';
 			}
 		Inkubator.prototype.npc.subrace = subrace;
 		break;
+
+	default :
+		Inkubator.prototype.npc.subrace = '';
 	}
 };
 
