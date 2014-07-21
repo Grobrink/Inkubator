@@ -44,7 +44,8 @@ $(function () {
 			languages: npc.languages,
 			alignment: npc.alignment
 		},
-		{callback: function() {$(document).trigger('npcAddedEvent')} }
+		{	top: true,
+			callback: function() {$(document).trigger('npcAddedEvent')} }
 		);
 	};
 
