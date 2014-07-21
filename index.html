@@ -132,6 +132,11 @@
 
 		<!-- SCRIPTS -->
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+			if (typeof jQuery == 'undefined') {
+			    document.write(unescape("%3Cscript src='./js/jquery-1.11.0.min.js' type='text/javascript'%3E%3C/script%3E"));
+			}
+			</script>
 		<script type="text/javascript" src="./js/dna.min.js"></script>
 		<script type="text/javascript" src="./js/hammer.min.js"></script>
 		<script type="text/javascript" src="./js/jquery.hammer.js"></script>
