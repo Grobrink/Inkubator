@@ -3,6 +3,41 @@
  */
  @import "./style-bootstrap.less";
 
+ body {
+    height: 100vh;
+ }
+
+ #inkubator {
+    display: block;
+    width: 345px;
+    margin: auto;
+    border: 4px solid gray;
+    background: rgb(255, 250, 241);
+    cursor: pointer;
+    margin-top: 25px;
+
+    overflow: hidden;
+ }
+
+ #container {
+
+    position: relative;
+
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+ }
+
+#new-npc {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+
 /*
  * CSS from http://jsfiddle.net/basmith7/Z2sQK/
  */
@@ -10,8 +45,13 @@
     display: none;
  }
 .stat-block {
+
+    position: relative;
+
     width:310px;
     background: linear-gradient(90deg, #a73335, #ffffff);
+    box-shadow: inset 0 0 1px rgb(255, 250, 241);
+    border: 1px solid rgb(255, 250, 241);
     font-family:Arial,Helvetica,sans-serif;
     font-size:11px;
     margin: 10px 10px 20px 10px;
@@ -19,7 +59,7 @@
     > * {
         margin-top: 4px;
         margin-bottom: 4px;
-        background: white;
+        background: rgb(255, 250, 241);
     }
 }
 .name {
