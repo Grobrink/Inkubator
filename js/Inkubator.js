@@ -65,7 +65,7 @@ Inkubator.prototype.descriptions = {
 	'Hill Dwarf': {
 		height: ['short-sized', 'medium-sized'],
 		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale hue tinged with red', 'tanned skin'],
+		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale skin tinged with red', 'tanned skin'],
 		haircolor: ['black', 'gray', 'brown', 'red'],
 		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
 		facialhair: ['short beard', 'long beard', 'braided beard'],
@@ -89,7 +89,7 @@ Inkubator.prototype.descriptions = {
 	'High Elf': {
 		height: ['short-sized', 'medium-sized'],
 		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale skin tinged with red', 'tanned skin'],
+		skin: ['shades of copper skin', 'bronze skin', 'bluish-white skin'],
 		haircolor: ['green', 'blue'],
 		haircut: ['long', 'very long', 'finely braided', 'tied'],
 		facialhair: [],
@@ -100,8 +100,8 @@ Inkubator.prototype.descriptions = {
 	},
 	'Wood Elf': {
 		height: ['short-sized', 'medium-sized'],
-		weight: ['An slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['copper skin', 'bronze skin', 'bluish-white skin'],
+		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['shades of copper skin', 'bronze skin', 'bluish-white skin'],
 		haircolor: ['green', 'blue'],
 		haircut: ['long', 'very long', 'finely braided', 'tied'],
 		facialhair: [],
