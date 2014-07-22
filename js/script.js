@@ -39,7 +39,7 @@ $(function () {
 			wism: inkubator.getAttributeModifier(npc.attributes.wis),
 			cha: npc.attributes.cha,
 			cham: inkubator.getAttributeModifier(npc.attributes.cha),
-			perception: npc.perception,
+			visual: npc.description,
 			perception: npc.perception,
 			languages: npc.languages,
 			alignment: npc.alignment

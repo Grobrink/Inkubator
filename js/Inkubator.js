@@ -20,6 +20,7 @@ Inkubator.prototype.npc= {
 	subrace: '',
 	mainLanguage: '',
 	languages: '',
+	description: '',
 	wealth: '',
 	treasure: 0,
 	hierarchy: '',
@@ -56,6 +57,31 @@ Inkubator.prototype.races = {
 		ratio: 100,
 		name: 'Elf',
 		language: 'Elvish'
+	}
+};
+
+Inkubator.prototype.descriptions = {
+	'Hill Dwarf': {
+		height: ['short-sized', 'medium-sized'],
+		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['deep brown', 'brown', 'light brown', 'pale hue tinged with red', 'tanned'],
+		haircolor: ['black', 'gray', 'brown', 'red'],
+		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
+		face: [],
+		eyes: ['blue', 'brown', 'black', 'gray'],
+		voice: [],
+		age: {min: 50, max: 350}
+	},
+	'Mountain Dwarf': {
+		height: ['short-sized', 'medium-sized'],
+		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['deep brown', 'brown', 'light brown', 'pale hue tinged with red', 'tanned'],
+		haircolor: ['black', 'gray', 'brown', 'red'],
+		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
+		face: [],
+		eyes: ['blue', 'brown', 'black', 'gray'],
+		voice: [],
+		age: {min: 50, max: 350}
 	}
 };
 
@@ -204,9 +230,18 @@ Inkubator.prototype.nameList = {
 		}
 	},
 	Dwarf: {
-		male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
-		female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
-		lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
+		subraces : {
+			'Hill Dwarf' : {
+				male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
+				female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
+				lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
+			},
+			'Mountain Dwarf' : {
+				male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
+				female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
+				lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
+			}
+		}
 	},
 	Halfling: {
 		male: ['Alton', 'Ander', 'Cade', 'Corrin', 'Eldon', 'Errich', 'Finnan', 'Garret', 'Lindal', 'Lyle', 'Merric', 'Milo', 'Osborn', 'Perrin', 'Reed', 'Roscoe', 'Wellby'],
@@ -294,6 +329,16 @@ Inkubator.prototype.setSubrace = function(race) {
 			}
 			else if (subraceRoll <= 100){
 				subrace = 'Shou';
+			}
+		Inkubator.prototype.npc.subrace = subrace;
+		break;
+
+		case 'Dwarf':
+			if (subraceRoll <= 50) {
+				subrace = 'Hill Dwarf'
+			}
+			else {
+				subrace = 'Mountain Dwarf'
 			}
 		Inkubator.prototype.npc.subrace = subrace;
 		break;
@@ -504,6 +549,51 @@ Inkubator.prototype.setAlignment = function() {
 	Inkubator.prototype.npc.alignment = align;
 };
 
+Inkubator.prototype.setDescription = function() {
+
+	var descriptionObj,
+			selector,
+			descriptionStr = '';
+
+	var getElement = function(elementList) {
+		var element,
+				length = elementList.length,
+				elementRoll = utils.roll(0, length, 0);
+
+		element = elementList[elementRoll];
+
+		return element;
+	}
+
+	if (Inkubator.prototype.npc.subrace != '') {
+		selector = Inkubator.prototype.npc.subrace;
+	}
+	else {
+		selector = Inkubator.prototype.npc.race;
+	}
+
+	descriptionObj = Inkubator.prototype.descriptions[selector];
+
+
+	if (typeof descriptionObj != 'undefined') {
+
+		descriptionStr += getElement(descriptionObj.weight);
+		descriptionStr += ' ';
+		descriptionStr += getElement(descriptionObj.height);
+		descriptionStr += ' ';
+		descriptionStr += getElement(descriptionObj.skin);
+		descriptionStr += ' ';
+		descriptionStr += Inkubator.prototype.npc.race;
+		descriptionStr += ' with ';
+		descriptionStr += getElement(descriptionObj.haircolor);
+		descriptionStr += ' ';
+		descriptionStr += getElement(descriptionObj.haircut);
+		descriptionStr += ' hair';
+
+		Inkubator.prototype.npc.description = descriptionStr;
+	}
+};
+
 Inkubator.prototype.getNpc = function() {
 
 	Inkubator.prototype.setRace();
@@ -513,6 +603,7 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.setHP();
 	Inkubator.prototype.setPerception();
 	Inkubator.prototype.setLanguages();
+	Inkubator.prototype.setDescription();
 
 	// Set all attributes
 	Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
