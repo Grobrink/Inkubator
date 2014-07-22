@@ -552,13 +552,13 @@ Inkubator.prototype.setAlignment = function() {
 Inkubator.prototype.setDescription = function() {
 
 	var descriptionObj,
-			selector,
-			descriptionStr = '';
+		selector,
+		descriptionStr = '';
 
 	var getElement = function(elementList) {
 		var element,
-				length = elementList.length,
-				elementRoll = utils.roll(0, length, 0);
+			length = elementList.length,
+			elementRoll = utils.roll(0, length, 0);
 
 		element = elementList[elementRoll];
 
@@ -591,6 +591,10 @@ Inkubator.prototype.setDescription = function() {
 		descriptionStr += ' hair';
 
 		Inkubator.prototype.npc.description = descriptionStr;
+	}
+	else {
+
+		Inkubator.prototype.npc.description = '';
 	}
 };
 

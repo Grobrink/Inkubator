@@ -2570,8 +2570,8 @@ body {
   margin: 10px 10px 20px 10px;
 }
 .stat-block > * {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  padding: 3px 0;
   background: #fffaf1;
 }
 .name {
@@ -2600,6 +2600,7 @@ th,
 td {
   width: 50px;
   text-align: center;
+  padding: 4px 0;
 }
 .actions {
   font-size: 175%;
