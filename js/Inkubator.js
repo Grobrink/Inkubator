@@ -89,24 +89,24 @@ Inkubator.prototype.descriptions = {
 	'High Elf': {
 		height: ['short-sized', 'medium-sized'],
 		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['shades of copper skin', 'bronze skin', 'bluish-white skin'],
-		haircolor: ['green', 'blue'],
+		skin: ['shades of bronze skin'],
+		haircolor: ['copper'],
 		haircut: ['long', 'very long', 'finely braided', 'tied'],
 		facialhair: [],
 		face: [],
-		eyes: ['eyes like pools of liquid gold', 'eyes like pools of liquid silver'],
+		eyes: ['eyes like pools of liquid gold', 'eyes like a starfall night', 'golden eyes like fields of ripe wheat'],
 		voice: [],
 		age: {min: 50, max: 350}
 	},
 	'Wood Elf': {
 		height: ['short-sized', 'medium-sized'],
 		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['shades of copper skin', 'bronze skin', 'bluish-white skin'],
-		haircolor: ['green', 'blue'],
+		skin: ['copperish skin with traces of green', 'copperish skin'],
+		haircolor: ['brown', 'black', 'blond', 'copper'],
 		haircut: ['long', 'very long', 'finely braided', 'tied'],
 		facialhair: [],
 		face: [],
-		eyes: ['eyes like pools of liquid gold', 'eyes like pools of liquid silver'],
+		eyes: ['green eyes like tree leaves in spring', 'green eyes like tree leaves in summer', 'brown eyes like little hazels'],
 		voice: [],
 		age: {min: 50, max: 350}
 	}
