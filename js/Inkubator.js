@@ -65,22 +65,48 @@ Inkubator.prototype.descriptions = {
 	'Hill Dwarf': {
 		height: ['short-sized', 'medium-sized'],
 		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['deep brown', 'brown', 'light brown', 'pale hue tinged with red', 'tanned'],
+		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale hue tinged with red', 'tanned skin'],
 		haircolor: ['black', 'gray', 'brown', 'red'],
 		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
+		facialhair: ['short beard', 'long beard', 'braided beard'],
 		face: [],
-		eyes: ['blue', 'brown', 'black', 'gray'],
+		eyes: ['blue eyes', 'brown eyes', 'black eyes', 'gray eyes'],
 		voice: [],
 		age: {min: 50, max: 350}
 	},
 	'Mountain Dwarf': {
 		height: ['short-sized', 'medium-sized'],
 		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['deep brown', 'brown', 'light brown', 'pale hue tinged with red', 'tanned'],
+		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale skin tinged with red', 'tanned skin'],
 		haircolor: ['black', 'gray', 'brown', 'red'],
 		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
+		facialhair: ['short beard', 'long beard', 'braided beard'],
 		face: [],
-		eyes: ['blue', 'brown', 'black', 'gray'],
+		eyes: ['blue eyes', 'brown eyes', 'black eyes', 'gray eyes'],
+		voice: [],
+		age: {min: 50, max: 350}
+	},
+	'High Elf': {
+		height: ['short-sized', 'medium-sized'],
+		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale skin tinged with red', 'tanned skin'],
+		haircolor: ['green', 'blue'],
+		haircut: ['long', 'very long', 'finely braided', 'tied'],
+		facialhair: [],
+		face: [],
+		eyes: ['eyes like pools of liquid gold', 'eyes like pools of liquid silver'],
+		voice: [],
+		age: {min: 50, max: 350}
+	},
+	'Wood Elf': {
+		height: ['short-sized', 'medium-sized'],
+		weight: ['An slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['copper skin', 'bronze skin', 'bluish-white skin'],
+		haircolor: ['green', 'blue'],
+		haircut: ['long', 'very long', 'finely braided', 'tied'],
+		facialhair: [],
+		face: [],
+		eyes: ['eyes like pools of liquid gold', 'eyes like pools of liquid silver'],
 		voice: [],
 		age: {min: 50, max: 350}
 	}
@@ -250,9 +276,18 @@ Inkubator.prototype.nameList = {
 		lastnames: ['Brushgather', 'Goodbarrel', 'Greenbottle', 'High-hill', 'Hilltopple', 'Leagallow', 'Tealeaf', 'Thorngage', 'Tosscobble', 'Underbough']
 	},
 	Elf: {
-		male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
-		female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
-		lastnames: ['Amakiir', 'Amastacia', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naïlo', 'Siannodel', 'Xiloscient']
+		subraces : {
+			'High Elf' : {
+				male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
+				female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
+				lastnames: ['Amakiir', 'Amastacia', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naïlo', 'Siannodel', 'Xiloscient']
+		},
+			'Wood Elf' : {
+				male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
+				female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
+				lastnames: ['Amakiir', 'Amastacia', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naïlo', 'Siannodel', 'Xiloscient']
+		}
+		}
 	},
 };
 
@@ -340,6 +375,16 @@ Inkubator.prototype.setSubrace = function(race) {
 			}
 			else {
 				subrace = 'Mountain Dwarf'
+			}
+		Inkubator.prototype.npc.subrace = subrace;
+		break;
+
+		case 'Elf':
+			if (subraceRoll <= 75) {
+				subrace = 'High Elf'
+			}
+			else {
+				subrace = 'Wood Elf'
 			}
 		Inkubator.prototype.npc.subrace = subrace;
 		break;
@@ -589,18 +634,35 @@ Inkubator.prototype.setDescription = function() {
 
 	if (typeof descriptionObj != 'undefined') {
 
+		var haircolor = getElement(descriptionObj.haircolor),
+			hasFacialhair = (descriptionObj.facialhair.length != 0 && Inkubator.prototype.npc.gender == 'male');
+
 		descriptionStr += getElement(descriptionObj.weight);
 		descriptionStr += ' ';
 		descriptionStr += getElement(descriptionObj.height);
 		descriptionStr += ' ';
-		descriptionStr += getElement(descriptionObj.skin);
-		descriptionStr += ' ';
 		descriptionStr += Inkubator.prototype.npc.race;
 		descriptionStr += ' with ';
-		descriptionStr += getElement(descriptionObj.haircolor);
+		descriptionStr += getElement(descriptionObj.skin);
+		descriptionStr += ', ';
+		descriptionStr += getElement(descriptionObj.eyes);
+		descriptionStr += (hasFacialhair) ? ', ' : ' and ';
+		descriptionStr += haircolor;
 		descriptionStr += ' ';
 		descriptionStr += getElement(descriptionObj.haircut);
-		descriptionStr += ' hair';
+
+		// Facial Hair
+		if (hasFacialhair) {
+
+			descriptionStr += ' hair and ';
+			descriptionStr += haircolor;
+			descriptionStr += ' ';
+			descriptionStr += getElement(descriptionObj.facialhair);
+		}
+		else {
+
+			descriptionStr += ' hair ';
+		}
 
 		Inkubator.prototype.npc.description = descriptionStr;
 	}
