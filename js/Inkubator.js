@@ -164,7 +164,7 @@ Inkubator.prototype.nameList = {
 			Chondathan: {
 				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
 				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
-				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', , 'Tallstag', 'Southroad']
+				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', 'Tallstag', 'Southroad']
 			},
 			Damaran: {
 				male: ['Bor', 'Fodel', 'Glar', 'Grigor', 'Igan', 'Ivor', 'Kosef', 'Mival', 'Orel', 'Pavel', 'Sergor'],
@@ -194,7 +194,7 @@ Inkubator.prototype.nameList = {
 			Tethyrian: {
 				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
 				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
-				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', , 'Tallstag', 'Southroad']
+				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', 'Tallstag', 'Southroad']
 			},
 			Turami: {
 				male: ['Anton', 'Diero', 'Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero'],

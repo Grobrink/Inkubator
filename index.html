@@ -19,116 +19,116 @@
 	</head>
 
 	<body>
+		<div id="inkubator">
 
-		<!-- Markup from http://jsfiddle.net/basmith7/Z2sQK/
-			 Use as a template
-		 -->
-		<div id="container">
+			<button id="new-npc" type="button" class="btn btn-default">Generate !</button>
 
-			<div id="npc-template" class="dna-template stat-block">
-				<div>
-					<div class="name">
-						~~name~~
+			<div id="container">
+
+				<div id="npc-template" class="dna-template stat-block">
+					<div>
+						<div class="name">
+							~~name~~
+						</div>
+
+						<div>
+							~~description~~
+						</div>
 					</div>
+
+					<div class="red">
+
+						<div>
+							<span class="bold red">Alignment</span> <span>
+								~~alignment~~
+							</span>
+						</div>
+
+						<div>
+							<span class="bold red">Armor Class</span> <span>
+								10
+							</span>
+						</div>
+
+						<div>
+							<span class="bold red">Hit Points
+								<span>
+									~~hitpoints~~
+								</span>
+							</span>
+							<span>(2d8+2)</span>
+						</div>
+
+						<div>
+							<span class="bold red">Speed</span> <span>30 ft.</span>
+						</div>
+					</div>
+
+					<table>
+						<tr>
+							<th>STR</th>
+							<th>DEX</th>
+							<th>CON</th>
+							<th>INT</th>
+							<th>WIS</th>
+							<th>CHA</th>
+						</tr>
+
+						<tr>
+							<td><span>
+									~~str~~
+								</span>
+								(<span>~~strm~~</span>)
+							</td>
+							<td><span>
+									~~dex~~
+								</span>
+								(<span>~~dexm~~</span>)
+							</td>
+							<td><span>
+									~~con~~
+								</span>
+								(<span>~~conm~~</span>)
+							</td>
+							<td><span>
+									~~int~~
+								</span>
+								(<span>~~intm~~</span>)
+							</td>
+							<td><span>
+									~~wis~~
+								</span>
+								(<span>~~wism~~</span>)
+							</td>
+							<td><span>
+									~~cha~~
+								</span>
+								(<span>~~cham~~</span>)
+							</td>
+						</tr>
+					</table>
 
 					<div>
-						~~description~~
+						<div>
+							<span class="bold">Senses</span>
+							Passive Perception <span class="perception">~~perception~~</span>
+						</div>
+
+						<div>
+							<span class="bold">Languages</span>
+							<span class="languages">~~languages~~</span>
+						</div>
+
+						<div>
+							<span class="bold">Challenge</span>
+							<span>1 (120 XP)</span>
+						</div>
 					</div>
+
 				</div>
-
-				<div class="red">
-
-					<div>
-						<span class="bold red">Alignment</span> <span>
-							~~alignment~~
-						</span>
-					</div>
-
-					<div>
-						<span class="bold red">Armor Class</span> <span>
-							10
-						</span>
-					</div>
-
-					<div>
-						<span class="bold red">Hit Points
-							<span>
-								~~hitpoints~~
-							</span>
-						</span>
-						<span>(2d8+2)</span>
-					</div>
-
-					<div>
-						<span class="bold red">Speed</span> <span>30 ft.</span>
-					</div>
-				</div>
-
-				<table>
-					<tr>
-						<th>STR</th>
-						<th>DEX</th>
-						<th>CON</th>
-						<th>INT</th>
-						<th>WIS</th>
-						<th>CHA</th>
-					</tr>
-
-					<tr>
-						<td><span>
-								~~str~~
-							</span>
-							(<span>~~strm~~</span>)
-						</td>
-						<td><span>
-								~~dex~~
-							</span>
-							(<span>~~dexm~~</span>)
-						</td>
-						<td><span>
-								~~con~~
-							</span>
-							(<span>~~conm~~</span>)
-						</td>
-						<td><span>
-								~~int~~
-							</span>
-							(<span>~~intm~~</span>)
-						</td>
-						<td><span>
-								~~wis~~
-							</span>
-							(<span>~~wism~~</span>)
-						</td>
-						<td><span>
-								~~cha~~
-							</span>
-							(<span>~~cham~~</span>)
-						</td>
-					</tr>
-				</table>
-
-				<div>
-					<div>
-						<span class="bold">Senses</span>
-						Passive Perception <span class="perception">~~perception~~</span>
-					</div>
-
-					<div>
-						<span class="bold">Languages</span>
-						<span class="languages">~~languages~~</span>
-					</div>
-
-					<div>
-						<span class="bold">Challenge</span>
-						<span>1 (120 XP)</span>
-					</div>
-				</div>
-
 			</div>
-		</div>
 
-		<button id="new-npc" type="button" class="btn btn-success">Generate !</button>
+		</div>
 
 		<!-- SCRIPTS -->
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
