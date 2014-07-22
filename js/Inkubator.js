@@ -251,7 +251,7 @@ Inkubator.prototype.nameList = {
 	Elf: {
 		male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
 		female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
-		lastnames: ['Amakiir (Gemflower)', 'Amastacia (Starflower)', 'Galanodel (Moonwhisper)', 'Holimion (Diamonddew)', 'Ilphelkiir (Gemblossom)', 'Liadon (Silverfrond)', 'Meliamne (Oakenheel)', 'Naïlo (Nightbreeze)', 'Siannodel (Moonbrook)', 'Xiloscient (Goldpetal)']
+		lastnames: ['Amakiir', 'Amastacia', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naïlo', 'Siannodel', 'Xiloscient']
 	},
 };
 
@@ -574,7 +574,6 @@ Inkubator.prototype.setDescription = function() {
 
 	descriptionObj = Inkubator.prototype.descriptions[selector];
 
-
 	if (typeof descriptionObj != 'undefined') {
 
 		descriptionStr += getElement(descriptionObj.weight);
@@ -600,6 +599,14 @@ Inkubator.prototype.setDescription = function() {
 
 Inkubator.prototype.getNpc = function() {
 
+	// Set all attributes
+	Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.dex = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.con = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.int = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
+	Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
+
 	Inkubator.prototype.setRace();
 	Inkubator.prototype.setGender();
 	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race);
@@ -608,14 +615,6 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.setPerception();
 	Inkubator.prototype.setLanguages();
 	Inkubator.prototype.setDescription();
-
-	// Set all attributes
-	Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
-	Inkubator.prototype.npc.attributes.dex = Inkubator.prototype.setAttributes();
-	Inkubator.prototype.npc.attributes.con = Inkubator.prototype.setAttributes();
-	Inkubator.prototype.npc.attributes.int = Inkubator.prototype.setAttributes();
-	Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
-	Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
 
 	return Inkubator.prototype.npc;
 }
