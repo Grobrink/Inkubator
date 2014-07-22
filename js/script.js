@@ -41,6 +41,7 @@ $(function () {
 			cham: inkubator.getAttributeModifier(npc.attributes.cha),
 			visual: npc.description,
 			perception: npc.perception,
+			armor: npc.armor,
 			languages: npc.languages,
 			alignment: npc.alignment
 		},

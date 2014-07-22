@@ -25,6 +25,7 @@ Inkubator.prototype.npc= {
 	treasure: 0,
 	hierarchy: '',
 	perception: 0,
+	armor: 0,
 	attributes: {
 		str: 0,
 		dex: 0,
@@ -465,6 +466,18 @@ Inkubator.prototype.setPerception = function() {
 };
 
 /**
+ * Set the passive perception value
+ * @return {int} Return the passive perception value
+ */
+Inkubator.prototype.setArmorClass = function() {
+	var value = 0;
+
+	value = parseInt(Inkubator.prototype.getAttributeModifier(Inkubator.prototype.npc.attributes.dex)) + 10;
+
+	Inkubator.prototype.npc.armor = value;
+};
+
+/**
  * Set NPC knew languages
  */
 Inkubator.prototype.setLanguages = function() {
@@ -613,6 +626,7 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.setAlignment();
 	Inkubator.prototype.setHP();
 	Inkubator.prototype.setPerception();
+	Inkubator.prototype.setArmorClass();
 	Inkubator.prototype.setLanguages();
 	Inkubator.prototype.setDescription();
 
