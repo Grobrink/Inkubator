@@ -20,12 +20,9 @@ $(function () {
 			$description.text(npc.name);
 		}
 
-		if (npc.subrace != '') {
-			subraceString = ', ' + npc.subrace;
-		}
 		dna.clone('npc-template', {
 			name: npc.name,
-			description: npc.race + ' ' + npc.gender + subraceString,
+			description: npc.subrace + ' ' + npc.gender,
 			hitpoints: npc.hitPoints,
 			str: npc.attributes.str,
 			strm: inkubator.getAttributeModifier(npc.attributes.str),
