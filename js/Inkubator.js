@@ -109,6 +109,30 @@ Inkubator.prototype.descriptions = {
 		eyes: ['green eyes like tree leaves in spring', 'green eyes like tree leaves in summer', 'brown eyes like little hazels'],
 		voice: [],
 		age: {min: 50, max: 350}
+	},
+	'Lightfoot Halfling': {
+		height: ['short-sized', 'very short-sized'],
+		weight: ['A slim', 'A slender', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['tan skin', 'pale skin with a ruddy cast', 'light brown skin', 'sandy skin'],
+		haircolor: ['brown', 'sandy brown', 'blond'],
+		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
+		facialhair: ['curly sideburns', 'long sideburns', 'wavy sideburns', 'short sideburns', 'wavy sideburns', 'perfectly shaved'],
+		face: [],
+		eyes: ['bronze eyes', 'hazel eyes'],
+		voice: [],
+		age: {min: 50, max: 350}
+	},
+	'Stout Halfling': {
+		height: ['short-sized', 'very short-sized', 'medium-sized'],
+		weight: ['A slim', 'A slender', 'A sinewy', 'A straight', 'A little thin'],
+		skin: ['tan skin', 'pale skin with a ruddy cast', 'light brown skin', 'sandy brown skin'],
+		haircolor: ['brown', 'sandy brown', 'blond'],
+		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
+		facialhair: ['curly sideburns', 'long sideburns', 'wavy sideburns', 'short sideburns', 'wavy sideburn', 'perfetly shaved'],
+		face: [],
+		eyes: ['bronze eyes', 'hazel eyes'],
+		voice: [],
+		age: {min: 50, max: 350}
 	}
 };
 
@@ -384,6 +408,16 @@ Inkubator.prototype.setSubrace = function(race) {
 			}
 			else {
 				subrace = 'Wood Elf'
+			}
+		Inkubator.prototype.npc.subrace = subrace;
+		break;
+
+		case 'Halfling':
+			if (subraceRoll <= 90) {
+				subrace = 'Lightfoot Halfling'
+			}
+			else {
+				subrace = 'Stout Halfling'
 			}
 		Inkubator.prototype.npc.subrace = subrace;
 		break;
