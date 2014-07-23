@@ -134,15 +134,42 @@ Inkubator.prototype.descriptions = {
 		voice: [],
 		age: {min: 50, max: 350}
 	},
+	'Calishite': {
+		height: ['medium-sized', 'short-sized'],
+		weight: ['A straight', 'A little thin', 'A slight'],
+		skin: ['dusky skin', 'dark brown skin', 'brown skin', 'very tanned skin'],
+		haircolor: ['brown','dark brown', 'black'],
+		haircut: ['short', 'long smooth', 'short', 'smooth and tied'],
+		facialhair: ['short well maintained beard', 'well-coiffed beard', 'tinted beard', 'finely cut beard'],
+		nofacialhair: ['perfectly shaved', 'Shaved a few days ago'],
+		face: [],
+		eyes: ['brown eyes', 'dark eyes like a starless night', 'Black eyes like raven wings'],
+		voice: [],
+		age: {min: 50, max: 350}
+	},
 	'Tethyrian': {
-		height: ['medium-sized'],
+		height: ['common sized', 'medium-sized'],
 		weight: ['A straight', 'A little thin', 'A little too fat'],
 		skin: ['dusky skin', 'dark brown skin', 'brown skin', 'light brown skin', 'coffe-colored skin', 'tanned skin'],
 		haircolor: ['brown', 'sandy brown', 'light brown', 'dark brown', 'coffee', 'gray', 'sandy'],
 		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
-		facialhair: ['sideburns', 'perfetly shaved', 'short beard', 'middle beard', 'long beard', 'tinted beard'],
+		facialhair: ['sideburns', 'short beard', 'middle beard', 'long beard', 'tinted beard'],
+		nofacialhair: ['perfectly shaved', 'Shaved a few days ago', 'unshaven'],
 		face: [],
 		eyes: ['blue eyes', 'blue eyes like island sea', 'blue eyes like the sky', 'light blue eyes', 'blue eyes with green cast'],
+		voice: [],
+		age: {min: 50, max: 350}
+	},
+	'Chondathan': {
+		height: ['medium-sized', 'common sized'],
+		weight: ['A straight', 'A little thin', 'A little too fat'],
+		skin: ['tanned skin', 'little tanned skin', 'very light brown skin', 'sandy brown skin', 'blond skin like summer fields'],
+		haircolor: ['brown', 'sandy brown', 'light brown', 'dark brown', 'coffee', 'gray', 'sandy', 'black', 'blond', 'chestnut'],
+		haircut: ['wavy', 'long', 'short', 'tied', 'curly', 'very short'],
+		facialhair: ['sideburns', 'short beard', 'middle beard', 'long beard'],
+		nofacialhair: ['perfectly shaved', 'Shaved a few days ago', 'unshaven'],
+		face: [],
+		eyes: ['blue eyes', 'light blue eyes', 'blue eyes with green cast', 'green eyes', 'light green eyes', 'brown eyes', 'blue eyes with gray cast', 'green eyes with gray cast'],
 		voice: [],
 		age: {min: 50, max: 350}
 	}
@@ -706,7 +733,14 @@ Inkubator.prototype.setDescription = function() {
 		}
 		else {
 
-			descriptionStr += ' hair ';
+			if (descriptionObj.nofacialhair) {
+				descriptionStr += ' hair and';
+				descriptionStr += getElement(descriptionObj.nofacialhair);
+			}
+			else {
+				descriptionStr += ' hair ';
+			}
+
 		}
 
 		Inkubator.prototype.npc.description = descriptionStr;
