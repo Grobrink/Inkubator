@@ -133,6 +133,18 @@ Inkubator.prototype.descriptions = {
 		eyes: ['bronze eyes', 'hazel eyes'],
 		voice: [],
 		age: {min: 50, max: 350}
+	},
+	'Tethyrian': {
+		height: ['medium-sized'],
+		weight: ['A straight', 'A little thin', 'A little too fat'],
+		skin: ['dusky skin', 'dark brown skin', 'brown skin', 'light brown skin', 'coffe-colored skin', 'tanned skin'],
+		haircolor: ['brown', 'sandy brown', 'light brown', 'dark brown', 'coffee', 'gray', 'sandy'],
+		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
+		facialhair: ['sideburns', 'perfetly shaved', 'short beard', 'middle beard', 'long beard', 'tinted beard'],
+		face: [],
+		eyes: ['blue eyes', 'blue eyes like island sea', 'blue eyes like the sky', 'light blue eyes', 'blue eyes with green cast'],
+		voice: [],
+		age: {min: 50, max: 350}
 	}
 };
 
