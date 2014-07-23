@@ -9,27 +9,7 @@ $(function () {
 		setTimeout(function() {
 			$('.stat-block').removeClass('inactive');
 		},10);
-	})
-
-	// $('#inkubator').hammer({threshold: 1}).on("pandown", function(e) {
-
-	// 	console.log('pandown');
-
-	// 	var pos = e.gesture.deltaY,
-	// 		opacityValue = 1 - (Math.abs(pos)/120);
-
-	// 	if (pos <= 80) {
-
-	// 		$(this).css({position: 'relative', top: pos + 'px'});
-	// 	}
-	// 	else {
-	// 		// Reset Left position for the last pan event
-	// 		if (e.gesture.isFinal == 1) {
-	// 			$(this).css({top: '0px'});
-	// 			$(document).trigger('generateNpcEvent');
-	// 		}
-	// 	}
-	// });
+	});
 
 	var addSlideEvent = function() {
 

@@ -303,7 +303,6 @@ Inkubator.prototype.alignment = {
 
 /**
  * Set NPC gender
- * 80% chance to generate a man
  */
 Inkubator.prototype.setGender = function() {
 

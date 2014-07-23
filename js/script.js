@@ -57,8 +57,6 @@ $(function () {
 	var generateNpc = function() {
 		npc = inkubator.getNpc();
 		fillBlock();
-
-		console.log(npc);
 	}
 
 	// Trigger the generate NPC event on click
