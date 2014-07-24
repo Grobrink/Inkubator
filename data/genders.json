@@ -1,0 +1,10 @@
+{
+	"0": {
+		"ratio": "80",
+		"name": "male"
+	},
+	"1": {
+		"ratio": "20",
+		"name": "female"
+	}
+}
