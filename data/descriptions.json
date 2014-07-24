@@ -1,0 +1,113 @@
+{
+	"Hill Dwarf": {
+		"height": ["short-sized", "medium-sized"],
+		"weight": ["An obese", "A massive", "A large", "A beefy", "A sinewy", "A straight", "A little thin"],
+		"skin": ["deep brown skin", "brown skin", "light brown skin", "pale skin tinged with red", "tanned skin"],
+		"haircolor": ["black", "gray", "brown", "red"],
+		"haircut": ["long", "short", "braided", "tied", "mohawk"],
+		"facialhair": ["short beard", "long beard", "braided beard"],
+		"face": [],
+		"eyes": ["blue eyes", "brown eyes", "black eyes", "gray eyes"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Mountain Dwarf": {
+		"height": ["short-sized", "medium-sized"],
+		"weight": ["An obese", "A massive", "A large", "A beefy", "A sinewy", "A straight", "A little thin"],
+		"skin": ["deep brown skin", "brown skin", "light brown skin", "pale skin tinged with red", "tanned skin"],
+		"haircolor": ["black", "gray", "brown", "red"],
+		"haircut": ["long", "short", "braided", "tied", "mohawk"],
+		"facialhair": ["short beard", "long beard", "braided beard"],
+		"face": [],
+		"eyes": ["blue eyes", "brown eyes", "black eyes", "gray eyes"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"High Elf": {
+		"height": ["short-sized", "medium-sized"],
+		"weight": ["A slim", "A slender", "A beefy", "A sinewy", "A straight", "A little thin"],
+		"skin": ["shades of bronze skin"],
+		"haircolor": ["copper"],
+		"haircut": ["long", "very long", "finely braided", "tied"],
+		"facialhair": [],
+		"face": [],
+		"eyes": ["eyes like pools of liquid gold", "eyes like a starfall night", "golden eyes like fields of ripe wheat"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Wood Elf": {
+		"height": ["short-sized", "medium-sized"],
+		"weight": ["A slim", "A slender", "A beefy", "A sinewy", "A straight", "A little thin"],
+		"skin": ["copperish skin with traces of green", "copperish skin"],
+		"haircolor": ["brown", "black", "blond", "copper"],
+		"haircut": ["long", "very long", "finely braided", "tied"],
+		"facialhair": [],
+		"face": [],
+		"eyes": ["green eyes like tree leaves in spring", "green eyes like tree leaves in summer", "brown eyes like little hazels"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Lightfoot Halfling": {
+		"height": ["short-sized", "very short-sized"],
+		"weight": ["A slim", "A slender", "A sinewy", "A straight", "A little thin"],
+		"skin": ["tan skin", "pale skin with a ruddy cast", "light brown skin", "sandy skin"],
+		"haircolor": ["brown", "sandy brown", "blond"],
+		"haircut": ["wavy", "long", "short", "tied", "curly"],
+		"facialhair": ["curly sideburns", "long sideburns", "wavy sideburns", "short sideburns", "wavy sideburns", "perfectly shaved"],
+		"face": [],
+		"eyes": ["bronze eyes", "hazel eyes"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Stout Halfling": {
+		"height": ["short-sized", "very short-sized", "medium-sized"],
+		"weight": ["A slim", "A slender", "A sinewy", "A straight", "A little thin"],
+		"skin": ["tan skin", "pale skin with a ruddy cast", "light brown skin", "sandy brown skin"],
+		"haircolor": ["brown", "sandy brown", "blond"],
+		"haircut": ["wavy", "long", "short", "tied", "curly"],
+		"facialhair": ["curly sideburns", "long sideburns", "wavy sideburns", "short sideburns", "wavy sideburn", "perfetly shaved"],
+		"face": [],
+		"eyes": ["bronze eyes", "hazel eyes"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Calishite": {
+		"height": ["medium-sized", "short-sized"],
+		"weight": ["A straight", "A little thin", "A slight"],
+		"skin": ["dusky skin", "dark brown skin", "brown skin", "very tanned skin"],
+		"haircolor": ["brown","dark brown", "black"],
+		"haircut": ["short", "long smooth", "short", "smooth and tied"],
+		"facialhair": ["short well maintained beard", "well-coiffed beard", "tinted beard", "finely cut beard"],
+		"nofacialhair": ["perfectly shaved", "Shaved a few days ago"],
+		"face": [],
+		"eyes": ["brown eyes", "dark eyes like a starless night", "Black eyes like raven wings"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Tethyrian": {
+		"height": ["common sized", "medium-sized"],
+		"weight": ["A straight", "A little thin", "A little too fat"],
+		"skin": ["dusky skin", "dark brown skin", "brown skin", "light brown skin", "coffe-colored skin", "tanned skin"],
+		"haircolor": ["brown", "sandy brown", "light brown", "dark brown", "coffee", "gray", "sandy"],
+		"haircut": ["wavy", "long", "short", "tied", "curly"],
+		"facialhair": ["sideburns", "short beard", "middle beard", "long beard", "tinted beard"],
+		"nofacialhair": ["perfectly shaved", "Shaved a few days ago", "unshaven"],
+		"face": [],
+		"eyes": ["blue eyes", "blue eyes like island sea", "blue eyes like the sky", "light blue eyes", "blue eyes with green cast"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	},
+	"Chondathan": {
+		"height": ["medium-sized", "common sized"],
+		"weight": ["A straight", "A little thin", "A little too fat"],
+		"skin": ["tanned skin", "little tanned skin", "very light brown skin", "sandy brown skin", "blond skin like summer fields"],
+		"haircolor": ["brown", "sandy brown", "light brown", "dark brown", "coffee", "gray", "sandy", "black", "blond", "chestnut"],
+		"haircut": ["wavy", "long", "short", "tied", "curly", "very short"],
+		"facialhair": ["sideburns", "short beard", "middle beard", "long beard"],
+		"nofacialhair": ["perfectly shaved", "Shaved a few days ago", "unshaven"],
+		"face": [],
+		"eyes": ["blue eyes", "light blue eyes", "blue eyes with green cast", "green eyes", "light green eyes", "brown eyes", "blue eyes with gray cast", "green eyes with gray cast"],
+		"voice": [],
+		"age": {"min": 50, "max": 350}
+	}
+}

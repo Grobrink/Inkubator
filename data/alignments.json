@@ -1,0 +1,4 @@
+{
+	"ge": ["Good", "Neutral", "Evil"],
+	"lc": ["Lawful", "Neutral", "Chaotic"]
+}
