@@ -4,23 +4,23 @@
 		"name": "Dwarvish"
 	},
 	"1": {
-		"ratio": "60",
+		"ratio": "25",
 		"name": "Halfling"
 	},
 	"2": {
-		"ratio": "75",
+		"ratio": "15",
 		"name": "Elvish"
 	},
 	"3": {
-		"ratio": "85",
+		"ratio": "10",
 		"name": "Gnomish"
 	},
 	"4": {
-		"ratio": "90",
+		"ratio": "5",
 		"name": "Orc"
 	},
 	"5": {
-		"ratio": "100",
+		"ratio": "10",
 		"name": "Goblin"
 	}
 }

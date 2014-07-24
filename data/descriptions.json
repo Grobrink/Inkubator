@@ -8,8 +8,7 @@
 		"facialhair": ["short beard", "long beard", "braided beard"],
 		"face": [],
 		"eyes": ["blue eyes", "brown eyes", "black eyes", "gray eyes"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Mountain Dwarf": {
 		"height": ["short-sized", "medium-sized"],
@@ -20,8 +19,7 @@
 		"facialhair": ["short beard", "long beard", "braided beard"],
 		"face": [],
 		"eyes": ["blue eyes", "brown eyes", "black eyes", "gray eyes"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"High Elf": {
 		"height": ["short-sized", "medium-sized"],
@@ -32,8 +30,7 @@
 		"facialhair": [],
 		"face": [],
 		"eyes": ["eyes like pools of liquid gold", "eyes like a starfall night", "golden eyes like fields of ripe wheat"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Wood Elf": {
 		"height": ["short-sized", "medium-sized"],
@@ -44,8 +41,7 @@
 		"facialhair": [],
 		"face": [],
 		"eyes": ["green eyes like tree leaves in spring", "green eyes like tree leaves in summer", "brown eyes like little hazels"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Lightfoot Halfling": {
 		"height": ["short-sized", "very short-sized"],
@@ -56,8 +52,7 @@
 		"facialhair": ["curly sideburns", "long sideburns", "wavy sideburns", "short sideburns", "wavy sideburns", "perfectly shaved"],
 		"face": [],
 		"eyes": ["bronze eyes", "hazel eyes"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Stout Halfling": {
 		"height": ["short-sized", "very short-sized", "medium-sized"],
@@ -68,8 +63,7 @@
 		"facialhair": ["curly sideburns", "long sideburns", "wavy sideburns", "short sideburns", "wavy sideburn", "perfetly shaved"],
 		"face": [],
 		"eyes": ["bronze eyes", "hazel eyes"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Calishite": {
 		"height": ["medium-sized", "short-sized"],
@@ -81,8 +75,7 @@
 		"nofacialhair": ["perfectly shaved", "Shaved a few days ago"],
 		"face": [],
 		"eyes": ["brown eyes", "dark eyes like a starless night", "Black eyes like raven wings"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Tethyrian": {
 		"height": ["common sized", "medium-sized"],
@@ -94,8 +87,7 @@
 		"nofacialhair": ["perfectly shaved", "Shaved a few days ago", "unshaven"],
 		"face": [],
 		"eyes": ["blue eyes", "blue eyes like island sea", "blue eyes like the sky", "light blue eyes", "blue eyes with green cast"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	},
 	"Chondathan": {
 		"height": ["medium-sized", "common sized"],
@@ -107,7 +99,6 @@
 		"nofacialhair": ["perfectly shaved", "Shaved a few days ago", "unshaven"],
 		"face": [],
 		"eyes": ["blue eyes", "light blue eyes", "blue eyes with green cast", "green eyes", "light green eyes", "brown eyes", "blue eyes with gray cast", "green eyes with gray cast"],
-		"voice": [],
-		"age": {"min": 50, "max": 350}
+		"voice": []
 	}
 }
