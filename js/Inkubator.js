@@ -81,8 +81,6 @@ Inkubator.prototype.getData = function(name, options) {
  */
 Inkubator.prototype.setRatio = function(data) {
 
-	console.log(data);
-
 	var index = 0,
 		length = Object.keys(data).length,
 		currentRatio = 0,
