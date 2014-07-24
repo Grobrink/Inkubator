@@ -39,8 +39,6 @@ $(function () {
 				// On transition complete remove the element
 				$(this).on('otransitionend transitionend webkitTransitionEnd', function(e) {
 
-					console.log(e);
-
 					// Remove the element
 					$(this).remove();
 
