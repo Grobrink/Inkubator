@@ -81,6 +81,8 @@ Inkubator.prototype.getData = function(name, options) {
  */
 Inkubator.prototype.setRatio = function(data) {
 
+	console.log(data);
+
 	var index = 0,
 		length = Object.keys(data).length,
 		currentRatio = 0,
@@ -514,6 +516,13 @@ Inkubator.prototype.setDescription = function(descriptions) {
 	}
 };
 
+Inkubator.prototype.races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
+Inkubator.prototype.languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
+Inkubator.prototype.genders = Inkubator.prototype.getData('genders', ['0', '1']);
+Inkubator.prototype.alignments = Inkubator.prototype.getData('alignments');
+Inkubator.prototype.names = Inkubator.prototype.getData('namelist');
+Inkubator.prototype.descriptions = Inkubator.prototype.getData('descriptions');
+
 Inkubator.prototype.getNpc = function() {
 
 	// Set all attributes
@@ -524,25 +533,32 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
 	Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
 
-	var races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
+	// var races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
+	var races = Inkubator.prototype.races;
 	Inkubator.prototype.setRace(races);
 
-	var genders = Inkubator.prototype.getData('genders', ['0', '1']);
+	// var genders = Inkubator.prototype.getData('genders', ['0', '1']);
+	var genders = Inkubator.prototype.genders;
 	Inkubator.prototype.setGender(genders);
 
-	var names = Inkubator.prototype.getData('namelist');
+	// var names = Inkubator.prototype.getData('namelist');
+	var names = Inkubator.prototype.names;
 	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race, names);
 
-	var alignments = Inkubator.prototype.getData('alignments');
+	// var alignments = Inkubator.prototype.getData('alignments');
+	var alignments = Inkubator.prototype.alignments;
 	Inkubator.prototype.setAlignment(alignments);
+
 	Inkubator.prototype.setHP();
 	Inkubator.prototype.setPerception();
 	Inkubator.prototype.setArmorClass();
 
-	var languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
+	// var languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
+	var languages = Inkubator.prototype.languages;
 	Inkubator.prototype.setLanguages(languages);
 
-	var descriptions = Inkubator.prototype.getData('descriptions');
+	// var descriptions = Inkubator.prototype.getData('descriptions');
+	var descriptions = Inkubator.prototype.descriptions;
 	Inkubator.prototype.setDescription(descriptions);
 
 	return Inkubator.prototype.npc;
