@@ -33,332 +33,91 @@ Inkubator.prototype.npc= {
 		int: 0,
 		wis: 0,
 		cha: 0
-	},
-	settings: {
-		genderRatio: 8
 	}
 };
 
-Inkubator.prototype.races = {
-	0: {
-		ratio: 70,
-		name: 'Human'
-	},
-	1: {
-		ratio: 85,
-		name: 'Dwarf',
-		language: 'Dwarvish'
-	},
-	2: {
-		ratio: 93,
-		name: 'Halfling',
-		language: 'Halfling'
-	},
-	3: {
-		ratio: 100,
-		name: 'Elf',
-		language: 'Elvish'
+
+////////////////////
+//     HYBRID     //
+////////////////////
+
+/**
+ * Get data synchronously
+ * @param {string} name is the json file name
+ * @param {array} options is an array used to define which nodes are used
+ * @return {object} return the data object filtred if needed
+ */
+Inkubator.prototype.getData = function(name, options) {
+
+	var path = 'data/'+name+'.json',
+		ret;
+
+	$.ajax({
+		async: false,
+		type: 'POST',
+		dataType: 'json',
+		url: path,
+		success: function(data){
+
+			if (typeof options != 'undefined') {
+				data = Inkubator.prototype.filterData(data, options)
+			}
+
+			ret = data;
+
+		},
+		error: function(xhr){
+			console.log(xhr);
+		}
+	});
+
+	return ret;
+};
+
+/**
+ * Define each node ratio
+ * @param {string} data is the object to update
+ * @return {object} return the data object with new ratio value
+ */
+Inkubator.prototype.setRatio = function(data) {
+
+	var index = 0,
+		length = Object.keys(data).length,
+		currentRatio = 0,
+		currentNode;
+
+	for(index; index < length; index++) {
+		currentNode = data[index];
+		if (typeof currentNode.ratio != 'undefined'){
+			currentRatio += parseInt(currentNode.ratio);
+			currentNode.ratio = currentRatio;
+		}
 	}
-};
 
-Inkubator.prototype.descriptions = {
-	'Hill Dwarf': {
-		height: ['short-sized', 'medium-sized'],
-		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale skin tinged with red', 'tanned skin'],
-		haircolor: ['black', 'gray', 'brown', 'red'],
-		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
-		facialhair: ['short beard', 'long beard', 'braided beard'],
-		face: [],
-		eyes: ['blue eyes', 'brown eyes', 'black eyes', 'gray eyes'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Mountain Dwarf': {
-		height: ['short-sized', 'medium-sized'],
-		weight: ['An obese', 'A massive', 'A large', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['deep brown skin', 'brown skin', 'light brown skin', 'pale skin tinged with red', 'tanned skin'],
-		haircolor: ['black', 'gray', 'brown', 'red'],
-		haircut: ['long', 'short', 'braided', 'tied', 'mohawk'],
-		facialhair: ['short beard', 'long beard', 'braided beard'],
-		face: [],
-		eyes: ['blue eyes', 'brown eyes', 'black eyes', 'gray eyes'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'High Elf': {
-		height: ['short-sized', 'medium-sized'],
-		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['shades of bronze skin'],
-		haircolor: ['copper'],
-		haircut: ['long', 'very long', 'finely braided', 'tied'],
-		facialhair: [],
-		face: [],
-		eyes: ['eyes like pools of liquid gold', 'eyes like a starfall night', 'golden eyes like fields of ripe wheat'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Wood Elf': {
-		height: ['short-sized', 'medium-sized'],
-		weight: ['A slim', 'A slender', 'A beefy', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['copperish skin with traces of green', 'copperish skin'],
-		haircolor: ['brown', 'black', 'blond', 'copper'],
-		haircut: ['long', 'very long', 'finely braided', 'tied'],
-		facialhair: [],
-		face: [],
-		eyes: ['green eyes like tree leaves in spring', 'green eyes like tree leaves in summer', 'brown eyes like little hazels'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Lightfoot Halfling': {
-		height: ['short-sized', 'very short-sized'],
-		weight: ['A slim', 'A slender', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['tan skin', 'pale skin with a ruddy cast', 'light brown skin', 'sandy skin'],
-		haircolor: ['brown', 'sandy brown', 'blond'],
-		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
-		facialhair: ['curly sideburns', 'long sideburns', 'wavy sideburns', 'short sideburns', 'wavy sideburns', 'perfectly shaved'],
-		face: [],
-		eyes: ['bronze eyes', 'hazel eyes'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Stout Halfling': {
-		height: ['short-sized', 'very short-sized', 'medium-sized'],
-		weight: ['A slim', 'A slender', 'A sinewy', 'A straight', 'A little thin'],
-		skin: ['tan skin', 'pale skin with a ruddy cast', 'light brown skin', 'sandy brown skin'],
-		haircolor: ['brown', 'sandy brown', 'blond'],
-		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
-		facialhair: ['curly sideburns', 'long sideburns', 'wavy sideburns', 'short sideburns', 'wavy sideburn', 'perfetly shaved'],
-		face: [],
-		eyes: ['bronze eyes', 'hazel eyes'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Calishite': {
-		height: ['medium-sized', 'short-sized'],
-		weight: ['A straight', 'A little thin', 'A slight'],
-		skin: ['dusky skin', 'dark brown skin', 'brown skin', 'very tanned skin'],
-		haircolor: ['brown','dark brown', 'black'],
-		haircut: ['short', 'long smooth', 'short', 'smooth and tied'],
-		facialhair: ['short well maintained beard', 'well-coiffed beard', 'tinted beard', 'finely cut beard'],
-		nofacialhair: ['perfectly shaved', 'Shaved a few days ago'],
-		face: [],
-		eyes: ['brown eyes', 'dark eyes like a starless night', 'Black eyes like raven wings'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Tethyrian': {
-		height: ['common sized', 'medium-sized'],
-		weight: ['A straight', 'A little thin', 'A little too fat'],
-		skin: ['dusky skin', 'dark brown skin', 'brown skin', 'light brown skin', 'coffe-colored skin', 'tanned skin'],
-		haircolor: ['brown', 'sandy brown', 'light brown', 'dark brown', 'coffee', 'gray', 'sandy'],
-		haircut: ['wavy', 'long', 'short', 'tied', 'curly'],
-		facialhair: ['sideburns', 'short beard', 'middle beard', 'long beard', 'tinted beard'],
-		nofacialhair: ['perfectly shaved', 'Shaved a few days ago', 'unshaven'],
-		face: [],
-		eyes: ['blue eyes', 'blue eyes like island sea', 'blue eyes like the sky', 'light blue eyes', 'blue eyes with green cast'],
-		voice: [],
-		age: {min: 50, max: 350}
-	},
-	'Chondathan': {
-		height: ['medium-sized', 'common sized'],
-		weight: ['A straight', 'A little thin', 'A little too fat'],
-		skin: ['tanned skin', 'little tanned skin', 'very light brown skin', 'sandy brown skin', 'blond skin like summer fields'],
-		haircolor: ['brown', 'sandy brown', 'light brown', 'dark brown', 'coffee', 'gray', 'sandy', 'black', 'blond', 'chestnut'],
-		haircut: ['wavy', 'long', 'short', 'tied', 'curly', 'very short'],
-		facialhair: ['sideburns', 'short beard', 'middle beard', 'long beard'],
-		nofacialhair: ['perfectly shaved', 'Shaved a few days ago', 'unshaven'],
-		face: [],
-		eyes: ['blue eyes', 'light blue eyes', 'blue eyes with green cast', 'green eyes', 'light green eyes', 'brown eyes', 'blue eyes with gray cast', 'green eyes with gray cast'],
-		voice: [],
-		age: {min: 50, max: 350}
+	return data;
+}
+
+/**
+ * Define each node ratio
+ * @param {string} data is the object to update
+ * @param {array} options is an array used to define which nodes are used
+ * @return {object} return the data object with new ratio value
+ */
+Inkubator.prototype.filterData = function(data, options) {
+
+	var filteredData = {};
+
+	var index = 0,
+		length = options.length;
+	for(index; index < length; index++) {
+
+		filteredData[index] = data[options[index]];
 	}
-};
 
-Inkubator.prototype.languages = {
-	0: {
-		ratio: 35,
-		name: 'Dwarvish'
-	},
-	1: {
-		ratio: 60,
-		name: 'Halfling'
-	},
-	2: {
-		ratio: 75,
-		name: 'Elvish'
-	},
-	3: {
-		ratio: 85,
-		name: 'Gnomish'
-	},
-	4: {
-		ratio: 90,
-		name: 'Orc'
-	},
-	5: {
-		ratio: 100,
-		name: 'Goblin'
-	}
-};
+	Inkubator.prototype.setRatio(filteredData);
 
-Inkubator.prototype.basicNameList = {
-	Human: {
-		subraces: {
-			Calishite: {
-				male: ['Aseir', 'Bardeid', 'Haseid', 'Khemed', 'Mehmen', 'Sudeiman', 'Zasheir'],
-				female: ['Atala', 'Ceidil', 'Hama', 'Jasmal', 'Meilil', 'Seipora', 'Yasheira', 'Zasheida'],
-				lastnames: ['Basha', 'Dumein', 'Jassan', 'Khalid', 'Mostana', 'Pashar', 'Rein']
-			},
-			Chondathan: {
-				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
-				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
-				lastnames: ['Amblecrown', 'Buckman', 'Dundragon', 'Evenwood', 'Greycastle', 'Tallstag']
-			},
-			Damaran: {
-				male: ['Bor', 'Fodel', 'Glar', 'Grigor', 'Igan', 'Ivor', 'Kosef', 'Mival', 'Orel', 'Pavel', 'Sergor'],
-				female: ['Alethra', 'Kara', 'Katernin', 'Mara', 'Natali', 'Olma', 'Tana', 'Zora'],
-				lastnames: ['Bersk', 'Chernin', 'Dotsk', 'Kulenov', 'Marsk', 'Nemetsk', 'Shemov', 'Starag']
-			},
-			Illuskan: {
-				male: ['Ander', 'Blath', 'Bran', 'Frath', 'Geth', 'Lander', 'Luth', 'Malcer', 'Stor', 'Taman', 'Urth'],
-				female: ['Amafrey', 'Betha', 'Cefrey', 'Kethra', 'Mara', 'Olga', 'Silifrey', 'Westra'],
-				lastnames: ['Brightwood', 'Helder', 'Hornraven', 'Lackman', 'Stormwind', 'Windrivver']
-			},
-			Mulan: {
-				male: ['Aoth', 'Bareris', 'Ehput-Ki', 'Kethoth', 'Mumed', 'Ramas', 'So-Kehur', 'Thazar-De', 'Urhur'],
-				female: ['Arizima', 'Chathi', 'Nephis', 'Nulara', 'Murithi', 'Sefris', 'Thola', 'Umara', 'Zolis'],
-				lastnames: ['Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem', 'Sepret', 'Uuthrakt']
-			},
-			Rashemi: {
-				male: ['Borivik', 'Faurgar', 'Jandar', 'Kanithar', 'Madislak', 'Ralmevik', 'Shaumar', 'Vladislak'],
-				female: ['Fyevarra', 'Hulmarra', 'Immith', 'Imzel', 'Navarra', 'Shevarra', 'Tammith', 'Yuldra'],
-				lastnames: ['Chergoba', 'Dyernina', 'Iltazyara', 'Murnyethara',  'Stayanoga', 'Ulmokina']
-			},
-			Shou: {
-				male: ['An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian', 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen'],
-				female: ['Bai', 'Chao', 'Jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai'],
-				lastnames: ['Chien', 'Huang', 'Kao', 'Kung', 'Lao', 'Ling', 'Mei', 'Pin', 'Shin', 'Sum', 'Tan', 'Wan']
-			},
-			Tethyrian: {
-				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
-				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
-				lastnames: ['Amblecrown', 'Buckman', 'Dundragon', 'Evenwood', 'Greycastle', 'Tallstag']
-			},
-			Turami: {
-				male: ['Anton', 'Diero', 'Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero'],
-				female: ['Balama', 'Dona', 'Faila', 'Jalana', 'Luisa', 'Marta', 'Quara', 'Selise', 'Vonda'],
-				lastnames: ['Agosto', 'Astorio', 'Calabra', 'Domine',  'Falone', 'Marivaldi', 'Pisacar', 'Ramondo']
-			}
-		}
-	},
-	Dwarf: {
-		male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
-		female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
-		lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
-	},
-	Halfling: {
-		male: ['Alton', 'Ander', 'Cade', 'Corrin', 'Eldon', 'Errich', 'Finnan', 'Garret', 'Lindal', 'Lyle', 'Merric', 'Milo', 'Osborn', 'Perrin', 'Reed', 'Roscoe', 'Wellby'],
-		female: ['Andry', 'Bree', 'Callie', 'Cora', 'Euphemia', 'Jillian', 'Kithri', 'Lavinia', 'Lidda', 'Merla', 'Nedda', 'Paela', 'Portia', 'Seraphina', 'Shaena', 'Trym', 'Vani', 'Verna'],
-		lastnames: ['Brushgather', 'Goodbarrel', 'Greenbottle', 'High-hill', 'Hilltopple', 'Leagallow', 'Tealeaf', 'Thorngage', 'Tosscobble', 'Underbough']
-	},
-	Elf: {
-		male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
-		female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
-		lastnames: ['Amakiir (Gemflower)', 'Amastacia (Starflower)', 'Galanodel (Moonwhisper)', 'Holimion (Diamonddew)', 'Ilphelkiir (Gemblossom)', 'Liadon (Silverfrond)', 'Meliamne (Oakenheel)', 'Naïlo (Nightbreeze)', 'Siannodel (Moonbrook)', 'Xiloscient (Goldpetal)']
-	},
-};
-
-Inkubator.prototype.nameList = {
-	Human: {
-		subraces: {
-			Calishite: {
-				male: ['Aseir', 'Aiseir', 'Ahreid', 'Bardeid', 'Haseid', 'Khemed', 'Khamed', 'Medhmen', 'Sudjeiman', 'Mehmen', 'Sudeiman', 'Zasheir', 'Zemhen'],
-				female: ['Atala', 'Ceidil', 'Hama', 'Jasmal', 'Meilil', 'Seipora', 'Yasheira', 'Zasheida'],
-				lastnames: ['Basha', 'Dumein', 'Jassan', 'Khalid', 'Mostana', 'Pashar', 'Rein', 'Rashar', 'Ashab', 'Malaq', 'Iben']
-			},
-			Chondathan: {
-				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
-				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
-				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', 'Tallstag', 'Southroad']
-			},
-			Damaran: {
-				male: ['Bor', 'Fodel', 'Glar', 'Grigor', 'Igan', 'Ivor', 'Kosef', 'Mival', 'Orel', 'Pavel', 'Sergor'],
-				female: ['Alethra', 'Kara', 'Katernin', 'Mara', 'Natali', 'Olma', 'Tana', 'Zora'],
-				lastnames: ['Bersk', 'Chernin', 'Dotsk', 'Kulenov', 'Marsk', 'Nemetsk', 'Shemov', 'Starag']
-			},
-			Illuskan: {
-				male: ['Ander', 'Blath', 'Bran', 'Frath', 'Geth', 'Lander', 'Luth', 'Malcer', 'Stor', 'Taman', 'Urth'],
-				female: ['Amafrey', 'Betha', 'Cefrey', 'Kethra', 'Mara', 'Olga', 'Silifrey', 'Westra'],
-				lastnames: ['Brightwood', 'Helder', 'Hornraven', 'Lackman', 'Stormwind', 'Windrivver']
-			},
-			Mulan: {
-				male: ['Aoth', 'Bareris', 'Ehput-Ki', 'Kethoth', 'Mumed', 'Ramas', 'So-Kehur', 'Thazar-De', 'Urhur'],
-				female: ['Arizima', 'Chathi', 'Nephis', 'Nulara', 'Murithi', 'Sefris', 'Thola', 'Umara', 'Zolis'],
-				lastnames: ['Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem', 'Sepret', 'Uuthrakt']
-			},
-			Rashemi: {
-				male: ['Borivik', 'Faurgar', 'Jandar', 'Kanithar', 'Madislak', 'Ralmevik', 'Shaumar', 'Vladislak'],
-				female: ['Fyevarra', 'Hulmarra', 'Immith', 'Imzel', 'Navarra', 'Shevarra', 'Tammith', 'Yuldra'],
-				lastnames: ['Chergoba', 'Dyernina', 'Iltazyara', 'Murnyethara',  'Stayanoga', 'Ulmokina']
-			},
-			Shou: {
-				male: ['An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian', 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen'],
-				female: ['Bai', 'Chao', 'Jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai'],
-				lastnames: ['Chien', 'Huang', 'Kao', 'Kung', 'Lao', 'Ling', 'Mei', 'Pin', 'Shin', 'Sum', 'Tan', 'Wan']
-			},
-			Tethyrian: {
-				male: ['Darvin', 'Dorn', 'Evendur', 'Gorstag', 'Grim', 'Helm', 'Malark', 'Morn', 'Randal', 'Stedd'],
-				female: ['Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele'],
-				lastnames: ['Leaslane', 'Amblecrown', 'Proudbridge', 'Dunsmith', 'Buckman', 'Hightower', 'Lightriver', 'Dundragon', 'Evenwood', 'Greycastle', 'Greendoor', 'Tallstag', 'Southroad']
-			},
-			Turami: {
-				male: ['Anton', 'Diero', 'Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero'],
-				female: ['Balama', 'Dona', 'Faila', 'Jalana', 'Luisa', 'Marta', 'Quara', 'Selise', 'Vonda'],
-				lastnames: ['Agosto', 'Astorio', 'Calabra', 'Domine',  'Falone', 'Marivaldi', 'Pisacar', 'Ramondo']
-			}
-		}
-	},
-	Dwarf: {
-		subraces : {
-			'Hill Dwarf' : {
-				male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
-				female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
-				lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
-			},
-			'Mountain Dwarf' : {
-				male: ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal'],
-				female: ['Amber', 'Artin', 'Audhild', 'Bardryn', 'Dagnal', 'Diesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda', 'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Ilde', 'Liftrasa', 'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra'],
-				lastnames: ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
-			}
-		}
-	},
-	Halfling: {
-		male: ['Alton', 'Ander', 'Cade', 'Corrin', 'Eldon', 'Errich', 'Finnan', 'Garret', 'Lindal', 'Lyle', 'Merric', 'Milo', 'Osborn', 'Perrin', 'Reed', 'Roscoe', 'Wellby'],
-		female: ['Andry', 'Bree', 'Callie', 'Cora', 'Euphemia', 'Jillian', 'Kithri', 'Lavinia', 'Lidda', 'Merla', 'Nedda', 'Paela', 'Portia', 'Seraphina', 'Shaena', 'Trym', 'Vani', 'Verna'],
-		lastnames: ['Brushgather', 'Goodbarrel', 'Greenbottle', 'High-hill', 'Hilltopple', 'Leagallow', 'Tealeaf', 'Thorngage', 'Tosscobble', 'Underbough']
-	},
-	Elf: {
-		subraces : {
-			'High Elf' : {
-				male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
-				female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
-				lastnames: ['Amakiir (Gemflower)', 'Amastacia (Starflower)', 'Galanodel (Moonwhisper)', 'Holimion (Diamonddew)', 'Ilphelkiir (Gemblossom)', 'Liadon (Silverfrond)', 'Meliamne (Oakenheel)', 'Naïlo (Nightbreeze)', 'Siannodel (Moonbrook)', 'Xiloscient (Goldpetal)']
-			},
-			'Wood Elf' : {
-				male: ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis'],
-				female: ['Adrie', 'Althaea', 'Anastrianna', 'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia', 'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna', 'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe', 'Sariel', 'Shanairra', 'Shava', 'Silaqui', 'Theirastra', 'Thia', 'Vadania', 'Valanthe', 'Xanaphia'],
-				lastnames: ['Amakiir (Gemflower)', 'Amastacia (Starflower)', 'Galanodel (Moonwhisper)', 'Holimion (Diamonddew)', 'Ilphelkiir (Gemblossom)', 'Liadon (Silverfrond)', 'Meliamne (Oakenheel)', 'Naïlo (Nightbreeze)', 'Siannodel (Moonbrook)', 'Xiloscient (Goldpetal)']
-			}
-		}
-	},
-};
-
-Inkubator.prototype.alignment = {
-	ge: ['Good', 'Neutral', 'Evil'],
-	lc: ['Lawful', 'Neutral', 'Chaotic']
-};
-
+	return filteredData;
+}
 
 ////////////////////
 //     Methods    //
@@ -367,16 +126,22 @@ Inkubator.prototype.alignment = {
 /**
  * Set NPC gender
  */
-Inkubator.prototype.setGender = function() {
+Inkubator.prototype.setGender = function(genders) {
 
-	var gender = '',
-		genderRoll = utils.roll(1, 10, 0);
+	var gender = '';
 
-	if (genderRoll <= Inkubator.prototype.npc.settings.genderRatio ) {
-		gender = 'male'
-	}
-	else {
-		gender = 'female'
+	var index = 0,
+		length = Object.keys(genders).length,
+		max = genders[length - 1].ratio,
+		genderRoll = utils.roll(1, max, 0),
+		currentGender;
+	for(index; index < length; index++) {
+
+		currentGender = genders[index];
+		if (genderRoll <= currentGender.ratio) {
+			gender = currentGender.name;
+			break;
+		}
 	}
 
 	Inkubator.prototype.npc.gender = gender;
@@ -391,13 +156,6 @@ Inkubator.prototype.setSubrace = function(race) {
 
 	var subrace = '',
 		subraceRoll = utils.roll(0, 100, 0);
-
-
-	// From official 3.5 books
-	// Tethyrian : 80%
-	// Calishite : 10%
-	// Chondathan : 5%
-	// Illuskan : 3%
 
 	switch(race) {
 		case 'Human':
@@ -470,17 +228,19 @@ Inkubator.prototype.setSubrace = function(race) {
  * Set NPC race
  * @return {string} The Merchant npc race
  */
-Inkubator.prototype.setRace = function() {
+Inkubator.prototype.setRace = function(races) {
+
 	var race = '';
 
 	var index = 0,
-		length = Object.keys(Inkubator.prototype.races).length,
-		raceRoll2 = utils.roll(1, 100, 0),
+		length = Object.keys(races).length,
+		max = races[length - 1].ratio,
+		raceRoll = utils.roll(1, max, 0),
 		currentRace;
 	for(index; index < length; index++) {
 
-		currentRace = Inkubator.prototype.races[index];
-		if (raceRoll2 <= currentRace.ratio) {
+		currentRace = races[index];
+		if (raceRoll <= currentRace.ratio) {
 			race = currentRace.name;
 			break;
 		}
@@ -498,21 +258,21 @@ Inkubator.prototype.setRace = function() {
  * @param {string} gender The Merchant npc gender
  * @param {string} race The Merchant npc race
  */
-Inkubator.prototype.setName = function(gender, race) {
+Inkubator.prototype.setName = function(gender, race, namelist) {
 
 	var firstnames,
 		lastnames;
 
-	if (typeof Inkubator.prototype.nameList[race]['subraces'] != 'undefined') {
+	if (typeof namelist[race]['subraces'] != 'undefined') {
 
 		var subrace = Inkubator.prototype.npc.subrace;
-		firstnames = Inkubator.prototype.nameList[race]['subraces'][Inkubator.prototype.npc.subrace][gender];
-		lastnames = Inkubator.prototype.nameList[race]['subraces'][Inkubator.prototype.npc.subrace]['lastnames'];
+		firstnames = namelist[race]['subraces'][Inkubator.prototype.npc.subrace][gender];
+		lastnames = namelist[race]['subraces'][Inkubator.prototype.npc.subrace]['lastnames'];
 	}
 	else {
 
-		firstnames = Inkubator.prototype.nameList[race][gender];
-		lastnames = Inkubator.prototype.nameList[race]['lastnames'];
+		firstnames = namelist[race][gender];
+		lastnames = namelist[race]['lastnames'];
 	}
 
 	var	firstnamesLength = firstnames.length,
@@ -597,10 +357,10 @@ Inkubator.prototype.setArmorClass = function() {
 /**
  * Set NPC knew languages
  */
-Inkubator.prototype.setLanguages = function() {
+Inkubator.prototype.setLanguages = function(languages) {
 
 	var languageList = 'Common',
-		lengthLanguage = Object.keys(Inkubator.prototype.languages).length;
+		lengthLanguage = Object.keys(languages).length;
 
 	if (Inkubator.prototype.npc.race != 'Human') {
 		languageList += ', ' + Inkubator.prototype.npc.mainLanguage;
@@ -610,16 +370,19 @@ Inkubator.prototype.setLanguages = function() {
 		length = parseInt(Inkubator.prototype.getAttributeModifier(Inkubator.prototype.npc.attributes.int)),
 		languageRoll,
 		result = '';
+
 	for(index; index < length; index++) {
 		languageRoll = utils.roll(0, 100, 0);
 		result = '';
 
 		var indexLanguage = 0,
-			currentLanguageRoll = utils.roll(0, 100, 0),
+			max = languages[lengthLanguage - 1].ratio,
+			currentLanguageRoll = utils.roll(1, max, 0),
 			currentLanguage;
+
 		for(indexLanguage; indexLanguage < lengthLanguage; indexLanguage++) {
 
-			currentLanguage = Inkubator.prototype.languages[indexLanguage];
+			currentLanguage = languages[indexLanguage];
 			if (currentLanguageRoll <= currentLanguage.ratio && languageList.indexOf(currentLanguage.name) == -1) {
 				result = currentLanguage.name;
 				break;
@@ -637,7 +400,7 @@ Inkubator.prototype.setLanguages = function() {
 /**
  * Set npc alignment
  */
-Inkubator.prototype.setAlignment = function() {
+Inkubator.prototype.setAlignment = function(alignements) {
 	var align = '',
 		choosen,
 		alignRoll = utils.roll(0, 100, 0);
@@ -652,7 +415,7 @@ Inkubator.prototype.setAlignment = function() {
 		choosen = 2;
 	}
 
-	align = Inkubator.prototype.alignment['lc'][choosen];
+	align = alignements['lc'][choosen];
 
 
 	alignRoll = utils.roll(0, 100, 0);
@@ -673,13 +436,13 @@ Inkubator.prototype.setAlignment = function() {
 	}
 
 	if (choosen != -1) {
-		align += ' ' + Inkubator.prototype.alignment['ge'][choosen];
+		align += ' ' + alignements['ge'][choosen];
 	}
 
 	Inkubator.prototype.npc.alignment = align;
 };
 
-Inkubator.prototype.setDescription = function() {
+Inkubator.prototype.setDescription = function(descriptions) {
 
 	var descriptionObj,
 		selector,
@@ -702,7 +465,7 @@ Inkubator.prototype.setDescription = function() {
 		selector = Inkubator.prototype.npc.race;
 	}
 
-	descriptionObj = Inkubator.prototype.descriptions[selector];
+	descriptionObj = descriptions[selector];
 
 	if (typeof descriptionObj != 'undefined') {
 
@@ -761,15 +524,26 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
 	Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
 
-	Inkubator.prototype.setRace();
-	Inkubator.prototype.setGender();
-	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race);
-	Inkubator.prototype.setAlignment();
+	var races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
+	Inkubator.prototype.setRace(races);
+
+	var genders = Inkubator.prototype.getData('genders', ['0', '1']);
+	Inkubator.prototype.setGender(genders);
+
+	var names = Inkubator.prototype.getData('namelist');
+	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race, names);
+
+	var alignments = Inkubator.prototype.getData('alignments');
+	Inkubator.prototype.setAlignment(alignments);
 	Inkubator.prototype.setHP();
 	Inkubator.prototype.setPerception();
 	Inkubator.prototype.setArmorClass();
-	Inkubator.prototype.setLanguages();
-	Inkubator.prototype.setDescription();
+
+	var languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
+	Inkubator.prototype.setLanguages(languages);
+
+	var descriptions = Inkubator.prototype.getData('descriptions');
+	Inkubator.prototype.setDescription(descriptions);
 
 	return Inkubator.prototype.npc;
 }
