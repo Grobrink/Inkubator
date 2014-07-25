@@ -81,8 +81,6 @@ Inkubator.prototype.getData = function(name, options) {
  */
 Inkubator.prototype.setRatio = function(data) {
 
-	console.log(data);
-
 	var index = 0,
 		length = Object.keys(data).length,
 		currentRatio = 0,
@@ -107,18 +105,24 @@ Inkubator.prototype.setRatio = function(data) {
  */
 Inkubator.prototype.filterData = function(data, options) {
 
-	var filteredData = {};
+	if (typeof options != 'undefined') {
+		var filteredData = {};
 
-	var index = 0,
-		length = options.length;
-	for(index; index < length; index++) {
+		var index = 0,
+			length = options.length;
+		for(index; index < length; index++) {
 
-		filteredData[index] = data[options[index]];
+			filteredData[index] = data[options[index]];
+		}
+
+		Inkubator.prototype.setRatio(filteredData);
+
+		return filteredData;
+	}
+	else {
+		return data
 	}
 
-	Inkubator.prototype.setRatio(filteredData);
-
-	return filteredData;
 }
 
 ////////////////////
@@ -517,6 +521,7 @@ Inkubator.prototype.setDescription = function(descriptions) {
 };
 
 // Get all raw data
+Inkubator.prototype.dataRaw = {};
 Inkubator.prototype.dataRaw.races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
 Inkubator.prototype.dataRaw.languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
 Inkubator.prototype.dataRaw.genders = Inkubator.prototype.getData('genders', ['0', '1']);
@@ -529,7 +534,7 @@ Inkubator.prototype.getNpc = function() {
 	// Update data to use
 	Inkubator.prototype.races = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.races, ['0', '1', '2', '3']);
 	Inkubator.prototype.languages = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.languages, ['0', '1', '2', '3', '4', '5']);
-	Inkubator.prototype.genders = Inkubator.prototype.filterData(Inkubator.prototype.dataRa,genders, ['0', '1']);
+	Inkubator.prototype.genders = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.genders, ['0', '1']);
 	Inkubator.prototype.alignments = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.alignments);
 	Inkubator.prototype.names = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.names);
 	Inkubator.prototype.descriptions = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.descriptions);
