@@ -56,6 +56,7 @@ $(function () {
 			$gendersInputChecked = $('#genders input:checked'),
 			$gendersInputNotChecked = $('#genders input');
 		settings.races = [];
+		settings.genders = [];
 
 		// Get race filter
 		if ($raceInputChecked.length) {
@@ -75,13 +76,13 @@ $(function () {
 		if ($gendersInputChecked.length) {
 
 			$gendersInputChecked.each(function(index, element) {
-				settings.races.push($(element).attr('value'));
+				settings.genders.push($(element).attr('value'));
 			});
 		}
 		else {
 
 			$gendersInputNotChecked.each(function(index, element) {
-				settings.races.push($(element).attr('value'));
+				settings.genders.push($(element).attr('value'));
 			});
 		}
 

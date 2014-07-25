@@ -525,6 +525,8 @@ Inkubator.prototype.dataRaw.descriptions = Inkubator.prototype.getData('descript
 
 Inkubator.prototype.getNpc = function(settings) {
 
+	console.log(settings);
+
 	// Update data to use
 	Inkubator.prototype.races = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.races)), settings.races);
 	Inkubator.prototype.languages = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.languages)), ['0', '1', '2', '3', '4', '5']);
