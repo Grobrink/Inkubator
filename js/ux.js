@@ -61,4 +61,8 @@ $(function () {
 
 		});
 	}
+
+	$('#settings-cta').on('click', function() {
+		$('#settings-panel').toggleClass('active');
+	})
 });

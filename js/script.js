@@ -48,11 +48,37 @@ $(function () {
 		);
 	};
 
+	var getSettings = function() {
+
+		var settings = {},
+			$raceInputChecked = $('#races input:checked'),
+			$raceInputNotChecked = $('#races input');
+		settings.races = [];
+
+		if ($raceInputChecked.length) {
+
+			$raceInputChecked.each(function(index, element) {
+				settings.races.push($(element).attr('value'));
+			});
+		}
+		else {
+
+			$raceInputNotChecked.each(function(index, element) {
+				settings.races.push($(element).attr('value'));
+			});
+		}
+
+		return settings;
+	}
+
 	/**
 	 * Call stuff to generate a new NPC
 	 */
 	var generateNpc = function() {
-		npc = inkubator.getNpc();
+
+		var settings =getSettings();
+
+		npc = inkubator.getNpc(settings);
 		fillBlock();
 	}
 
