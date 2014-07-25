@@ -516,14 +516,23 @@ Inkubator.prototype.setDescription = function(descriptions) {
 	}
 };
 
-Inkubator.prototype.races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
-Inkubator.prototype.languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
-Inkubator.prototype.genders = Inkubator.prototype.getData('genders', ['0', '1']);
-Inkubator.prototype.alignments = Inkubator.prototype.getData('alignments');
-Inkubator.prototype.names = Inkubator.prototype.getData('namelist');
-Inkubator.prototype.descriptions = Inkubator.prototype.getData('descriptions');
+// Get all raw data
+Inkubator.prototype.dataRaw.races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
+Inkubator.prototype.dataRaw.languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
+Inkubator.prototype.dataRaw.genders = Inkubator.prototype.getData('genders', ['0', '1']);
+Inkubator.prototype.dataRaw.alignments = Inkubator.prototype.getData('alignments');
+Inkubator.prototype.dataRaw.names = Inkubator.prototype.getData('namelist');
+Inkubator.prototype.dataRaw.descriptions = Inkubator.prototype.getData('descriptions');
 
 Inkubator.prototype.getNpc = function() {
+
+	// Update data to use
+	Inkubator.prototype.races = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.races, ['0', '1', '2', '3']);
+	Inkubator.prototype.languages = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.languages, ['0', '1', '2', '3', '4', '5']);
+	Inkubator.prototype.genders = Inkubator.prototype.filterData(Inkubator.prototype.dataRa,genders, ['0', '1']);
+	Inkubator.prototype.alignments = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.alignments);
+	Inkubator.prototype.names = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.names);
+	Inkubator.prototype.descriptions = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.descriptions);
 
 	// Set all attributes
 	Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
