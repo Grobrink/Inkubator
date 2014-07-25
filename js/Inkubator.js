@@ -260,6 +260,8 @@ Inkubator.prototype.setRace = function(races) {
  */
 Inkubator.prototype.setName = function(gender, race, namelist) {
 
+	console.log(gender, race, namelist);
+
 	var firstnames,
 		lastnames;
 
@@ -526,12 +528,12 @@ Inkubator.prototype.dataRaw.descriptions = Inkubator.prototype.getData('descript
 Inkubator.prototype.getNpc = function() {
 
 	// Update data to use
-	Inkubator.prototype.races = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.races, ['0', '1', '2', '3']);
-	Inkubator.prototype.languages = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.languages, ['0', '1', '2', '3', '4', '5']);
-	Inkubator.prototype.genders = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.genders, ['0', '1']);
-	Inkubator.prototype.alignments = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.alignments);
-	Inkubator.prototype.names = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.names);
-	Inkubator.prototype.descriptions = Inkubator.prototype.filterData(Inkubator.prototype.dataRaw.descriptions);
+	Inkubator.prototype.races = Inkubator.prototype.filterData(JSON.parse(JSON.stringify(Inkubator.prototype.dataRaw.races)), ['0', '1', '2', '3']);
+	Inkubator.prototype.languages = Inkubator.prototype.filterData(JSON.parse(JSON.stringify(Inkubator.prototype.dataRaw.languages)), ['0', '1', '2', '3', '4', '5']);
+	Inkubator.prototype.genders = Inkubator.prototype.filterData(JSON.parse(JSON.stringify(Inkubator.prototype.dataRaw.genders)), ['0', '1']);
+	Inkubator.prototype.alignments = Inkubator.prototype.filterData(JSON.parse(JSON.stringify(Inkubator.prototype.dataRaw.alignments)));
+	Inkubator.prototype.names = Inkubator.prototype.filterData(JSON.parse(JSON.stringify(Inkubator.prototype.dataRaw.names)));
+	Inkubator.prototype.descriptions = Inkubator.prototype.filterData(JSON.parse(JSON.stringify(Inkubator.prototype.dataRaw.descriptions)));
 
 	// Set all attributes
 	Inkubator.prototype.npc.attributes.str = Inkubator.prototype.setAttributes();
@@ -541,19 +543,18 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.npc.attributes.wis = Inkubator.prototype.setAttributes();
 	Inkubator.prototype.npc.attributes.cha = Inkubator.prototype.setAttributes();
 
-	// var races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
 	var races = Inkubator.prototype.races;
+	console.log(races);
 	Inkubator.prototype.setRace(races);
 
-	// var genders = Inkubator.prototype.getData('genders', ['0', '1']);
 	var genders = Inkubator.prototype.genders;
+	console.log(genders);
 	Inkubator.prototype.setGender(genders);
 
-	// var names = Inkubator.prototype.getData('namelist');
 	var names = Inkubator.prototype.names;
+	console.log(names);
 	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race, names);
 
-	// var alignments = Inkubator.prototype.getData('alignments');
 	var alignments = Inkubator.prototype.alignments;
 	Inkubator.prototype.setAlignment(alignments);
 
@@ -561,11 +562,9 @@ Inkubator.prototype.getNpc = function() {
 	Inkubator.prototype.setPerception();
 	Inkubator.prototype.setArmorClass();
 
-	// var languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
 	var languages = Inkubator.prototype.languages;
 	Inkubator.prototype.setLanguages(languages);
 
-	// var descriptions = Inkubator.prototype.getData('descriptions');
 	var descriptions = Inkubator.prototype.descriptions;
 	Inkubator.prototype.setDescription(descriptions);
 
