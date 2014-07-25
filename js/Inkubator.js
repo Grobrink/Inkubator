@@ -58,13 +58,7 @@ Inkubator.prototype.getData = function(name, options) {
 		dataType: 'json',
 		url: path,
 		success: function(data){
-
-			if (typeof options != 'undefined') {
-				data = Inkubator.prototype.filterData(data, options)
-			}
-
 			ret = data;
-
 		},
 		error: function(xhr){
 			console.log(xhr);
