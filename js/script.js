@@ -52,9 +52,12 @@ $(function () {
 
 		var settings = {},
 			$raceInputChecked = $('#races input:checked'),
-			$raceInputNotChecked = $('#races input');
+			$raceInputNotChecked = $('#races input'),
+			$gendersInputChecked = $('#genders input:checked'),
+			$gendersInputNotChecked = $('#genders input');
 		settings.races = [];
 
+		// Get race filter
 		if ($raceInputChecked.length) {
 
 			$raceInputChecked.each(function(index, element) {
@@ -68,6 +71,20 @@ $(function () {
 			});
 		}
 
+		// Get gender filter
+		if ($gendersInputChecked.length) {
+
+			$gendersInputChecked.each(function(index, element) {
+				settings.races.push($(element).attr('value'));
+			});
+		}
+		else {
+
+			$gendersInputNotChecked.each(function(index, element) {
+				settings.races.push($(element).attr('value'));
+			});
+		}
+
 		return settings;
 	}
 
@@ -76,7 +93,7 @@ $(function () {
 	 */
 	var generateNpc = function() {
 
-		var settings =getSettings();
+		var settings = getSettings();
 
 		npc = inkubator.getNpc(settings);
 		fillBlock();

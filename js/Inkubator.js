@@ -528,7 +528,7 @@ Inkubator.prototype.getNpc = function(settings) {
 	// Update data to use
 	Inkubator.prototype.races = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.races)), settings.races);
 	Inkubator.prototype.languages = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.languages)), ['0', '1', '2', '3', '4', '5']);
-	Inkubator.prototype.genders = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.genders)), ['0', '1']);
+	Inkubator.prototype.genders = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.genders)), settings.genders);
 	Inkubator.prototype.alignments = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.alignments)));
 	Inkubator.prototype.names = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.names)));
 	Inkubator.prototype.descriptions = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.descriptions)));
