@@ -181,7 +181,7 @@ Inkubator.prototype.getRaceId = function(race) {
 Inkubator.prototype.setSubrace = function(race) {
 
 	var subrace = '',
-		subraces = Inkubator.prototype.filterData($.extend(true, {}, Inkubator.prototype.races[Inkubator.prototype.getRaceId(race)].subraces), 'all'),
+		subraces = Inkubator.prototype.filterData($.extend(true, {}, Inkubator.prototype.dataRaw.races[Inkubator.prototype.getRaceId(race)].subraces), 'all'),
 		length = Object.keys(subraces).length,
 		max = subraces[length - 1].ratio,
 		subraceRoll = utils.roll(1, max, 0),
@@ -416,6 +416,9 @@ Inkubator.prototype.setAlignment = function(alignements) {
 	Inkubator.prototype.npc.alignment = align;
 };
 
+/**
+ * Set npc description
+ */
 Inkubator.prototype.setDescription = function(descriptions) {
 
 	var descriptionObj,
@@ -499,8 +502,6 @@ Inkubator.prototype.dataRaw.names = Inkubator.prototype.getData('namelist');
 Inkubator.prototype.dataRaw.descriptions = Inkubator.prototype.getData('descriptions');
 
 Inkubator.prototype.getNpc = function(settings) {
-
-	console.log(settings);
 
 	// Update data to use
 	Inkubator.prototype.races = Inkubator.prototype.filterData(($.extend(true, {}, Inkubator.prototype.dataRaw.races)), settings.races);

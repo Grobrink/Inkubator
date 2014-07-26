@@ -48,6 +48,33 @@ $(function () {
 		);
 	};
 
+	var setHtmlStrings = function(data) {
+
+		var index = 0;
+			length = Object.keys(data).length,
+			compoStr = '',
+			name;
+		for(index; index < length; index++) {
+
+			name = data[index]['name'];
+
+			compoStr += '<span>';
+			compoStr += '<label for="'+name+'-cb">'+name+' </label>';
+			compoStr += '<input id="'+name+'-cb" type="checkbox" value="'+index+'" />';
+			compoStr += '</span>';
+		}
+
+		return compoStr;
+	}
+
+	var buildSettings = function() {
+
+		var genders = '<div id="genders">' + setHtmlStrings(inkubator.dataRaw.genders) + '</div>';
+		var races = '<div id="races">' + setHtmlStrings(inkubator.dataRaw.races) + '</div>';
+
+		$('#settings-panel').append(genders + races);
+	}
+
 	var getSettings = function() {
 
 		var settings = {},
@@ -110,6 +137,8 @@ $(function () {
 		generateNpc();
 	});
 
+	// Build settings
+	buildSettings();
 	// Generate a NPC at start
 	$(document).trigger('generateNpcEvent');
 });
