@@ -3251,6 +3251,7 @@ td {
   height: auto;
   background: gray;
   color: whitesmoke;
+  overflow: hidden;
   -webkit-transition: max-height 0.25s ease-in-out;
   -moz-transition: max-height 0.25s ease-in-out;
   -o-transition: max-height 0.25s ease-in-out;
