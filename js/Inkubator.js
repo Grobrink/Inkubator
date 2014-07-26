@@ -166,10 +166,15 @@ Inkubator.prototype.setGender = function(genders) {
  * @param {string} race is the race which the method return the id
  * @return {string} return the race id
  */
-Inkubator.prototype.getRaceId = function(race) {
-	var id;
+Inkubator.prototype.getRaceId = function(race, context) {
+	var id,
+		contextStr = context;
 
-	id = Inkubator.prototype.dataRaw.raceReferences[race];
+	if (typeof context == 'undefined') {
+		contextStr = "races";
+	}
+
+	id = Inkubator.prototype.dataRaw.raceReferences[contextStr][race];
 
 	return id;
 }
@@ -491,6 +496,20 @@ Inkubator.prototype.setDescription = function(descriptions) {
 	}
 };
 
+Inkubator.prototype.setBonus = function(race, subrace) {
+	var attributes = Inkubator.prototype.npc.attributes,
+		raceId = Inkubator.prototype.getRaceId(Inkubator.prototype.npc.race, "races"),
+		subraceId = Inkubator.prototype.getRaceId(Inkubator.prototype.npc.subrace, Inkubator.prototype.npc.race),
+		bonus = Inkubator.prototype.dataRaw.races[raceId]['subraces'][subraceId].attributes;
+
+	attributes.str += parseInt(bonus.str);
+	attributes.dex += parseInt(bonus.dex);
+	attributes.con += parseInt(bonus.con);
+	attributes.int += parseInt(bonus.int);
+	attributes.wis += parseInt(bonus.wis);
+	attributes.cha += parseInt(bonus.cha);
+}
+
 // Get all raw data
 Inkubator.prototype.dataRaw = {};
 Inkubator.prototype.dataRaw.raceReferences = Inkubator.prototype.getData('raceReferences');
@@ -540,6 +559,8 @@ Inkubator.prototype.getNpc = function(settings) {
 
 	var descriptions = Inkubator.prototype.descriptions;
 	Inkubator.prototype.setDescription(descriptions);
+
+	Inkubator.prototype.setBonus(races, 'Hill Dwarf');
 
 	return Inkubator.prototype.npc;
 }

@@ -1,6 +1,32 @@
 {
-	"Human": "0",
-	"Dwarf": "1",
-	"Halfling": "2",
-	"Elf": "3"
+"races":
+	{
+		"Human": "0",
+		"Dwarf": "1",
+		"Halfling": "2",
+		"Elf": "3"
+	},
+"Human": {
+		"Tethyrian": "0",
+		"Calishite": "1",
+		"Chondathan": "2",
+		"Illuskan": "3",
+		"Turami": "4",
+		"Rashemi": "5",
+		"Damaran": "6",
+		"Mulan": "7",
+		"Shou": "8"
+	},
+"Dwarf": {
+		"Hill Dwarf": "0",
+		"Mountain Dwarf": "1"
+	},
+"Halfling": {
+		"Lightfoot Halfling": "0",
+		"Stout Halfling": "1"
+	},
+"Elf": {
+		"Wood Elf": "0",
+		"High Elf": "1"
+	}
 }
