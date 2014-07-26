@@ -1,21 +1,209 @@
 {
 	"0": {
 		"ratio": "70",
-		"name": "Human"
+		"name": "Human",
+		"subraces": {
+			"0": {
+				"name": "Tethyrian",
+				"ratio": "45",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"1": {
+				"name": "Calishite",
+				"ratio": "15",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"2": {
+				"name": "Chondathan",
+				"ratio": "15",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"3": {
+				"name": "Illuskan",
+				"ratio": "7",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"4": {
+				"name": "Turami",
+				"ratio": "5",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"5": {
+				"name": "Rashemi",
+				"ratio": "6",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"6": {
+				"name": "Damaran",
+				"ratio": "3",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"7": {
+				"name": "Mulan",
+				"ratio": "2",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			},
+			"8": {
+				"name": "Shou",
+				"ratio": "2",
+				"attributes": {
+					"str": "1",
+					"dex": "1",
+					"con": "1",
+					"int": "1",
+					"wis": "1",
+					"cha": "1"
+				}
+			}
+		}
 	},
 	"1": {
 		"ratio": "15",
 		"name": "Dwarf",
-		"language": "Dwarvish"
+		"language": "Dwarvish",
+		"subraces": {
+			"0": {
+				"name": "Hill Dwarf",
+				"ratio": "70",
+				"attributes": {
+					"str": "0",
+					"dex": "0",
+					"con": "2",
+					"int": "0",
+					"wis": "1",
+					"cha": "0"
+				}
+			},
+			"1": {
+				"name": "Mountain Dwarf",
+				"ratio": "30",
+				"attributes": {
+					"str": "2",
+					"dex": "0",
+					"con": "2",
+					"int": "0",
+					"wis": "0",
+					"cha": "0"
+				}
+			}
+		}
 	},
 	"2": {
 		"ratio": "8",
 		"name": "Halfling",
-		"language": "Halfling"
+		"language": "Halfling",
+		"subraces": {
+			"0": {
+				"name": "Lightfoot Halfling",
+				"ratio": "70",
+				"attributes": {
+					"str": "0",
+					"dex": "2",
+					"con": "0",
+					"int": "0",
+					"wis": "0",
+					"cha": "1"
+				}
+			},
+			"1": {
+				"name": "Stout Halfling",
+				"ratio": "30",
+				"attributes": {
+					"str": "0",
+					"dex": "2",
+					"con": "1",
+					"int": "0",
+					"wis": "0",
+					"cha": "0"
+				}
+			}
+		}
 	},
 	"3": {
 		"ratio": "7",
 		"name": "Elf",
-		"language": "Elvish"
+		"language": "Elvish",
+		"subraces": {
+			"0": {
+				"name": "Wood Elf",
+				"ratio": "70",
+				"attributes": {
+					"str": "0",
+					"dex": "2",
+					"con": "0",
+					"int": "0",
+					"wis": "1",
+					"cha": "0"
+				}
+			},
+			"1": {
+				"name": "High Elf",
+				"ratio": "30",
+				"attributes": {
+					"str": "0",
+					"dex": "2",
+					"con": "0",
+					"int": "1",
+					"wis": "0",
+					"cha": "0"
+				}
+			}
+		}
 	}
 }

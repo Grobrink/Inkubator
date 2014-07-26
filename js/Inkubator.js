@@ -103,11 +103,25 @@ Inkubator.prototype.filterData = function(data, options) {
 		var filteredData = {};
 
 		var index = 0,
-			length = options.length;
-		for(index; index < length; index++) {
+			length;
 
-			filteredData[index] = data[options[index]];
+		if (options == 'all') {
+			length = Object.keys(data).length;
+
+			for(index; index < length; index++) {
+
+				filteredData[index] = data[index];
+			}
 		}
+		else {
+			length = options.length;
+
+			for(index; index < length; index++) {
+
+				filteredData[index] = data[options[index]];
+			}
+		}
+
 
 		Inkubator.prototype.setRatio(filteredData);
 
@@ -147,6 +161,18 @@ Inkubator.prototype.setGender = function(genders) {
 	Inkubator.prototype.npc.gender = gender;
 };
 
+/**
+ * Return the id for a given race
+ * @param {string} race is the race which the method return the id
+ * @return {string} return the race id
+ */
+Inkubator.prototype.getRaceId = function(race) {
+	var id;
+
+	id = Inkubator.prototype.dataRaw.raceReferences[race];
+
+	return id;
+}
 
 /**
  * Set NPC subrace
@@ -155,73 +181,21 @@ Inkubator.prototype.setGender = function(genders) {
 Inkubator.prototype.setSubrace = function(race) {
 
 	var subrace = '',
-		subraceRoll = utils.roll(0, 100, 0);
+		subraces = Inkubator.prototype.filterData($.extend(true, {}, Inkubator.prototype.races[Inkubator.prototype.getRaceId(race)].subraces), 'all'),
+		length = Object.keys(subraces).length,
+		max = subraces[length - 1].ratio,
+		subraceRoll = utils.roll(1, max, 0),
+		currentSubrace,
+		index = 0;
+	for(index; index < length; index++) {
 
-	switch(race) {
-		case 'Human':
-			if (subraceRoll <= 45) {
-				subrace = 'Tethyrian';
-			}
-			else if (subraceRoll <= 60){
-				subrace = 'Calishite';
-			}
-			else if (subraceRoll <= 75){
-				subrace = 'Chondathan';
-			}
-			else if (subraceRoll <= 82){
-				subrace = 'Illuskan';
-			}
-			else if (subraceRoll <= 87){
-				subrace = 'Turami';
-			}
-			else if (subraceRoll <= 93){
-				subrace = 'Rashemi';
-			}
-			else if (subraceRoll <= 96){
-				subrace = 'Damaran';
-			}
-			else if (subraceRoll <= 98){
-				subrace = 'Mulan';
-			}
-			else if (subraceRoll <= 100){
-				subrace = 'Shou';
-			}
-		Inkubator.prototype.npc.subrace = subrace;
-		break;
-
-		case 'Dwarf':
-			if (subraceRoll <= 50) {
-				subrace = 'Hill Dwarf'
-			}
-			else {
-				subrace = 'Mountain Dwarf'
-			}
-		Inkubator.prototype.npc.subrace = subrace;
-		break;
-
-		case 'Elf':
-			if (subraceRoll <= 75) {
-				subrace = 'High Elf'
-			}
-			else {
-				subrace = 'Wood Elf'
-			}
-		Inkubator.prototype.npc.subrace = subrace;
-		break;
-
-		case 'Halfling':
-			if (subraceRoll <= 90) {
-				subrace = 'Lightfoot Halfling'
-			}
-			else {
-				subrace = 'Stout Halfling'
-			}
-		Inkubator.prototype.npc.subrace = subrace;
-		break;
-
-	default :
-		Inkubator.prototype.npc.subrace = '';
+		currentSubrace = subraces[index];
+		if (subraceRoll <= currentSubrace.ratio) {
+			subrace = currentSubrace.name;
+			break;
+		}
 	}
+	Inkubator.prototype.npc.subrace = subrace;
 };
 
 /**
@@ -516,6 +490,7 @@ Inkubator.prototype.setDescription = function(descriptions) {
 
 // Get all raw data
 Inkubator.prototype.dataRaw = {};
+Inkubator.prototype.dataRaw.raceReferences = Inkubator.prototype.getData('raceReferences');
 Inkubator.prototype.dataRaw.races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
 Inkubator.prototype.dataRaw.languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
 Inkubator.prototype.dataRaw.genders = Inkubator.prototype.getData('genders', ['0', '1']);
