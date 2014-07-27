@@ -1,100 +1,120 @@
 {
 	"0": {
+		"rawRatio": "524288",
 		"ratio": "524288",
 		"total": "1",
 		"value": "1"
 	},
 	"1": {
+		"rawRatio": "262144",
 		"ratio": "262144",
 		"total": "3",
 		"value": "2"
 	},
 	"2": {
+		"rawRatio": "131072",
 		"ratio": "131072",
 		"total": "7",
 		"value": "3"
 	},
 	"3": {
+		"rawRatio": "65536",
 		"ratio": "65536",
 		"total": "15",
 		"value": "4"
 	},
 	"4": {
+		"rawRatio": "32768",
 		"ratio": "32768",
 		"total": "31",
 		"value": "5"
 	},
 	"5": {
+		"rawRatio": "16384",
 		"ratio": "16384",
 		"total": "63",
 		"value": "6"
 	},
 	"6": {
+		"rawRatio": "8192",
 		"ratio": "8192",
 		"total": "127",
 		"value": "7"
 	},
 	"7": {
+		"rawRatio": "4096",
 		"ratio": "4096",
 		"total": "255",
 		"value": "8"
 	},
 	"8": {
+		"rawRatio": "2048",
 		"ratio": "2048",
 		"total": "511",
 		"value": "9"
 	},
 	"9": {
+		"rawRatio": "1024",
 		"ratio": "1024",
 		"total": "1023",
 		"value": "10"
 	},
 	"10": {
+		"rawRatio": "512",
 		"ratio": "512",
 		"total": "2047",
 		"value": "11"
 	},
 	"11": {
+		"rawRatio": "256",
 		"ratio": "256",
 		"total": "4095",
 		"value": "12"
 	},
 	"12": {
+		"rawRatio": "128",
 		"ratio": "128",
 		"total": "8191",
 		"value": "13"
 	},
 	"13": {
+		"rawRatio": "64",
 		"ratio": "64",
 		"total": "16383",
 		"value": "14"
 	},
 	"14": {
+		"rawRatio": "32",
 		"ratio": "32",
 		"total": "32767",
 		"value": "15"
 	},
 	"15": {
+		"rawRatio": "16",
 		"ratio": "16",
 		"total": "65535",
 		"value": "16"
 	},
 	"16": {
+		"rawRatio": "8",
 		"ratio": "8",
 		"total": "131071",
 		"value": "17"
 	},
 	"17": {
+		"rawRatio": "4",
 		"ratio": "4",
 		"total": "262143",
 		"value": "18"
 	},
 	"18": {
+		"rawRatio": "2",
 		"ratio": "2",
 		"total": "524287",
 		"value": "19"
 	},
 	"19": {
+		"rawRatio": "1",
 		"ratio": "1",
 		"total": "1048575",
 		"value": "20"

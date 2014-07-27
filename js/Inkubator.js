@@ -138,6 +138,46 @@ Inkubator.prototype.filterData = function(data, options) {
 ////////////////////
 
 /**
+ * Set NPC glevel
+ */
+Inkubator.prototype.setLevel = function(population) {
+	var popLimit = 0,
+		level = 0,
+		levelRef = Inkubator.prototype.dataRaw.levels;
+
+	if (typeof population == 'undefined') {
+		popLimit = 100;
+	}
+	else {
+		popLimit = population;
+	}
+
+	var index = 0,
+		length = Object.keys(levelRef).length,
+		currentLevel,
+		maxIndex = 0;
+	for(index; index < length; index++) {
+		if (popLimit < levelRef[index]['total']) {
+			currentLevel = levelRef[index - 1];
+			maxIndex = index - 1;
+			break;
+		}
+	}
+
+	var max = levelRef[0]['rawRatio'];
+		levelRoll = utils.roll(0, max, 0);
+
+	for(maxIndex; maxIndex >= 0; maxIndex--) {
+		if (levelRoll <= parseInt(levelRef[maxIndex]['rawRatio'])) {
+			level = parseInt(levelRef[maxIndex]['value']);
+			break;
+		}
+	}
+
+	Inkubator.prototype.npc.level = level;
+}
+
+/**
  * Set NPC gender
  */
 Inkubator.prototype.setGender = function(genders) {
@@ -266,9 +306,30 @@ Inkubator.prototype.setName = function(gender, race, namelist) {
  * Set NPC hit points
  */
 Inkubator.prototype.setHP = function() {
-	var hpRoll = utils.roll(1, 8, 0) + utils.roll(1, 8, 0);
+	var hp = 8,
+		level = Inkubator.prototype.npc.level,
+		conModifier = parseInt(Inkubator.prototype.getAttributeModifier(Inkubator.prototype.npc.attributes.con));
 
-	Inkubator.prototype.npc.hitPoints = hpRoll;
+	hp += conModifier;
+
+	var index = 1,
+		length = parseInt(level),
+		hpRoll;
+	for(index; index < length; index++) {
+		hpRoll = parseInt(utils.roll(1, 8, conModifier));
+
+		if (hpRoll < 1) {
+			hpRoll = 1;
+		}
+
+		hp += hpRoll;
+	}
+
+	if (hp < level) {
+		hp = level;
+	}
+
+	Inkubator.prototype.npc.hitPoints = hp;
 };
 
 /**
@@ -512,6 +573,7 @@ Inkubator.prototype.setBonus = function(race, subrace) {
 
 // Get all raw data
 Inkubator.prototype.dataRaw = {};
+Inkubator.prototype.dataRaw.levels = Inkubator.prototype.getData('levels');
 Inkubator.prototype.dataRaw.raceReferences = Inkubator.prototype.getData('raceReferences');
 Inkubator.prototype.dataRaw.races = Inkubator.prototype.getData('races', ['0', '1', '2', '3']);
 Inkubator.prototype.dataRaw.languages = Inkubator.prototype.getData('languages', ['0', '1', '2', '3', '4', '5']);
@@ -541,11 +603,15 @@ Inkubator.prototype.getNpc = function(settings) {
 	var races = Inkubator.prototype.races;
 	Inkubator.prototype.setRace(races);
 
+	Inkubator.prototype.setBonus(races, 'Hill Dwarf');
+
 	var genders = Inkubator.prototype.genders;
 	Inkubator.prototype.setGender(genders);
 
 	var names = Inkubator.prototype.names;
 	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race, names);
+
+	Inkubator.prototype.setLevel(settings.population);
 
 	var alignments = Inkubator.prototype.alignments;
 	Inkubator.prototype.setAlignment(alignments);
@@ -559,8 +625,6 @@ Inkubator.prototype.getNpc = function(settings) {
 
 	var descriptions = Inkubator.prototype.descriptions;
 	Inkubator.prototype.setDescription(descriptions);
-
-	Inkubator.prototype.setBonus(races, 'Hill Dwarf');
 
 	return Inkubator.prototype.npc;
 }

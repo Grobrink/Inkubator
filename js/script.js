@@ -40,6 +40,7 @@ $(function () {
 			perception: npc.perception,
 			armor: npc.armor,
 			languages: npc.languages,
+			level: npc.level,
 			alignment: npc.alignment
 		},
 		{
