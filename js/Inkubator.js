@@ -151,7 +151,7 @@ Inkubator.prototype.setLevel = function(population, inputLevel) {
 		var popLimit = 0,
 			levelRef = Inkubator.prototype.dataRaw.levels;
 
-		if (typeof population == 'undefined') {
+		if (typeof population == 'undefined' || population == '') {
 			popLimit = 2000000;
 		}
 		else {
