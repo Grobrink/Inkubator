@@ -181,11 +181,22 @@ th, td {
     top: -1px;
     cursor: pointer;
 
-    &:hover {
-        color: rgb(253, 150, 117);
+    > span {
+        position: absolute;
+        right: -52px;
+        overflow: visible;
+        display: inline-block;
+
+        -webkit-transition: all .25s linear;
+        -moz-transition: all .25s linear;
+        -o-transition: all .25s linear;
+        transition: all .25s linear;
     }
-    -webkit-transition: color .1s linear;
-    -moz-transition: color .1s linear;
-    -o-transition: color .1s linear;
-    transition: color .1s linear;
+
+    &:hover {
+
+        > span {
+            right: 4px;
+        }
+    }
 }

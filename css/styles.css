@@ -3297,11 +3297,17 @@ td {
   color: white;
   top: -1px;
   cursor: pointer;
-  -webkit-transition: color .1s linear;
-  -moz-transition: color .1s linear;
-  -o-transition: color .1s linear;
-  transition: color .1s linear;
 }
-#settings-cta:hover {
-  color: #fd9675;
+#settings-cta > span {
+  position: absolute;
+  right: -52px;
+  overflow: visible;
+  display: inline-block;
+  -webkit-transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  -o-transition: all .25s linear;
+  transition: all .25s linear;
+}
+#settings-cta:hover > span {
+  right: 4px;
 }
