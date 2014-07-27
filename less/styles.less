@@ -128,15 +128,21 @@ th, td {
     background: gray;
     color: whitesmoke;
     overflow: hidden;
+    text-transform: capitalize;
 
     &.active {
-        max-height: 60px;
+        max-height: 120px;
     }
 
     -webkit-transition: max-height .25s ease-in-out;
     -moz-transition: max-height .25s ease-in-out;
     -o-transition: max-height .25s ease-in-out;
     transition: max-height .25s ease-in-out;
+
+    > div {
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(255,255,255,.2);
+    }
 
     span {
         margin-left: 10px;
@@ -146,9 +152,22 @@ th, td {
         position: relative;
         top: 2px;
     }
+    input[type="checkbox"] + label {
+        min-width: 50px;
+        margin-left: 5px;
+        display: inline-block;
+    }
 
     label, input[type="checkbox"] {
         cursor: pointer;
+    }
+
+    #population {
+        width: 75px;
+    }
+
+    #level {
+        width: 40px;
     }
 }
 #settings-cta {
@@ -163,7 +182,7 @@ th, td {
     cursor: pointer;
 
     &:hover {
-        color: rgb(103, 233, 245);
+        color: rgb(253, 150, 117);
     }
     -webkit-transition: color .1s linear;
     -moz-transition: color .1s linear;

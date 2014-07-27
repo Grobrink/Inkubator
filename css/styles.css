@@ -3252,13 +3252,18 @@ td {
   background: gray;
   color: whitesmoke;
   overflow: hidden;
+  text-transform: capitalize;
   -webkit-transition: max-height 0.25s ease-in-out;
   -moz-transition: max-height 0.25s ease-in-out;
   -o-transition: max-height 0.25s ease-in-out;
   transition: max-height 0.25s ease-in-out;
 }
 #settings-panel.active {
-  max-height: 60px;
+  max-height: 120px;
+}
+#settings-panel > div {
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 #settings-panel span {
   margin-left: 10px;
@@ -3267,9 +3272,20 @@ td {
   position: relative;
   top: 2px;
 }
+#settings-panel input[type="checkbox"] + label {
+  min-width: 50px;
+  margin-left: 5px;
+  display: inline-block;
+}
 #settings-panel label,
 #settings-panel input[type="checkbox"] {
   cursor: pointer;
+}
+#settings-panel #population {
+  width: 75px;
+}
+#settings-panel #level {
+  width: 40px;
 }
 #settings-cta {
   position: relative;
@@ -3287,5 +3303,5 @@ td {
   transition: color .1s linear;
 }
 #settings-cta:hover {
-  color: #67e9f5;
+  color: #fd9675;
 }

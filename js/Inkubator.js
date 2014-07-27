@@ -140,37 +140,50 @@ Inkubator.prototype.filterData = function(data, options) {
 /**
  * Set NPC glevel
  */
-Inkubator.prototype.setLevel = function(population) {
-	var popLimit = 0,
-		level = 0,
-		levelRef = Inkubator.prototype.dataRaw.levels;
+Inkubator.prototype.setLevel = function(population, inputLevel) {
 
-	if (typeof population == 'undefined') {
-		popLimit = 100;
+	var level = 0;
+
+	if (typeof inputLevel != 'undefined' && inputLevel != '') {
+		level = inputLevel;
 	}
 	else {
-		popLimit = population;
-	}
+		var popLimit = 0,
+			levelRef = Inkubator.prototype.dataRaw.levels;
 
-	var index = 0,
-		length = Object.keys(levelRef).length,
-		currentLevel,
-		maxIndex = 0;
-	for(index; index < length; index++) {
-		if (popLimit < levelRef[index]['total']) {
-			currentLevel = levelRef[index - 1];
-			maxIndex = index - 1;
-			break;
+		if (typeof population == 'undefined') {
+			popLimit = 2000000;
 		}
-	}
+		else {
+			popLimit = parseInt(population);
+		}
 
-	var max = levelRef[0]['rawRatio'];
-		levelRoll = utils.roll(0, max, 0);
+		var index = 0,
+			length = Object.keys(levelRef).length,
+			currentLevel,
+			maxIndex = 0;
+		for(index; index < length; index++) {
+			if (popLimit <= levelRef[index]['total']) {
+				currentLevel = levelRef[index - 1];
+				maxIndex = index - 1;
+				break;
+			}
+			else if (popLimit >= levelRef[length-1]['total']) {
+				currentLevel = levelRef[length-1];
+				maxIndex = length - 1;
+				break;
+			}
+		}
 
-	for(maxIndex; maxIndex >= 0; maxIndex--) {
-		if (levelRoll <= parseInt(levelRef[maxIndex]['rawRatio'])) {
-			level = parseInt(levelRef[maxIndex]['value']);
-			break;
+		var max = levelRef[0]['rawRatio'],
+			min = levelRef[index]['rawRatio'],
+			levelRoll = utils.roll(min, max, 0);
+
+		for(maxIndex; maxIndex >= 0; maxIndex--) {
+			if (levelRoll <= parseInt(levelRef[maxIndex]['rawRatio'])) {
+				level = parseInt(levelRef[maxIndex]['value']);
+				break;
+			}
 		}
 	}
 
@@ -611,7 +624,7 @@ Inkubator.prototype.getNpc = function(settings) {
 	var names = Inkubator.prototype.names;
 	Inkubator.prototype.setName(Inkubator.prototype.npc.gender, Inkubator.prototype.npc.race, names);
 
-	Inkubator.prototype.setLevel(settings.population);
+	Inkubator.prototype.setLevel(settings.population, settings.level);
 
 	var alignments = Inkubator.prototype.alignments;
 	Inkubator.prototype.setAlignment(alignments);

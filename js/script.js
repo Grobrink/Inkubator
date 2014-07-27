@@ -60,8 +60,8 @@ $(function () {
 			name = data[index]['name'];
 
 			compoStr += '<span>';
-			compoStr += '<label for="'+name+'-cb">'+name+' </label>';
 			compoStr += '<input id="'+name+'-cb" type="checkbox" value="'+index+'" />';
+			compoStr += '<label for="'+name+'-cb"> '+name+'</label>';
 			compoStr += '</span>';
 		}
 
@@ -73,7 +73,7 @@ $(function () {
 		var genders = '<div id="genders">' + setHtmlStrings(inkubator.dataRaw.genders) + '</div>';
 		var races = '<div id="races">' + setHtmlStrings(inkubator.dataRaw.races) + '</div>';
 
-		$('#settings-panel').append(genders + races);
+		$('#settings-panel').prepend(genders + races);
 	}
 
 	var getSettings = function() {
@@ -85,6 +85,8 @@ $(function () {
 			$gendersInputNotChecked = $('#genders input');
 		settings.races = [];
 		settings.genders = [];
+		settings.population = $('#population').val();
+		settings.level = $('#level').val();
 
 		// Get race filter
 		if ($raceInputChecked.length) {
