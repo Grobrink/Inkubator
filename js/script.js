@@ -2,7 +2,8 @@ $(function () {
 
 	// Import Inkubator
 	var inkubator = new Inkubator();
-	var npc;
+	var npc,
+		npcList = [];
 
 	// Import Utils
 	var utils = new Utils();
@@ -119,6 +120,30 @@ $(function () {
 		return settings;
 	}
 
+	var addNpcToList = function(newNpc) {
+
+		npcList.push(newNpc);
+	}
+
+	var removeNpcFromList = function(block) {
+
+		var index = 0,
+			blockIndex = $(block).index();
+		if (blockIndex != -1) {
+			index = blockIndex;
+		}
+
+		npcList.splice(index, 1);
+
+		block.remove();
+	}
+
+	var removeNpc = function(index) {
+
+		removeNpcFromList(index);
+		$(this).remove();
+	}
+
 	/**
 	 * Call stuff to generate a new NPC
 	 */
@@ -126,8 +151,10 @@ $(function () {
 
 		var settings = getSettings();
 
-		npc = inkubator.getNpc(settings);
+		npc = $.extend(true, {}, inkubator.getNpc(settings));
 		fillBlock();
+
+		addNpcToList(npc);
 	}
 
 	// Trigger the generate NPC event on click
@@ -138,6 +165,11 @@ $(function () {
 	// Generate a new npc on the generate button
 	$(document).on('generateNpcEvent', function() {
 		generateNpc();
+	});
+
+	// Generate a new npc on the generate button
+	$(document).on('removeNpcEvent', function(event, data) {
+		removeNpc(data[0]);
 	});
 
 	// Build settings

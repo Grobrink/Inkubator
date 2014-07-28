@@ -40,7 +40,7 @@ $(function () {
 				$(this).on('otransitionend transitionend webkitTransitionEnd', function(e) {
 
 					// Remove the element
-					$(this).remove();
+					$(document).trigger('removeNpcEvent', [$(this)]);
 
 					// If there is no more element, add a new one
 					if (!$('.stat-block').length) {
