@@ -157,14 +157,189 @@ $(function () {
 		addNpcToList(npc);
 	}
 
+	var checkSession = function() {
+
+		console.log('checkSession()');
+
+		var ret;
+
+		$.ajax({
+			async: false,
+			type: 'POST',
+			url: 'php/sessionCheck.php',
+        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			success: function(data){
+
+				console.log('retour de checkSession : ' + data);
+
+				if (data == 'true') {
+					console.log('Y a une session');
+				}
+				else {
+					console.log('Y a pas de session');
+				}
+
+				ret = data;
+			},
+			error: function(xhr){
+				console.log(xhr);
+			}
+		});
+
+		return ret;
+	}
+
+	var addUser = function() {
+
+		console.log('addUser()');
+
+		showModal('adduser');
+
+		$.ajax({
+			type: 'POST',
+			url: 'php/addUser.php',
+        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        	data: {
+        		'nickname': 'Grobrink' + utils.roll(0,10000,0),
+        		'password': 'karapass007'
+        	},
+			success: function(data){
+				console.log(data);
+			},
+			error: function(xhr){
+				console.log(xhr);
+			}
+		});
+	}
+
+	var login = function(event) {
+
+		console.log('login()');
+
+		showModal('login');
+
+		var ret;
+		$.ajax({
+			async: false,
+			type: 'POST',
+        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: 'php/login.php',
+			data: {
+				password: 'karapass007',
+				nickname: 'Grobrink181'
+			},
+			success: function(data){
+				console.log(data, 'trigger : ' + event);
+				ret = data;
+				// $(document).trigger(event)
+			},
+			error: function(xhr){
+				console.log(xhr);
+			}
+		});
+
+		return ret
+	}
+
+	var saveNpcList = function() {
+
+		console.log('saveNpcList()');
+
+		showModal('save');
+
+		if (checkSession() == 'true') {
+
+			$.ajax({
+				type: 'POST',
+				url: 'php/saveList.php',
+	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+	        	data: {
+	        		userId: 'Grobrink181',
+	        		name: 'Plein de PNJs',
+	        		list: JSON.stringify(npcList)
+	        	},
+				success: function(data){
+					console.log(data);
+				},
+				error: function(xhr){
+					console.log(xhr);
+				}
+			});
+		}
+		else {
+			login('saveNpcListEvent');
+		}
+
+	}
+
+	var loadNpcList = function() {
+
+		console.log('loadNpcList()');
+
+		showModal('load');
+
+		if (checkSession() == 'true') {
+
+			var ret;
+			$.ajax({
+				async: false,
+				type: 'POST',
+	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				url: 'php/getList.php',
+				data: {
+					userId: 'Grobrink181',
+					id: '53d677b9c41f3'
+				},
+				success: function(data){
+					console.log(data);
+					ret = data;
+				},
+				error: function(xhr){
+					console.log(xhr);
+				}
+			});
+		}
+		else {
+			login('loadNpcListEvent');
+		}
+
+		return ret
+	}
+
+	var showModal = function(id) {
+
+		$('#modal > div').removeClass('visible');
+		$('#' + id).addClass('visible');
+	}
+
 	// Trigger the generate NPC event on click
 	$(document).on('click', '#new-npc', function() {
 		$(document).trigger('generateNpcEvent');
 	});
 
+	// Trigger the generate NPC event on click
+	$(document).on('click', '#save-npclist', function() {
+		$(document).trigger('saveNpcListEvent');
+	});
+
+	// Trigger the generate NPC event on click
+	$(document).on('click', '#load-npclist', function() {
+		$(document).trigger('loadNpcListEvent');
+	});
+
 	// Generate a new npc on the generate button
 	$(document).on('generateNpcEvent', function() {
 		generateNpc();
+	});
+
+	// addUser();
+	// Generate a new npc on the generate button
+	$(document).on('saveNpcListEvent', function() {
+		saveNpcList();
+	});
+
+	$(document).on('loadNpcListEvent', function() {
+		loadNpcList();
 	});
 
 	// Generate a new npc on the generate button

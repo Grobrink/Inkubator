@@ -3157,13 +3157,17 @@ body {
   position: relative;
   cursor: ew-resize;
 }
-#new-npc {
-  margin-left: 10px;
-  margin-top: 10px;
+#new-npc,
+#save-npclist {
+  margin: 10px 10px 0 10px;
   width: 100px;
   text-align: center;
   display: inline-block;
   position: relative;
+}
+#save-npclist {
+  position: absolute;
+  right: 0;
 }
 /*
  * CSS from http://jsfiddle.net/basmith7/Z2sQK/
@@ -3310,4 +3314,17 @@ td {
 }
 #settings-cta:hover > span {
   right: 4px;
+}
+#modal > div {
+  display: none;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: auto;
+  min-height: 65px;
+  background: white;
+  padding: 10px;
+}
+#modal > div.visible {
+  display: block;
 }
