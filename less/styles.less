@@ -213,11 +213,32 @@ th, td {
         width: 100%;
         height: auto;
         min-height: 65px;
-        background: white;
+        background: gray;
         padding: 10px;
+        color: whitesmoke;
+        text-align: right;
 
         &.visible {
             display: block;
         }
+    }
+
+    span {
+        text-align: right;
+        width: 100%;
+        display: inline-block;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(255,255,255,.2);
+        text-align: left;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 50%;
+        margin: 0;
+    }
+
+    button {
+        margin-top: 7px;
     }
 }

@@ -21,6 +21,7 @@
 	</head>
 
 	<body>
+		<button id="logout" class="btn btn-warning">Logout</button>
 		<div id="inkubator">
 
 			<div id="settings-panel">
@@ -161,39 +162,56 @@
 				<div id="login">
 					Login
 					<span>
-						<label for="nickname">Nickname :</label>
-						<input id="nickname" type="text" />
+						<label for="login-nickname">Nickname:</label>
+						<input id="login-nickname" type="text" />
 					</span>
 
 					<span>
-						<label for="pw">Password :</label>
-						<input id="pw" type="password" />
+						<label for="login-password">Password:</label>
+						<input id="login-password" type="password" />
 					</span>
+
+					<div class="btn-group">
+						<button id="mod-signup" type="button" class="btn btn-default">Sign up</button>
+						<button id="mod-login" type="button" class="btn btn-default">Login</button>
+					</div>
+
 				</div>
 
 				<div id="save">
 					Save
 					<span>
-						<label for="name">Listname :</label>
-						<input id="name" type="text" />
+						<label for="save-name">List name:</label>
+						<input id="save-name" type="text" />
 					</span>
+
+					<button id="mod-save" type="button" class="btn btn-default">Save</button>
 				</div>
 
 				<div id="load">
 					Load
+					<span>
+						<label for="load-list">Lists:</label>
+						<select id="load-list">
+						</select>
+					</span>
+
+					<button id="mod-load" type="button" class="btn btn-default">Load</button>
 				</div>
 
 				<div id="adduser">
 					Add user
 					<span>
-						<label for="nickname">Nickname :</label>
-						<input id="nickname" type="text" />
+						<label for="adduser-nickname">Nickname:</label>
+						<input id="adduser-nickname" type="text" />
 					</span>
 
 					<span>
-						<label for="pw">Password :</label>
-						<input id="pw" type="password" />
+						<label for="adduser-password">Password:</label>
+						<input id="adduser-password" type="password" />
 					</span>
+
+					<button id="mod-adduser" type="button" class="btn btn-default">Register</button>
 				</div>
 
 			</div>

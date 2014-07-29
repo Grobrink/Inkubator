@@ -3,9 +3,7 @@
 	include 'connect.php';
 
 	$name = htmlentities(($_POST['nickname']));
-	$pw = $_POST['password'];
-	// $name = 'Grobrink4558';
-	// $pw = 'karapass007';
+	$pw = $_POST['password'] . $securityString;
 
 	// Determine whether an account exists matching this username and password
  	if($stmt = $mysqli->prepare("SELECT id FROM inkubator_users WHERE nickname = ? and password = md5(?)")){
@@ -31,9 +29,12 @@
 			$stmt->execute();
 
 			session_start();
-  			$_SESSION['username'] = $name;
+			$_SESSION['username'] = $name;
 
 			echo 'authentified';
+
+	      	/* Close statement */
+			$stmt->close();
 		}
 	}
 	else {

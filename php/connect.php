@@ -5,6 +5,7 @@
 	$sqlUser = 'root';
 	$sqlPass = '';
 	$db = 'inkubator';
+	$securityString = 'pommeDeTerre';
    	$mysqli = new mysqli($sqlHost, $sqlUser, $sqlPass, $db);
 
 	if(mysqli_connect_errno()) {

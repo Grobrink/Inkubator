@@ -193,16 +193,82 @@ $(function () {
 
 		console.log('addUser()');
 
-		showModal('adduser');
+		var nickname = $('#login-nickname').val(),
+			password = $('#login-password').val(),
+			trigger = $('#login').attr('data-event');
 
 		$.ajax({
 			type: 'POST',
 			url: 'php/addUser.php',
         	contentType: "application/x-www-form-urlencoded;charset=utf-8",
         	data: {
-        		'nickname': 'Grobrink' + utils.roll(0,10000,0),
-        		'password': 'karapass007'
+				password: password,
+				nickname: nickname
         	},
+			success: function(data){
+				console.log(data);
+
+				if (data == 'Nickname already exists') {
+					alert(data)
+				}
+				else if (data == 'user added') {
+					console.log('trigger : ' + trigger);
+					$(document).trigger(trigger);
+					$('#login').removeClass('visible');
+				}
+				else {
+					alert('Sign up error');
+				}
+
+			},
+			error: function(xhr){
+				console.log(xhr);
+			}
+		});
+	}
+
+	var login = function() {
+
+		console.log('login()');
+
+		var nickname = $('#login-nickname').val(),
+			password = $('#login-password').val(),
+			trigger = $('#login').attr('data-event');
+
+		$.ajax({
+			type: 'POST',
+        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: 'php/login.php',
+			data: {
+				password: password,
+				nickname: nickname
+			},
+			success: function(data){
+				console.log(data);
+
+				if (data == 'authentified') {
+					console.log('trigger : ' + trigger);
+					$(document).trigger(trigger);
+					$('#login').removeClass('visible');
+				}
+				else {
+					alert('Login error');
+				}
+			},
+			error: function(xhr){
+				console.log(xhr);
+			}
+		});
+	}
+
+	var logout = function() {
+
+		console.log('logout()');
+
+		$.ajax({
+			type: 'POST',
+        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: 'php/logout.php',
 			success: function(data){
 				console.log(data);
 			},
@@ -212,54 +278,26 @@ $(function () {
 		});
 	}
 
-	var login = function(event) {
-
-		console.log('login()');
-
-		showModal('login');
-
-		var ret;
-		$.ajax({
-			async: false,
-			type: 'POST',
-        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
-			url: 'php/login.php',
-			data: {
-				password: 'karapass007',
-				nickname: 'Grobrink181'
-			},
-			success: function(data){
-				console.log(data, 'trigger : ' + event);
-				ret = data;
-				// $(document).trigger(event)
-			},
-			error: function(xhr){
-				console.log(xhr);
-			}
-		});
-
-		return ret
-	}
-
 	var saveNpcList = function() {
 
 		console.log('saveNpcList()');
 
-		showModal('save');
-
 		if (checkSession() == 'true') {
+
+			var namelist = $('#save-name').val();
 
 			$.ajax({
 				type: 'POST',
 				url: 'php/saveList.php',
 	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 	        	data: {
-	        		userId: 'Grobrink181',
-	        		name: 'Plein de PNJs',
-	        		list: JSON.stringify(npcList)
+					name: namelist,
+					list: JSON.stringify(npcList)
 	        	},
 				success: function(data){
 					console.log(data);
+					$('#save').removeClass('visible');
+					$('#save-name').val('');
 				},
 				error: function(xhr){
 					console.log(xhr);
@@ -267,28 +305,53 @@ $(function () {
 			});
 		}
 		else {
-			login('saveNpcListEvent');
+			showModal('login', 'saveNpcListEvent');
 		}
 
+	}
+
+	var populateUserList = function() {
+
+		console.log('populateUserList()');
+
+		if (checkSession() == 'true') {
+
+			$.ajax({
+				type: 'POST',
+	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				url: 'php/getUserLists.php',
+				success: function(data){
+					console.log(data);
+					$('#load-list').append(data);
+				},
+				error: function(xhr){
+					console.log(xhr);
+				}
+			});
+		}
+		else {
+			showModal('login', 'loadNpcListEvent');
+		}
 	}
 
 	var loadNpcList = function() {
 
 		console.log('loadNpcList()');
 
-		showModal('load');
-
 		if (checkSession() == 'true') {
 
-			var ret;
+			showModal('load');
+
+			var ret,
+				name = $('#load-list option:selected').attr('value');
+
 			$.ajax({
 				async: false,
 				type: 'POST',
 	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 				url: 'php/getList.php',
 				data: {
-					userId: 'Grobrink181',
-					id: '53d677b9c41f3'
+					name: name
 				},
 				success: function(data){
 					console.log(data);
@@ -300,16 +363,16 @@ $(function () {
 			});
 		}
 		else {
-			login('loadNpcListEvent');
+			showModal('login', 'saveNpcListEvent');
 		}
 
 		return ret
 	}
 
-	var showModal = function(id) {
+	var showModal = function(id, event) {
 
-		$('#modal > div').removeClass('visible');
-		$('#' + id).addClass('visible');
+		$('#modal > div').removeAttr('data-event').removeClass('visible');
+		$('#' + id).addClass('visible').attr('data-event', event);
 	}
 
 	// Trigger the generate NPC event on click
@@ -327,24 +390,87 @@ $(function () {
 		$(document).trigger('loadNpcListEvent');
 	});
 
+	//
+	$(document).on('click', '#mod-login', function() {
+		$(document).trigger('loginEvent');
+	});
+
+	//
+	$(document).on('click', '#logout', function() {
+		$(document).trigger('logoutEvent');
+	});
+
+	//
+	$(document).on('click', '#mod-signup', function() {
+		$(document).trigger('signupEvent');
+	});
+
+	//
+	$(document).on('click', '#mod-save', function() {
+		$(document).trigger('savelistEvent');
+	});
+
+	//
+	$(document).on('click', '#mod-load', function() {
+		$(document).trigger('loadlistEvent');
+	});
+
 	// Generate a new npc on the generate button
 	$(document).on('generateNpcEvent', function() {
 		generateNpc();
 	});
 
-	// addUser();
-	// Generate a new npc on the generate button
+	//
 	$(document).on('saveNpcListEvent', function() {
-		saveNpcList();
+
+		if ($('#save-name').val() != '') {
+			console.log('on valide directement la sauvegarde de la liste');
+			$(document).trigger('savelistEvent');
+		}
+		else {
+			console.log('On ouvre la modal de sauvegarde');
+			showModal('save');
+		}
 	});
 
 	$(document).on('loadNpcListEvent', function() {
-		loadNpcList();
+
+		console.log('On ouvre la modal de choix des listes');
+		populateUserList();
+		showModal('load');
+
+		// loadNpcList();
 	});
 
 	// Generate a new npc on the generate button
 	$(document).on('removeNpcEvent', function(event, data) {
 		removeNpc(data[0]);
+	});
+
+	//
+	$(document).on('loginEvent', function() {
+		login();
+	});
+
+	//
+	$(document).on('logoutEvent', function() {
+		logout();
+	});
+
+	//
+	$(document).on('signupEvent', function() {
+		addUser();
+	});
+
+	//
+	$(document).on('savelistEvent', function() {
+		saveNpcList();
+	});
+
+	//
+	$(document).on('loadlistEvent', function() {
+		console.log('test loadlistEvent handler');
+		loadNpcList();
 	});
 
 	// Build settings

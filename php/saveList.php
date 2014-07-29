@@ -2,16 +2,18 @@
 
 	include 'connect.php';
 
+   session_start();
+
    $name = ($_POST['name']);
    $list = ($_POST['list']);
-   $userId = ($_POST['userId']);
+   $userName = $_SESSION['username'];
    $uniqid = uniqid('', false);
 
 	/* Create a prepared statement */
-   if($stmt = $mysqli->prepare("INSERT INTO inkubator_npclists (userId, name, id, list) VALUES (?, ?, ?, ?)")){
+   if($stmt = $mysqli->prepare("INSERT INTO inkubator_npclists (userName, name, id, list, creation_date) VALUES (?, ?, ?, ?, NOW())")){
 
       	/* Bind parameters : s - string, b - blob, i - int, etc */
-      	$stmt->bind_param('ssss', $userId, $name, $uniqid, $list);
+      	$stmt->bind_param('ssss', $userName, $name, $uniqid, $list);
 
       	/* Execute it */
       	$stmt -> execute();
