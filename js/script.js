@@ -50,15 +50,15 @@ $(function () {
 		);
 	};
 
-	var displayNpcList = function() {
+	var displayNpcList = function(list) {
 
 		// Clear current stat blocks
 		$('.stat-block').remove();
 
 		var index = 0,
-			length = npcList.length;
+			length = list.length;
 		for(index; index < length; index++) {
-			npc = npcList[index];
+			npc = list[index];
 			fillBlock();
 		}
 	}
@@ -182,6 +182,9 @@ $(function () {
 			success: function(data){
 
 				if (data != 'false') {
+
+					ret = data;
+
 					$('#login-span').removeClass('active');
 					$('#logout').addClass('active');
 
@@ -253,7 +256,7 @@ $(function () {
 			},
 			success: function(data){
 
-				if (data == 'authentified') {
+				if (data.indexOf('authentified') != -1) {
 
 					if (typeof trigger != 'undefined') {
 						$(document).trigger(trigger);
@@ -345,6 +348,8 @@ $(function () {
 
 	var loadNpcList = function() {
 
+		var ret;
+
 		if (checkSession() != 'false') {
 
 			showModal('load');
@@ -352,6 +357,7 @@ $(function () {
 			var name = $('#load-list option:selected').attr('value');
 
 			$.ajax({
+				async: false,
 				type: 'POST',
 	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 				url: 'php/getList.php',
@@ -359,10 +365,12 @@ $(function () {
 					name: name
 				},
 				success: function(data){
-					npcList = eval(data);
-					displayNpcList();
+
+					ret = eval(data);
 					closeModal();
 					notify('success', 'Successfully loaded');
+
+					displayNpcList(ret);
 				},
 				error: function(xhr){
 					notify('error', 'Load failed');
@@ -373,6 +381,8 @@ $(function () {
 		else {
 			showModal('login', 'saveNpcListEvent');
 		}
+
+		return ret;
 	}
 
 	var showModal = function(id, event) {
@@ -465,10 +475,14 @@ $(function () {
 	});
 
 	$(document).on('loadNpcListEvent', function() {
-		populateUserList();
-		showModal('load');
 
-		// loadNpcList();
+		if (checkSession() != 'false' && typeof checkSession() != 'undefined') {
+			populateUserList();
+			showModal('load');
+		}
+		else {
+			showModal('login', 'loadNpcListEvent');
+		}
 	});
 
 	// Generate a new npc on the generate button
@@ -498,7 +512,7 @@ $(function () {
 
 	//
 	$(document).on('loadlistEvent', function() {
-		loadNpcList();
+		var list = loadNpcList();
 	});
 
 	//

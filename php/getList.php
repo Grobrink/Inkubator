@@ -7,19 +7,23 @@
 	$name = htmlentities(($_POST['name']),ENT_QUOTES,'UTF-8');
 
 	/* Create a prepared statement */
-   	if($stmt = $mysqli->prepare("SELECT list FROM `inkubator_npclists` WHERE name = ? AND userName = ?")){
+   	if($stmt = $mysqli->prepare("SELECT list FROM `inkubator_npclists` WHERE userName = ? AND name = ?")){
 
       	/* Bind parameters : s - string, b - blob, i - int, etc */
-      	$stmt->bind_param('ss', $name, $userName);
+      	$stmt->bind_param('ss', $userName, $name);
 
       	/* Execute it */
       	$stmt -> execute();
 
-    	$stmt->bind_result($x);
+        header('Content-Type: application/text; charset=utf-8');
 
-    	header('Content-Type: application/text; charset=utf-8');
-        while($stmt->fetch()) {
-            echo $x;
+        /* store result */
+        $stmt->store_result();
+
+        $stmt->bind_result($list);
+
+        while ($stmt->fetch()) {
+          echo $list;
         }
       	/* Close statement */
       	$stmt->close();
