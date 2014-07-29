@@ -21,8 +21,11 @@
 	</head>
 
 	<body>
-		<button id="logout" class="btn btn-warning">Logout</button>
+
 		<div id="inkubator">
+
+			<span id="login-span" class="active">Login <span class="glyphicon glyphicon-log-in"></span></span>
+			<span id="logout"><span id="username"></span>, Logout <span class="glyphicon glyphicon-log-out"></span></span>
 
 			<div id="settings-panel">
 				<div id="levels">
@@ -40,8 +43,11 @@
 			</span>
 
 			<button id="new-npc" type="button" class="btn btn-default">Generate !</button>
-			<button id="load-npclist" type="button" class="btn btn-default">Load</button>
-			<button id="save-npclist" type="button" class="btn btn-default">Save</button>
+
+			<div class="btn-group" id="saveAndLoad">
+				<button id="load-npclist" type="button" class="btn btn-default">Load</button>
+				<button id="save-npclist" type="button" class="btn btn-default">Save</button>
+			</div>
 
 			<div id="container">
 
@@ -160,7 +166,7 @@
 			<div id="modal">
 
 				<div id="login">
-					Login
+					<span class="modal-title">Login</span>
 					<span>
 						<label for="login-nickname">Nickname:</label>
 						<input id="login-nickname" type="text" />
@@ -175,21 +181,23 @@
 						<button id="mod-signup" type="button" class="btn btn-default">Sign up</button>
 						<button id="mod-login" type="button" class="btn btn-default">Login</button>
 					</div>
+					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 
 				</div>
 
 				<div id="save">
-					Save
+					<span class="modal-title">Save your list</span>
 					<span>
 						<label for="save-name">List name:</label>
 						<input id="save-name" type="text" />
 					</span>
 
 					<button id="mod-save" type="button" class="btn btn-default">Save</button>
+					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 				</div>
 
 				<div id="load">
-					Load
+					<span class="modal-title">Choose a list</span>
 					<span>
 						<label for="load-list">Lists:</label>
 						<select id="load-list">
@@ -197,10 +205,11 @@
 					</span>
 
 					<button id="mod-load" type="button" class="btn btn-default">Load</button>
+					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 				</div>
 
 				<div id="adduser">
-					Add user
+					<span class="modal-title">Sign up</span>
 					<span>
 						<label for="adduser-nickname">Nickname:</label>
 						<input id="adduser-nickname" type="text" />
@@ -212,9 +221,13 @@
 					</span>
 
 					<button id="mod-adduser" type="button" class="btn btn-default">Register</button>
+					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 				</div>
 
 			</div>
+
+
+			<span id="notification"></span>
 
 		</div>
 

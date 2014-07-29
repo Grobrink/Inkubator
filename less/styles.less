@@ -16,7 +16,7 @@ body {
     background: rgb(255, 250, 241);
     margin-top: 25px;
 
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 #container {
@@ -24,14 +24,14 @@ body {
     cursor: ew-resize;
 }
 
-#new-npc, #save-npclist {
+#new-npc, #saveAndLoad {
     margin: 10px 10px 0 10px;
-    width: 100px;
+    width: auto;
     text-align: center;
     display: inline-block;
     position: relative;
 }
-#save-npclist {
+#saveAndLoad {
     position: absolute;
     right: 0;
 }
@@ -134,6 +134,8 @@ th, td {
 
     &.active {
         max-height: 120px;
+        padding-top: 10px;
+        z-index: 400;
     }
 
     -webkit-transition: max-height .25s ease-in-out;
@@ -182,6 +184,8 @@ th, td {
     color: white;
     top: -1px;
     cursor: pointer;
+    z-index: 200;
+    overflow: hidden;
 
     > span {
         position: absolute;
@@ -203,24 +207,72 @@ th, td {
     }
 }
 
+#notification {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    text-align: left;
+    font-weight: bold;
+    z-index: 99999;
+
+    &.visible {
+        opacity: 1;
+    }
+
+    &.success {
+        color: #7FE46B;
+    }
+
+    &.error {
+        color: rgb(240, 158, 94);
+    }
+
+    &.warning {
+        color: rgb(240, 228, 94);
+    }
+
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    -o-transition: all .25s linear;
+    transition: all .25s linear;
+}
+
 #modal {
 
-    > div {
-        display: none;
+    z-index: 10000;
 
+    > div {
         position: absolute;
         top: 0px;
         width: 100%;
         height: auto;
-        min-height: 65px;
+        max-height: 0;
         background: gray;
         padding: 10px;
         color: whitesmoke;
         text-align: right;
+        z-index: 100;
+        overflow: hidden;
+        // display: none;
 
         &.visible {
-            display: block;
+            max-height: 200px;
+            min-height: 139px;
+            z-index: 300;
+            // display: block;
+
+            .close-modal {
+                // display: block;
+                top: 0;
+            }
         }
+
+        -webkit-transition: all .25s linear;
+        -moz-transition: all .25s linear;
+        -o-transition: all .25s linear;
+        transition: all .25s linear;
     }
 
     span {
@@ -240,5 +292,45 @@ th, td {
 
     button {
         margin-top: 7px;
+    }
+
+    .modal-title {
+        text-align: left;
+    }
+
+    .close-modal {
+        // display: block;
+        position: absolute;
+        top: -20px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        font-size: 13px;
+        padding: 3px 0 0 4px;
+        border: none;
+        color: #ff9a3e;
+        cursor: pointer;
+
+        -webkit-transition: all .1s linear;
+        -moz-transition: all .1s linear;
+        -o-transition: all .1s linear;
+        transition: all .1s linear;
+
+        &:hover {
+            font-size: 20px;
+            right: 10px;
+        }
+    }
+}
+#logout, #login-span {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    color: gray;
+    cursor: pointer;
+    display: none;
+
+    &.active {
+        display: block;
     }
 }

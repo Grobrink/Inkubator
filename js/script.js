@@ -50,6 +50,19 @@ $(function () {
 		);
 	};
 
+	var displayNpcList = function() {
+
+		// Clear current stat blocks
+		$('.stat-block').remove();
+
+		var index = 0,
+			length = npcList.length;
+		for(index; index < length; index++) {
+			npc = npcList[index];
+			fillBlock();
+		}
+	}
+
 	var setHtmlStrings = function(data) {
 
 		var index = 0;
@@ -159,8 +172,6 @@ $(function () {
 
 	var checkSession = function() {
 
-		console.log('checkSession()');
-
 		var ret;
 
 		$.ajax({
@@ -170,13 +181,15 @@ $(function () {
         	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 			success: function(data){
 
-				console.log('retour de checkSession : ' + data);
+				if (data != 'false') {
+					$('#login-span').removeClass('active');
+					$('#logout').addClass('active');
 
-				if (data == 'true') {
-					console.log('Y a une session');
+					$('#username').text(data);
 				}
 				else {
-					console.log('Y a pas de session');
+					$('#login-span').addClass('active');
+					$('#logout').removeClass('active');
 				}
 
 				ret = data;
@@ -191,8 +204,6 @@ $(function () {
 
 	var addUser = function() {
 
-		console.log('addUser()');
-
 		var nickname = $('#login-nickname').val(),
 			password = $('#login-password').val(),
 			trigger = $('#login').attr('data-event');
@@ -206,18 +217,17 @@ $(function () {
 				nickname: nickname
         	},
 			success: function(data){
-				console.log(data);
 
 				if (data == 'Nickname already exists') {
-					alert(data)
+					notify('warning', 'Username already exists');
 				}
 				else if (data == 'user added') {
-					console.log('trigger : ' + trigger);
 					$(document).trigger(trigger);
-					$('#login').removeClass('visible');
+					closeModal();
+					notify('success', 'Welcome ' + nickname + '!');
 				}
 				else {
-					alert('Sign up error');
+					notify('error', 'sign up failed');
 				}
 
 			},
@@ -228,8 +238,6 @@ $(function () {
 	}
 
 	var login = function() {
-
-		console.log('login()');
 
 		var nickname = $('#login-nickname').val(),
 			password = $('#login-password').val(),
@@ -244,15 +252,18 @@ $(function () {
 				nickname: nickname
 			},
 			success: function(data){
-				console.log(data);
 
 				if (data == 'authentified') {
-					console.log('trigger : ' + trigger);
-					$(document).trigger(trigger);
-					$('#login').removeClass('visible');
+
+					if (typeof trigger != 'undefined') {
+						$(document).trigger(trigger);
+					}
+					closeModal();
+					checkSession();
+					notify('success', 'Successfully logged in');
 				}
 				else {
-					alert('Login error');
+					notify('error', 'Login failed');
 				}
 			},
 			error: function(xhr){
@@ -263,26 +274,24 @@ $(function () {
 
 	var logout = function() {
 
-		console.log('logout()');
-
 		$.ajax({
 			type: 'POST',
         	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 			url: 'php/logout.php',
 			success: function(data){
-				console.log(data);
+				notify('warning', 'Successfully logged out');
+				checkSession();
 			},
 			error: function(xhr){
 				console.log(xhr);
+					notify('error', 'Logout failed');
 			}
 		});
 	}
 
 	var saveNpcList = function() {
 
-		console.log('saveNpcList()');
-
-		if (checkSession() == 'true') {
+		if (checkSession() != 'false') {
 
 			var namelist = $('#save-name').val();
 
@@ -295,12 +304,13 @@ $(function () {
 					list: JSON.stringify(npcList)
 	        	},
 				success: function(data){
-					console.log(data);
-					$('#save').removeClass('visible');
+					closeModal();
 					$('#save-name').val('');
+					notify('success', 'Successfully saved');
 				},
 				error: function(xhr){
 					console.log(xhr);
+					notify('error', 'Save failed');
 				}
 			});
 		}
@@ -312,16 +322,15 @@ $(function () {
 
 	var populateUserList = function() {
 
-		console.log('populateUserList()');
+		if (checkSession() != 'false') {
 
-		if (checkSession() == 'true') {
+			$('#load-list option').remove();
 
 			$.ajax({
 				type: 'POST',
 	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 				url: 'php/getUserLists.php',
 				success: function(data){
-					console.log(data);
 					$('#load-list').append(data);
 				},
 				error: function(xhr){
@@ -336,17 +345,13 @@ $(function () {
 
 	var loadNpcList = function() {
 
-		console.log('loadNpcList()');
-
-		if (checkSession() == 'true') {
+		if (checkSession() != 'false') {
 
 			showModal('load');
 
-			var ret,
-				name = $('#load-list option:selected').attr('value');
+			var name = $('#load-list option:selected').attr('value');
 
 			$.ajax({
-				async: false,
 				type: 'POST',
 	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
 				url: 'php/getList.php',
@@ -354,10 +359,13 @@ $(function () {
 					name: name
 				},
 				success: function(data){
-					console.log(data);
-					ret = data;
+					npcList = eval(data);
+					displayNpcList();
+					closeModal();
+					notify('success', 'Successfully loaded');
 				},
 				error: function(xhr){
+					notify('error', 'Load failed');
 					console.log(xhr);
 				}
 			});
@@ -365,15 +373,35 @@ $(function () {
 		else {
 			showModal('login', 'saveNpcListEvent');
 		}
-
-		return ret
 	}
 
 	var showModal = function(id, event) {
+		closeModal();
 
-		$('#modal > div').removeAttr('data-event').removeClass('visible');
-		$('#' + id).addClass('visible').attr('data-event', event);
+		if (typeof event != 'undefined') {
+			$('#' + id).addClass('visible').attr('data-event', event);
+		}
+		else {
+			$('#' + id).addClass('visible');
+		}
 	}
+
+	var closeModal = function() {
+		$('#modal > div').removeAttr('data-event').removeClass('visible');
+	}
+
+	var notify = function(type, message) {
+		$('#notification').removeAttr('class').addClass(type).text(message).addClass('visible');
+
+		setTimeout(function() {
+			$('#notification').removeClass('visible');
+		}, 3500);
+	}
+
+	// Trigger the generate NPC event on click
+	$(document).on('click', '#login-span', function() {
+		showModal('login');
+	});
 
 	// Trigger the generate NPC event on click
 	$(document).on('click', '#new-npc', function() {
@@ -415,6 +443,11 @@ $(function () {
 		$(document).trigger('loadlistEvent');
 	});
 
+	//
+	$(document).on('click', '.close-modal', function() {
+		$(document).trigger('closemodalEvent');
+	});
+
 	// Generate a new npc on the generate button
 	$(document).on('generateNpcEvent', function() {
 		generateNpc();
@@ -424,18 +457,14 @@ $(function () {
 	$(document).on('saveNpcListEvent', function() {
 
 		if ($('#save-name').val() != '') {
-			console.log('on valide directement la sauvegarde de la liste');
 			$(document).trigger('savelistEvent');
 		}
 		else {
-			console.log('On ouvre la modal de sauvegarde');
 			showModal('save');
 		}
 	});
 
 	$(document).on('loadNpcListEvent', function() {
-
-		console.log('On ouvre la modal de choix des listes');
 		populateUserList();
 		showModal('load');
 
@@ -469,12 +498,17 @@ $(function () {
 
 	//
 	$(document).on('loadlistEvent', function() {
-		console.log('test loadlistEvent handler');
 		loadNpcList();
+	});
+
+	//
+	$(document).on('closemodalEvent', function() {
+		closeModal();
 	});
 
 	// Build settings
 	buildSettings();
+	checkSession();
 	// Generate a NPC at start
 	$(document).trigger('generateNpcEvent');
 });
