@@ -3445,6 +3445,9 @@ a:focus {
 /* Large devices (large desktops, 1200px and up) */
 body {
   height: 100vh;
+  width: 100wv;
+  max-width: 100%;
+  min-width: 328px;
 }
 #inkubator {
   position: relative;
@@ -3454,6 +3457,7 @@ body {
   border: 4px solid gray;
   background: #fffaf1;
   margin-top: 25px;
+  max-width: 100%;
 }
 #container {
   position: relative;
