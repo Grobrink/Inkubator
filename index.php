@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>Inkubator : Another NPC generator for D&D (aka 5 or Next)</title>
 		<meta name="author" content="Pierre Lefèvre">
 
