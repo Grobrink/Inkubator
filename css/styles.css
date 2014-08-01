@@ -3737,6 +3737,12 @@ td {
   font-size: 20px;
   right: 10px;
 }
+#modal .delete {
+  height: 23px;
+  top: -5px;
+  padding-top: 3px;
+  color: #F69A83;
+}
 #logout,
 #login-span {
   position: absolute;

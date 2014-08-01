@@ -302,6 +302,7 @@
 						<label for="load-list">Lists:</label>
 						<select id="load-list">
 						</select>
+						<button class="btn btn-default delete glyphicon glyphicon-trash"></button>
 					</span>
 
 					<button id="mod-load" type="button" class="btn btn-default">Load</button>

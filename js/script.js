@@ -403,7 +403,34 @@ $(function () {
 		else {
 			showModal('login', 'saveNpcListEvent');
 		}
+	}
 
+	var deleteNpcList = function() {
+
+		if (checkSession() != 'false') {
+
+			var namelist = $('option:selected').attr('value');
+
+			$.ajax({
+				type: 'POST',
+				url: 'php/deleteList.php',
+	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+	        	data: {
+					name: namelist
+	        	},
+				success: function(data){
+					$(document).trigger('loadNpcListEvent');
+					notify('success', 'Successfully deleted');
+				},
+				error: function(xhr){
+					console.log(xhr);
+					notify('error', 'Delete failed');
+				}
+			});
+		}
+		else {
+			showModal('login', 'deleteNpcListEvent');
+		}
 	}
 
 	var populateUserList = function() {
@@ -507,6 +534,11 @@ $(function () {
 	});
 
 	// Trigger the generate NPC event on click
+	$(document).on('click', '#modal .delete', function() {
+		$(document).trigger('deleteNpcListEvent');
+	});
+
+	// Trigger the generate NPC event on click
 	$(document).on('click', '#load-npclist', function() {
 		$(document).trigger('loadNpcListEvent');
 	});
@@ -555,6 +587,12 @@ $(function () {
 		else {
 			showModal('save');
 		}
+	});
+
+	//
+	$(document).on('deleteNpcListEvent', function() {
+
+		deleteNpcList();
 	});
 
 	$(document).on('loadNpcListEvent', function() {
