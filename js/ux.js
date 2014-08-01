@@ -37,7 +37,7 @@ $(function () {
 		$firstStatBlock.find('.remove').on('click', function(e) {
 			e.stopPropagation();
 
-			var $currentStatBlock = $(event.currentTarget).closest('.stat-block');
+			var $currentStatBlock = $(e.currentTarget).closest('.stat-block');
 
 			// Add the inactive class
 			$currentStatBlock.addClass('inactive');
