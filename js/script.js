@@ -608,7 +608,10 @@ $(function () {
 
 	// Generate a new npc on the generate button
 	$(document).on('removeNpcEvent', function(event, data) {
-		removeNpc(data[0]);
+
+		// Remove the array index argument cause it bugs with IE
+		// data[0] -> data
+		removeNpc(data);
 	});
 
 	//
