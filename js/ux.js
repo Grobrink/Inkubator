@@ -68,6 +68,7 @@ $(function () {
 
 			$(e.currentTarget).toggleClass('hidden');
 			$currentStatBlock.find('.validate').toggleClass('hidden');
+			$currentStatBlock.find('.cancel').toggleClass('hidden');
 
 			$currentStatBlock.find('.uneditable').addClass('hidden');
 			$currentStatBlock.find('.editable').removeClass('hidden');
@@ -81,12 +82,28 @@ $(function () {
 			var $currentStatBlock= $(event.currentTarget).closest('.stat-block');
 
 			$(e.currentTarget).toggleClass('hidden');
+			$currentStatBlock.find('.cancel').toggleClass('hidden');
 			$currentStatBlock.find('.edit').toggleClass('hidden');
 
 			$currentStatBlock.find('.uneditable').removeClass('hidden');
 			$currentStatBlock.find('.editable').addClass('hidden');
 
 			$(document).trigger('setNpcFromEditEvent', [$currentStatBlock, $currentStatBlock.index()]);
+
+		});
+
+		$firstStatBlock.find('.cancel').on('click', function(e) {
+
+			e.stopPropagation();
+
+			var $currentStatBlock= $(event.currentTarget).closest('.stat-block');
+
+			$(e.currentTarget).toggleClass('hidden');
+			$currentStatBlock.find('.validate').toggleClass('hidden');
+			$currentStatBlock.find('.edit').toggleClass('hidden');
+
+			$currentStatBlock.find('.uneditable').removeClass('hidden');
+			$currentStatBlock.find('.editable').addClass('hidden');
 
 		});
 

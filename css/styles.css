@@ -3770,6 +3770,9 @@ td {
 .toolbar .validate {
   color: #23BB47;
 }
+.toolbar .cancel {
+  color: #EE9636;
+}
 .toolbar .remove {
   color: #F69A83;
 }

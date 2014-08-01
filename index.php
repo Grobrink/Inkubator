@@ -56,6 +56,7 @@
 					<menu class="toolbar">
 						<button class="btn btn-default edit glyphicon glyphicon-pencil"></button>
 						<button class="btn btn-default validate glyphicon glyphicon-ok hidden"></button>
+						<button class="btn btn-default cancel glyphicon glyphicon-remove hidden"></button>
 						<button class="btn btn-default remove glyphicon glyphicon-trash"></button>
 					</menu>
 
