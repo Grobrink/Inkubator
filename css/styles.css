@@ -3461,7 +3461,8 @@ body {
 }
 #container {
   position: relative;
-  cursor: ew-resize;
+  cursor: pointer;
+  overflow: hidden;
 }
 #new-npc,
 #saveAndLoad {
@@ -3485,7 +3486,8 @@ body {
   position: relative;
   width: 310px;
   height: auto;
-  max-height: 320px;
+  left: 0px;
+  max-height: 440px;
   opacity: 1;
   background: linear-gradient(90deg, #a73335, #ffffff);
   box-shadow: inset 0 0 1px #fffaf1;
@@ -3506,10 +3508,26 @@ body {
 .stat-block.inactive {
   max-height: 0;
   opacity: 0;
-  -webkit-transition: opacity 0.25s linear, max-height 0.25s ease-in-out, left 0.25s ease-in-out;
-  -moz-transition: opacity 0.25s linear, max-height 0.25s ease-in-out, left 0.25s ease-in-out;
-  -o-transition: opacity 0.25s linear, max-height 0.25s ease-in-out, left 0.25s ease-in-out;
-  transition: opacity 0.25s linear, max-height 0.25s ease-in-out, left 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
+  -o-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
+  transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
+}
+.stat-block label {
+  display: inline-block;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.stat-block label span {
+  display: inline-block;
+  width: 60px;
+  cursor: pointer;
+}
+.stat-block label textarea {
+  width: 100%;
+}
+.stat-block input[type="number"] {
+  width: 40px;
 }
 .name {
   font-size: 225%;
@@ -3731,4 +3749,27 @@ td {
 #logout.active,
 #login-span.active {
   display: block;
+}
+.toolbar {
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  transition: all .1s linear;
+}
+.toolbar.toggle {
+  max-height: 35px;
+}
+.toolbar .edit {
+  color: #83b1f6;
+}
+.toolbar .validate {
+  color: #23BB47;
+}
+.toolbar .remove {
+  color: #F69A83;
 }

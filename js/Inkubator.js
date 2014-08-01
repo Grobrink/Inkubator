@@ -13,6 +13,7 @@ var utils = new Utils();
 Inkubator.prototype.npc= {
 	gender: '',
 	name: '',
+	tags: '',
 	level: 0,
 	hitPoints: 0,
 	alignment: '',
@@ -26,6 +27,9 @@ Inkubator.prototype.npc= {
 	hierarchy: '',
 	perception: 0,
 	armor: 0,
+	challenge: 1,
+	xp: 100,
+	speed: 30,
 	attributes: {
 		str: 0,
 		dex: 0,

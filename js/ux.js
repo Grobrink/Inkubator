@@ -2,7 +2,9 @@ $(function () {
 
 	$(document).on('npcAddedEvent', function() {
 
-		addSlideEvent();
+		addTouchControls();
+
+		// addSlideEvent();
 
 		// Remove the default inactive class
 		// Bug ? If not in a setTimeout (0 ??????) there is no transition
@@ -10,6 +12,89 @@ $(function () {
 			$('.stat-block').removeClass('inactive');
 		},10);
 	});
+
+	var addTouchControls = function() {
+
+		var $firstStatBlock = $('.stat-block').first();
+		$firstStatBlock.on('click', function(e) {
+
+			e.stopPropagation();
+
+			$firstStatBlock.find('menu').toggleClass('toggle');
+
+
+		});
+
+		// $firstStatBlock.hammer({ /* options */ }).on("tap", function(e) {
+
+		// 	e.stopPropagation();
+
+		// 	$firstStatBlock.find('menu').toggleClass('toggle');
+
+
+		// });
+
+		$firstStatBlock.find('.remove').on('click', function(e) {
+			e.stopPropagation();
+
+			var $currentStatBlock = $(event.currentTarget).closest('.stat-block');
+
+			// Add the inactive class
+			$currentStatBlock.addClass('inactive');
+
+			// On transition complete remove the element
+			$currentStatBlock.on('otransitionend transitionend webkitTransitionEnd', function(e) {
+
+				// Remove the element
+				if (e.originalEvent.propertyName == 'opacity') {
+
+					$(document).trigger('removeNpcEvent', [$currentStatBlock]);
+				}
+
+				// If there is no more element, add a new one
+				if (!$('.stat-block').length) {
+
+					// Generate a NPC at start
+					$(document).trigger('generateNpcEvent');
+				}
+			});
+		});
+
+		$firstStatBlock.find('.edit').on('click', function(e) {
+
+			e.stopPropagation();
+
+			var $currentStatBlock = $(event.currentTarget).closest('.stat-block');
+
+			$(e.currentTarget).toggleClass('hidden');
+			$currentStatBlock.find('.validate').toggleClass('hidden');
+
+			$currentStatBlock.find('.uneditable').addClass('hidden');
+			$currentStatBlock.find('.editable').removeClass('hidden');
+
+		});
+
+		$firstStatBlock.find('.validate').on('click', function(e) {
+
+			e.stopPropagation();
+
+			var $currentStatBlock= $(event.currentTarget).closest('.stat-block');
+
+			$(e.currentTarget).toggleClass('hidden');
+			$currentStatBlock.find('.edit').toggleClass('hidden');
+
+			$currentStatBlock.find('.uneditable').removeClass('hidden');
+			$currentStatBlock.find('.editable').addClass('hidden');
+
+			$(document).trigger('setNpcFromEditEvent', [$currentStatBlock, $currentStatBlock.index()]);
+
+		});
+
+		$firstStatBlock.find('label, input, textarea').on('click', function(e) {
+
+			e.stopPropagation();
+		});
+	}
 
 	var addSlideEvent = function() {
 

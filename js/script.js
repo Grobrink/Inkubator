@@ -21,9 +21,17 @@ $(function () {
 			$description.text(npc.name);
 		}
 
+		var description = '';
+		if (npc.tags != '') {
+			description = npc.tags;
+		}
+		else {
+			description = npc.subrace + ' ' + npc.gender;
+		}
+
 		dna.clone('npc-template', {
 			name: npc.name,
-			description: npc.subrace + ' ' + npc.gender,
+			description: description,
 			hitpoints: npc.hitPoints,
 			str: npc.attributes.str,
 			strm: inkubator.getAttributeModifier(npc.attributes.str),
@@ -39,10 +47,13 @@ $(function () {
 			cham: inkubator.getAttributeModifier(npc.attributes.cha),
 			visual: npc.description,
 			perception: npc.perception,
-			armor: npc.armor,
+			ac: npc.armor,
 			languages: npc.languages,
 			level: npc.level,
-			alignment: npc.alignment
+			alignment: npc.alignment,
+			challenge: npc.challenge,
+			xp: npc.xp,
+			speed: npc.speed
 		},
 		{
 			top: true,
@@ -81,6 +92,78 @@ $(function () {
 
 		return compoStr;
 	}
+
+	var setNpcFromEdit = function($selector, index) {
+
+		npc.name = $selector.find('.name-input').val();
+		npc.level = $selector.find('.level-input').val();
+		npc.description = $selector.find('.visual-input').val();
+		npc.tags = $selector.find('.description-input').val();
+		npc.hitPoints = $selector.find('.hp-input').val();
+		npc.alignment = $selector.find('.alignment-input').val();
+		npc.languages = $selector.find('.languages-input').val();
+		npc.perception = $selector.find('.perception-input').val();
+		npc.armor = $selector.find('.ac-input').val();
+		npc.challenge = $selector.find('.challenge-input').val();
+		npc.xp = $selector.find('.xp-input').val();
+		npc.speed = $selector.find('.speed-input').val();
+
+		npc.attributes.str = $selector.find('.str-input').val();
+		npc.attributes.con = $selector.find('.con-input').val();
+		npc.attributes.dex = $selector.find('.dex-input').val();
+		npc.attributes.int = $selector.find('.int-input').val();
+		npc.attributes.wis = $selector.find('.wis-input').val();
+		npc.attributes.cha = $selector.find('.cha-input').val();
+
+		dna.clone('npc-template', {
+			name: npc.name,
+			// description: npc.subrace + ' ' + npc.gender,
+			description: npc.tags,
+			visual: npc.description,
+			hitpoints: npc.hitPoints,
+			str: npc.attributes.str,
+			strm: inkubator.getAttributeModifier(npc.attributes.str),
+			dex: npc.attributes.dex,
+			dexm: inkubator.getAttributeModifier(npc.attributes.dex),
+			con: npc.attributes.con,
+			conm: inkubator.getAttributeModifier(npc.attributes.con),
+			int: npc.attributes.int,
+			intm: inkubator.getAttributeModifier(npc.attributes.int),
+			wis: npc.attributes.wis,
+			wism: inkubator.getAttributeModifier(npc.attributes.wis),
+			cha: npc.attributes.cha,
+			cham: inkubator.getAttributeModifier(npc.attributes.cha),
+			visual: npc.description,
+			perception: npc.perception,
+			ac: npc.armor,
+			languages: npc.languages,
+			level: npc.level,
+			alignment: npc.alignment,
+			challenge: npc.challenge,
+			xp: npc.xp,
+			speed: npc.speed,
+			index: index,
+			movable: 'true'
+		},
+		{
+			top: true,
+			callback: function() {
+				$(document).trigger('npcAddedEvent');
+
+				var length = npcList.length;
+
+				npcList[length - (index + 1)] = $.extend(true, {}, npc);
+
+				$('.stat-block:eq('+(parseInt(index)+1)+')').remove();
+				$('.stat-block[data-movable="true"]').insertAfter('.stat-block:eq('+(parseInt(index))+')').removeAttr('data-movable');
+			} }
+		);
+	}
+
+	$(document).on('setNpcFromEditEvent', function(e, $selector, index) {
+
+		setNpcFromEdit($selector, index);
+	});
 
 	var buildSettings = function() {
 

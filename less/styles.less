@@ -25,7 +25,10 @@ body {
 
 #container {
     position: relative;
-    cursor: ew-resize;
+    // cursor: ew-resize;
+    cursor: pointer;
+
+    overflow: hidden;
 }
 
 #new-npc, #saveAndLoad {
@@ -52,7 +55,8 @@ body {
 
     width:310px;
     height: auto;
-    max-height: 320px;
+    left: 0px;
+    max-height: 440px;
     opacity: 1;
     background: linear-gradient(90deg, #a73335, #ffffff);
     box-shadow: inset 0 0 1px rgb(255, 250, 241);
@@ -71,10 +75,34 @@ body {
         max-height: 0;
         opacity: 0;
 
-        -webkit-transition: opacity .25s linear, max-height .25s ease-in-out, left .25s ease-in-out;
-        -moz-transition: opacity .25s linear, max-height .25s ease-in-out, left .25s ease-in-out;
-        -o-transition: opacity .25s linear, max-height .25s ease-in-out, left .25s ease-in-out;
-        transition: opacity .25s linear, max-height .25s ease-in-out, left .25s ease-in-out;
+        -webkit-transition: opacity .25s linear, max-height .25s ease-in-out;
+        -moz-transition: opacity .25s linear, max-height .25s ease-in-out;
+        -o-transition: opacity .25s linear, max-height .25s ease-in-out;
+        transition: opacity .25s linear, max-height .25s ease-in-out;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 5px;
+        width: 100%;
+
+        span {
+            display: inline-block;
+            width: 60px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+
+        }
+
+        textarea {
+            width: 100%;
+        }
+    }
+
+    input[type="number"] {
+        width: 40px;
     }
 
     -webkit-transition: opacity .25s linear, max-height .25s ease-in-out;
@@ -338,4 +366,38 @@ th, td {
     &.active {
         display: block;
     }
+}
+
+.toolbar {
+    padding: 0;
+    margin: 0;
+
+    height: 30px;
+
+    max-height: 0;
+    overflow: hidden;
+
+    &.toggle {
+        max-height: 35px;
+    }
+
+    button {
+    }
+
+    .edit {
+        color: rgb(131, 177, 246);
+    }
+
+    .validate {
+        color: #23BB47;
+    }
+
+    .remove {
+        color: #F69A83;
+    }
+
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition: all .1s linear;
 }

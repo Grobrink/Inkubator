@@ -51,51 +51,97 @@
 
 			<div id="container">
 
-				<div id="npc-template" class="dna-template stat-block inactive">
+				<div id="npc-template" class="dna-template stat-block inactive" data-movable="~~movable~~" data-index="~~index~~">
+
+					<menu class="toolbar">
+						<button class="btn btn-default edit glyphicon glyphicon-pencil"></button>
+						<button class="btn btn-default validate glyphicon glyphicon-ok hidden"></button>
+						<button class="btn btn-default remove glyphicon glyphicon-trash"></button>
+					</menu>
+
 					<div>
-						<div class="name">
+						<div class="name uneditable">
 							~~name~~
 						</div>
 
-						<div>
+						<label class=" editable hidden">
+							<span>Name:</span>
+							<input type="text" class="name-input" value="~~name~~" />
+						</label>
+
+						<div class="uneditable">
 							~~description~~
 						</div>
 
-						<div>
+						<label class="editable hidden">
+							<span>Tags:</span>
+							<input type="text" class="description-input" value="~~description~~" />
+						</label>
+
+						<div class="uneditable">
 							~~visual~~
 						</div>
+
+						<label class="editable hidden">
+							<span>Description:</span>
+							<textarea class="visual-input">~~visual~~</textarea>
+						</label>
 					</div>
 
 					<div class="red">
 
 						<div>
-							<span class="bold red">Level</span> <span>
+							<span class="bold red uneditable">Level</span> <span class="uneditable">
 								~~level~~
 							</span>
+
+							<label class="editable hidden">
+								<span class="bold red">Level:</span>
+								<input type="number" min="0" step="1" class="level-input" value="~~level~~" />
+							</label>
 						</div>
 
 						<div>
-							<span class="bold red">Alignment</span> <span>
+							<span class="bold red uneditable">Alignment</span> <span class="uneditable">
 								~~alignment~~
 							</span>
+
+							<label class="editable hidden">
+								<span class="bold red">Alignment:</span>
+								<input type="text" class="alignment-input" value="~~alignment~~" />
+							</label>
 						</div>
 
 						<div>
-							<span class="bold red">Armor Class</span> <span>
-								~~armor~~
+							<span class="bold red uneditable">Armor Class</span> <span class="uneditable">
+								~~ac~~
 							</span>
+
+							<label class="editable hidden">
+								<span class="bold red">Armor Class:</span>
+								<input type="number" min="0" step="1" class="ac-input" value="~~ac~~" />
+							</label>
 						</div>
 
 						<div>
-							<span class="bold red">Hit Points
-								<span>
-									~~hitpoints~~
-								</span>
+							<span class="bold red uneditable">Hit Points</span> <span class="uneditable">
+								~~hitpoints~~
 							</span>
+
+							<label class="editable hidden">
+								<span class="bold red">Hit Points</span>
+								<input type="number" min="0" step="1" class="hp-input" value="~~hitpoints~~" />
+							</label>
 						</div>
 
 						<div>
-							<span class="bold red">Speed</span> <span>30 ft.</span>
+							<span class="bold red uneditable">Speed</span> <span class="uneditable">~~speed~~</span><span class="uneditable"> ft.</span>
+
+							<label class="editable hidden">
+								<span class="bold red">Speed:</span>
+								<input type="number" min="1" step="1" class="speed-input" value="~~speed~~" />
+								 ft.
+							</label>
 						</div>
 					</div>
 
@@ -109,57 +155,110 @@
 							<th>CHA</th>
 						</tr>
 
-						<tr>
-							<td><span>
+						<tr class="uneditable">
+							<td>
+								<span>
 									~~str~~
 								</span>
 								(<span>~~strm~~</span>)
 							</td>
-							<td><span>
+
+							<td>
+								<span>
 									~~dex~~
 								</span>
 								(<span>~~dexm~~</span>)
 							</td>
-							<td><span>
+
+							<td>
+								<span>
 									~~con~~
 								</span>
 								(<span>~~conm~~</span>)
 							</td>
-							<td><span>
+
+							<td>
+								<span>
 									~~int~~
 								</span>
 								(<span>~~intm~~</span>)
 							</td>
-							<td><span>
+
+							<td>
+								<span>
 									~~wis~~
 								</span>
 								(<span>~~wism~~</span>)
 							</td>
-							<td><span>
+
+							<td>
+								<span>
 									~~cha~~
 								</span>
 								(<span>~~cham~~</span>)
+							</td>
+						</tr>
+
+						<tr class="editable hidden">
+							<td>
+								<input type="number" min="0" step="1" class="str-input editable hidden" value="~~str~~" />
+							</td>
+
+							<td>
+								<input type="number" min="0" step="1" class="dex-input editable hidden" value="~~dex~~" />
+							</td>
+
+							<td>
+								<input type="number" min="0" step="1" class="con-input editable hidden" value="~~con~~" />
+							</td>
+
+							<td>
+								<input type="number" min="0" step="1" class="int-input editable hidden" value="~~int~~" />
+							</td>
+
+							<td>
+								<input type="number" min="0" step="1" class="wis-input editable hidden" value="~~wis~~" />
+							</td>
+
+							<td>
+								<input type="number" min="0" step="1" class="cha-input editable hidden" value="~~cha~~" />
 							</td>
 						</tr>
 					</table>
 
 					<div>
 						<div>
-							<span class="bold">Senses</span>
-							Passive Perception <span class="perception">~~perception~~</span>
+							<span class="bold uneditable">Senses</span>
+							<span class="uneditable">Passive Perception</span>
+							<span class="perception uneditable">~~perception~~</span>
+
+							<label class="editable hidden">
+								<span class="bold">Passive Perception:</span>
+								<input type="number" class="perception-input" value="~~perception~~" />
+							</label>
 						</div>
 
 						<div>
-							<span class="bold">Languages</span>
-							<span class="languages">~~languages~~</span>
+							<span class="bold uneditable">Languages</span>
+							<span class="languages uneditable">~~languages~~</span>
+
+							<label class="editable hidden">
+								<span class="bold">Languages:</span>
+								<input type="text" class="languages-input" value="~~languages~~" />
+							</label>
 						</div>
 
 						<div>
-							<span class="bold">Challenge</span>
-							<span>1 (120 XP)</span>
+							<span class="bold uneditable">Challenge</span>
+							<span class="uneditable"><span>~~challenge~~</span> (<span>~~xp~~</span> XP)</span>
+
+							<label class="editable hidden">
+								<span class="bold">Challenge:</span>
+								<input type="number" min="1" step="1" class="challenge-input" value="~~challenge~~" />
+								( <input type="number" min="1" step="1" class="xp-input" value="~~xp~~" /> XP)
+							</label>
 						</div>
 					</div>
-
 				</div>
 			</div>
 
