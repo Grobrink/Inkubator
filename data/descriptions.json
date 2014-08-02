@@ -71,8 +71,7 @@
 		"skin": ["dusky skin", "dark brown skin", "brown skin", "very tanned skin"],
 		"haircolor": ["brown","dark brown", "black"],
 		"haircut": ["short", "long smooth", "short", "smooth and tied"],
-		"facialhair": ["short well maintained beard", "well-coiffed beard", "tinted beard", "finely cut beard"],
-		"nofacialhair": ["perfectly shaved", "Shaved a few days ago"],
+		"facialhair": ["short well maintained beard", "well-coiffed beard", "tinted beard", "finely cut beard", "perfectly shaved", "shaved a few days ago"],
 		"face": [],
 		"eyes": ["brown eyes", "dark eyes like a starless night", "Black eyes like raven wings"],
 		"voice": []
@@ -83,8 +82,7 @@
 		"skin": ["dusky skin", "dark brown skin", "brown skin", "light brown skin", "coffe-colored skin", "tanned skin"],
 		"haircolor": ["brown", "sandy brown", "light brown", "dark brown", "coffee", "gray", "sandy"],
 		"haircut": ["wavy", "long", "short", "tied", "curly"],
-		"facialhair": ["sideburns", "short beard", "middle beard", "long beard", "tinted beard"],
-		"nofacialhair": ["perfectly shaved", "Shaved a few days ago", "unshaven"],
+		"facialhair": ["sideburns", "short beard", "middle beard", "long beard", "tinted beard", "perfectly shaved", "shaved a few days ago", "unshaven"],
 		"face": [],
 		"eyes": ["blue eyes", "blue eyes like island sea", "blue eyes like the sky", "light blue eyes", "blue eyes with green cast"],
 		"voice": []
@@ -95,8 +93,7 @@
 		"skin": ["tanned skin", "little tanned skin", "very light brown skin", "sandy brown skin", "blond skin like summer fields"],
 		"haircolor": ["brown", "sandy brown", "light brown", "dark brown", "coffee", "gray", "sandy", "black", "blond", "chestnut"],
 		"haircut": ["wavy", "long", "short", "tied", "curly", "very short"],
-		"facialhair": ["sideburns", "short beard", "middle beard", "long beard"],
-		"nofacialhair": ["perfectly shaved", "Shaved a few days ago", "unshaven"],
+		"facialhair": ["sideburns", "short beard", "middle beard", "long beard","perfectly shaved", "shaved a few days ago", "unshaven"],
 		"face": [],
 		"eyes": ["blue eyes", "light blue eyes", "blue eyes with green cast", "green eyes", "light green eyes", "brown eyes", "blue eyes with gray cast", "green eyes with gray cast"],
 		"voice": []
