@@ -381,6 +381,8 @@ $(function () {
 
 			var namelist = $('#save-name').val();
 
+			console.log(npcList);
+
 			$.ajax({
 				type: 'POST',
 				url: 'php/saveList.php',
@@ -392,7 +394,8 @@ $(function () {
 				success: function(data){
 					closeModal();
 					// $('#save-name').val('');
-					showModal('save');
+					// showModal('save');
+					closeModal();
 					notify('success', 'Successfully saved');
 				},
 				error: function(xhr){
@@ -643,7 +646,7 @@ $(function () {
 
 	//
 	$(document).on('loadlistEvent', function() {
-		var list = loadNpcList();
+		npcList = loadNpcList();
 	});
 
 	//
