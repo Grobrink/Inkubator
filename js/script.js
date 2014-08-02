@@ -391,7 +391,8 @@ $(function () {
 	        	},
 				success: function(data){
 					closeModal();
-					$('#save-name').val('');
+					// $('#save-name').val('');
+					showModal('save');
 					notify('success', 'Successfully saved');
 				},
 				error: function(xhr){
@@ -478,6 +479,9 @@ $(function () {
 
 					ret = eval(data);
 					closeModal();
+
+					$('#save-name').val(name);
+
 					notify('success', 'Successfully loaded');
 
 					displayNpcList(ret);
@@ -581,12 +585,15 @@ $(function () {
 	//
 	$(document).on('saveNpcListEvent', function() {
 
-		if ($('#save-name').val() != '') {
-			$(document).trigger('savelistEvent');
-		}
-		else {
-			showModal('save');
-		}
+		showModal('save');
+
+		// Remove to improve saving feature
+		// if ($('#save-name').val() != '') {
+		// 	$(document).trigger('savelistEvent');
+		// }
+		// else {
+		// 	showModal('save');
+		// }
 	});
 
 	//

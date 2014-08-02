@@ -13,30 +13,35 @@ body {
 #inkubator {
     position: relative;
     display: block;
+
     width: 345px;
+    max-width: 100%;
+
     margin: auto;
+    margin-top: 25px;
+
     border: 4px solid gray;
     background: rgb(255, 250, 241);
-    margin-top: 25px;
-    max-width: 100%;
+
 
     // overflow: hidden;
 }
 
 #container {
     position: relative;
-    // cursor: ew-resize;
-    cursor: pointer;
 
     overflow: hidden;
+    cursor: pointer;
 }
 
 #new-npc, #saveAndLoad {
+    position: relative;
+    display: inline-block;
+
     margin: 10px 10px 0 10px;
     width: auto;
+
     text-align: center;
-    display: inline-block;
-    position: relative;
 }
 #saveAndLoad {
     position: absolute;
@@ -50,24 +55,28 @@ body {
     display: none;
  }
 .stat-block {
-
     position: relative;
 
     width:310px;
     height: auto;
-    left: 0px;
     max-height: 480px;
-    opacity: 1;
-    background: linear-gradient(90deg, #a73335, #ffffff);
-    box-shadow: inset 0 0 1px rgb(255, 250, 241);
-    border: 1px solid rgb(255, 250, 241);
+
+    margin: 10px 10px 20px 10px;
+    left: 0px;
+
     font-family:Arial,Helvetica,sans-serif;
     font-size:11px;
-    margin: 10px 10px 20px 10px;
+
+    border: 1px solid rgb(255, 250, 241);
+    opacity: 1;
+
+    background: linear-gradient(90deg, #a73335, #ffffff);
+    box-shadow: inset 0 0 1px rgb(255, 250, 241);
 
     > * {
         margin-bottom: 3px;
         padding: 3px 0;
+
         background: rgb(255, 250, 241);
     }
 
@@ -83,8 +92,8 @@ body {
 
     label {
         display: inline-block;
-        margin-bottom: 5px;
         width: 100%;
+        margin-bottom: 5px;
 
         span {
             display: inline-block;
@@ -111,36 +120,45 @@ body {
     transition: opacity .25s linear, max-height .25s ease-in-out;
 }
 .name {
-    font-size:225%;
     font-family:Georgia, serif;
+    font-size:225%;
     font-variant:small-caps;
     font-weight:bold;
+
     color:#A73335;
 }
 .description {
     font-style:italic;
 }
-.bold {
+
+.main-stat,
+.secondary-stat{
     font-weight:bold;
 }
-.red {
+
+.main-stat {
     color:#A73335;
 }
 table {
     width:100%;
-    border:0px;
-    border-collapse:collapse;
+
     color:#A73335;
+
+    border:0;
+    border-collapse:collapse;
 }
 th, td {
     width:50px;
-    text-align:center;
     padding: 4px 0;
+
+    text-align:center;
 }
 .actions {
     font-size:175%;
     font-variant:small-caps;
+
     margin:17px 0px 0px 0px;
+
     border-bottom: 2px solid #a73335;
 }
 .hr {
@@ -157,16 +175,19 @@ th, td {
 
 // Settings
 #settings-panel {
-    max-height: 0;
     height: auto;
-    background: gray;
+    max-height: 0;
+
     color: whitesmoke;
-    overflow: hidden;
     text-transform: capitalize;
+
+    background: gray;
+    overflow: hidden;
 
     &.active {
         max-height: 120px;
         padding-top: 10px;
+
         z-index: 400;
     }
 
@@ -189,9 +210,10 @@ th, td {
         top: 2px;
     }
     input[type="checkbox"] + label {
+        display: inline-block;
+
         min-width: 50px;
         margin-left: 5px;
-        display: inline-block;
     }
 
     label, input[type="checkbox"] {
@@ -209,21 +231,27 @@ th, td {
 #settings-cta {
     position: relative;
     display: block;
+
     width: 100%;
     height: 20px;
-    background: gray;
-    text-align: right;
-    color: white;
+
     top: -1px;
-    cursor: pointer;
+
+    color: white;
+    text-align: right;
+    background: gray;
+
     z-index: 200;
     overflow: hidden;
 
+    cursor: pointer;
+
     > span {
         position: absolute;
+        display: inline-block;
+
         right: -52px;
         overflow: visible;
-        display: inline-block;
 
         -webkit-transition: all .25s linear;
         -moz-transition: all .25s linear;
@@ -240,18 +268,23 @@ th, td {
 }
 
 #notification {
-    opacity: 0;
     position: absolute;
+
+    width: auto;
+
     left: 0;
     top: -25px;
-    width: auto;
+
+    opacity: 0;
+
     text-align: left;
     font-weight: bold;
+
     z-index: 99999;
 
     &.visible {
-        opacity: 1;
         top: -1px;
+        opacity: 1;
     }
 
     &.success {
@@ -278,26 +311,31 @@ th, td {
 
     > div {
         position: absolute;
-        top: 0px;
-        width: 100%;
+
         height: auto;
         max-height: 0;
-        background: gray;
+        width: 100%;
+
+        top: 0px;
+
         padding: 10px;
+
+        background: gray;
+
         color: whitesmoke;
         text-align: right;
-        z-index: 100;
+
         overflow: hidden;
+        z-index: 100;
         // display: none;
 
         &.visible {
             max-height: 200px;
             min-height: 139px;
+
             z-index: 300;
-            // display: block;
 
             .close-modal {
-                // display: block;
                 top: 0;
             }
         }
@@ -309,11 +347,14 @@ th, td {
     }
 
     span {
-        text-align: right;
-        width: 100%;
         display: inline-block;
+
+        width: 100%;
+
         padding: 7px 0;
+
         border-bottom: 1px solid rgba(255,255,255,.2);
+
         text-align: left;
     }
 
@@ -332,16 +373,21 @@ th, td {
     }
 
     .close-modal {
-        // display: block;
         position: absolute;
-        top: -20px;
-        right: 0;
+
         width: 20px;
         height: 20px;
-        font-size: 13px;
+
+        top: -20px;
+        right: 0;
+
         padding: 3px 0 0 4px;
-        border: none;
+
+        font-size: 13px;
         color: #ff9a3e;
+
+        border: none;
+
         cursor: pointer;
 
         -webkit-transition: all .1s linear;
@@ -358,17 +404,22 @@ th, td {
     .delete {
         height: 23px;
         top: -5px;
+
         padding-top: 3px;
+
         color: #F69A83;
     }
 }
 #logout, #login-span {
     position: absolute;
-    right: 0;
-    top: -25px;
-    color: gray;
-    cursor: pointer;
     display: none;
+
+    top: -25px;
+    right: 0;
+
+    color: gray;
+
+    cursor: pointer;
 
     &.active {
         display: block;
@@ -376,12 +427,12 @@ th, td {
 }
 
 .toolbar {
+    height: 30px;
+    max-height: 0;
+
     padding: 0;
     margin: 0;
 
-    height: 30px;
-
-    max-height: 0;
     overflow: hidden;
 
     &.toggle {

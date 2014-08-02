@@ -3453,24 +3453,24 @@ body {
   position: relative;
   display: block;
   width: 345px;
+  max-width: 100%;
   margin: auto;
+  margin-top: 25px;
   border: 4px solid gray;
   background: #fffaf1;
-  margin-top: 25px;
-  max-width: 100%;
 }
 #container {
   position: relative;
-  cursor: pointer;
   overflow: hidden;
+  cursor: pointer;
 }
 #new-npc,
 #saveAndLoad {
+  position: relative;
+  display: inline-block;
   margin: 10px 10px 0 10px;
   width: auto;
   text-align: center;
-  display: inline-block;
-  position: relative;
 }
 #saveAndLoad {
   position: absolute;
@@ -3486,15 +3486,15 @@ body {
   position: relative;
   width: 310px;
   height: auto;
-  left: 0px;
   max-height: 480px;
+  margin: 10px 10px 20px 10px;
+  left: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  border: 1px solid #fffaf1;
   opacity: 1;
   background: linear-gradient(90deg, #a73335, #ffffff);
   box-shadow: inset 0 0 1px #fffaf1;
-  border: 1px solid #fffaf1;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-  margin: 10px 10px 20px 10px;
   -webkit-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
   -moz-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
   -o-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
@@ -3515,8 +3515,8 @@ body {
 }
 .stat-block label {
   display: inline-block;
-  margin-bottom: 5px;
   width: 100%;
+  margin-bottom: 5px;
 }
 .stat-block label span {
   display: inline-block;
@@ -3530,8 +3530,8 @@ body {
   width: 40px;
 }
 .name {
-  font-size: 225%;
   font-family: Georgia, serif;
+  font-size: 225%;
   font-variant: small-caps;
   font-weight: bold;
   color: #A73335;
@@ -3539,23 +3539,24 @@ body {
 .description {
   font-style: italic;
 }
-.bold {
+.main-stat,
+.secondary-stat {
   font-weight: bold;
 }
-.red {
+.main-stat {
   color: #A73335;
 }
 table {
   width: 100%;
-  border: 0px;
-  border-collapse: collapse;
   color: #A73335;
+  border: 0;
+  border-collapse: collapse;
 }
 th,
 td {
   width: 50px;
-  text-align: center;
   padding: 4px 0;
+  text-align: center;
 }
 .actions {
   font-size: 175%;
@@ -3575,12 +3576,12 @@ td {
   font-style: italic;
 }
 #settings-panel {
-  max-height: 0;
   height: auto;
-  background: gray;
+  max-height: 0;
   color: whitesmoke;
-  overflow: hidden;
   text-transform: capitalize;
+  background: gray;
+  overflow: hidden;
   -webkit-transition: max-height 0.25s ease-in-out;
   -moz-transition: max-height 0.25s ease-in-out;
   -o-transition: max-height 0.25s ease-in-out;
@@ -3603,9 +3604,9 @@ td {
   top: 2px;
 }
 #settings-panel input[type="checkbox"] + label {
+  display: inline-block;
   min-width: 50px;
   margin-left: 5px;
-  display: inline-block;
 }
 #settings-panel label,
 #settings-panel input[type="checkbox"] {
@@ -3622,19 +3623,19 @@ td {
   display: block;
   width: 100%;
   height: 20px;
-  background: gray;
-  text-align: right;
-  color: white;
   top: -1px;
-  cursor: pointer;
+  color: white;
+  text-align: right;
+  background: gray;
   z-index: 200;
   overflow: hidden;
+  cursor: pointer;
 }
 #settings-cta > span {
   position: absolute;
+  display: inline-block;
   right: -52px;
   overflow: visible;
-  display: inline-block;
   -webkit-transition: all .25s linear;
   -moz-transition: all .25s linear;
   -o-transition: all .25s linear;
@@ -3644,11 +3645,11 @@ td {
   right: 4px;
 }
 #notification {
-  opacity: 0;
   position: absolute;
+  width: auto;
   left: 0;
   top: -25px;
-  width: auto;
+  opacity: 0;
   text-align: left;
   font-weight: bold;
   z-index: 99999;
@@ -3658,8 +3659,8 @@ td {
   transition: all .25s linear;
 }
 #notification.visible {
-  opacity: 1;
   top: -1px;
+  opacity: 1;
 }
 #notification.success {
   color: #7FE46B;
@@ -3675,16 +3676,16 @@ td {
 }
 #modal > div {
   position: absolute;
-  top: 0px;
-  width: 100%;
   height: auto;
   max-height: 0;
-  background: gray;
+  width: 100%;
+  top: 0px;
   padding: 10px;
+  background: gray;
   color: whitesmoke;
   text-align: right;
-  z-index: 100;
   overflow: hidden;
+  z-index: 100;
   -webkit-transition: all .25s linear;
   -moz-transition: all .25s linear;
   -o-transition: all .25s linear;
@@ -3699,9 +3700,8 @@ td {
   top: 0;
 }
 #modal span {
-  text-align: right;
-  width: 100%;
   display: inline-block;
+  width: 100%;
   padding: 7px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   text-align: left;
@@ -3719,14 +3719,14 @@ td {
 }
 #modal .close-modal {
   position: absolute;
-  top: -20px;
-  right: 0;
   width: 20px;
   height: 20px;
-  font-size: 13px;
+  top: -20px;
+  right: 0;
   padding: 3px 0 0 4px;
-  border: none;
+  font-size: 13px;
   color: #ff9a3e;
+  border: none;
   cursor: pointer;
   -webkit-transition: all .1s linear;
   -moz-transition: all .1s linear;
@@ -3746,21 +3746,21 @@ td {
 #logout,
 #login-span {
   position: absolute;
-  right: 0;
+  display: none;
   top: -25px;
+  right: 0;
   color: gray;
   cursor: pointer;
-  display: none;
 }
 #logout.active,
 #login-span.active {
   display: block;
 }
 .toolbar {
-  padding: 0;
-  margin: 0;
   height: 30px;
   max-height: 0;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
   -webkit-transition: all .1s linear;
   -moz-transition: all .1s linear;

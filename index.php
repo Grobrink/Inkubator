@@ -92,54 +92,54 @@
 					<div class="red">
 
 						<div>
-							<span class="bold red uneditable">Level</span> <span class="uneditable">
+							<span class="main-stat uneditable">Level</span> <span class="uneditable">
 								~~level~~
 							</span>
 
 							<label class="editable hidden">
-								<span class="bold red">Level:</span>
+								<span class="main-stat">Level:</span>
 								<input type="number" min="0" step="1" class="level-input" value="~~level~~" />
 							</label>
 						</div>
 
 						<div>
-							<span class="bold red uneditable">Alignment</span> <span class="uneditable">
+							<span class="main-stat uneditable">Alignment</span> <span class="uneditable">
 								~~alignment~~
 							</span>
 
 							<label class="editable hidden">
-								<span class="bold red">Alignment:</span>
+								<span class="main-stat">Alignment:</span>
 								<input type="text" class="alignment-input" value="~~alignment~~" />
 							</label>
 						</div>
 
 						<div>
-							<span class="bold red uneditable">Armor Class</span> <span class="uneditable">
+							<span class="main-stat uneditable">Armor Class</span> <span class="uneditable">
 								~~ac~~
 							</span>
 
 							<label class="editable hidden">
-								<span class="bold red">Armor Class:</span>
+								<span class="main-stat">Armor Class:</span>
 								<input type="number" min="0" step="1" class="ac-input" value="~~ac~~" />
 							</label>
 						</div>
 
 						<div>
-							<span class="bold red uneditable">Hit Points</span> <span class="uneditable">
+							<span class="main-stat uneditable">Hit Points</span> <span class="uneditable">
 								~~hitpoints~~
 							</span>
 
 							<label class="editable hidden">
-								<span class="bold red">Hit Points</span>
+								<span class="main-stat">Hit Points</span>
 								<input type="number" min="0" step="1" class="hp-input" value="~~hitpoints~~" />
 							</label>
 						</div>
 
 						<div>
-							<span class="bold red uneditable">Speed</span> <span class="uneditable">~~speed~~</span><span class="uneditable"> ft.</span>
+							<span class="main-stat uneditable">Speed</span> <span class="uneditable">~~speed~~</span><span class="uneditable"> ft.</span>
 
 							<label class="editable hidden">
-								<span class="bold red">Speed:</span>
+								<span class="main-stat">Speed:</span>
 								<input type="number" min="1" step="1" class="speed-input" value="~~speed~~" />
 								 ft.
 							</label>
@@ -229,32 +229,32 @@
 
 					<div>
 						<div>
-							<span class="bold uneditable">Senses</span>
+							<span class="secondary-stat uneditable">Senses</span>
 							<span class="uneditable">Passive Perception</span>
 							<span class="perception uneditable">~~perception~~</span>
 
 							<label class="editable hidden">
-								<span class="bold">Passive Perception:</span>
+								<span class="secondary-stat">Passive Perception:</span>
 								<input type="number" class="perception-input" value="~~perception~~" />
 							</label>
 						</div>
 
 						<div>
-							<span class="bold uneditable">Languages</span>
+							<span class="secondary-stat uneditable">Languages</span>
 							<span class="languages uneditable">~~languages~~</span>
 
 							<label class="editable hidden">
-								<span class="bold">Languages:</span>
+								<span class="secondary-stat">Languages:</span>
 								<input type="text" class="languages-input" value="~~languages~~" />
 							</label>
 						</div>
 
 						<div>
-							<span class="bold uneditable">Challenge</span>
+							<span class="secondary-stat uneditable">Challenge</span>
 							<span class="uneditable"><span>~~challenge~~</span> (<span>~~xp~~</span> XP)</span>
 
 							<label class="editable hidden">
-								<span class="bold">Challenge:</span>
+								<span class="secondary-stat">Challenge:</span>
 								<input type="number" min="1" step="1" class="challenge-input" value="~~challenge~~" />
 								( <input type="number" min="1" step="1" class="xp-input" value="~~xp~~" /> XP)
 							</label>

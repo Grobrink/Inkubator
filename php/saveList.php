@@ -9,22 +9,48 @@
    $userName = $_SESSION['username'];
    $uniqid = uniqid('', false);
 
-	/* Create a prepared statement */
-   if($stmt = $mysqli->prepare("INSERT INTO inkubator_npclists (userName, name, id, list, creation_date) VALUES (?, ?, ?, ?, NOW())")){
+   if($stmt = $mysqli->prepare("SELECT id FROM inkubator_npclists WHERE name = ? AND userName = ?")){
 
-      	/* Bind parameters : s - string, b - blob, i - int, etc */
-      	$stmt->bind_param('ssss', $userName, $name, $uniqid, $list);
+      /* Bind parameters : s - string, b - blob, i - int, etc */
+      $stmt -> bind_param('ss', $name, $userName);
 
-      	/* Execute it */
-      	$stmt -> execute();
+      $stmt -> execute();
 
-      	/* Close statement */
-      	$stmt->close();
-  	}
-	else {
-		/* Error */
-		printf("(Save list) Prepared Statement Error: %s\n", $mysqli->error);
-	}
+      $stmt->store_result();
+
+      if ($stmt->num_rows == 1) {
+
+         if($stmt = $mysqli->prepare("UPDATE inkubator_npclists SET list = ?, creation_date = NOW() WHERE name = ? AND userName = ?")){
+
+            /* Bind parameters : s - string, b - blob, i - int, etc */
+            $stmt -> bind_param('sss', $list, $name, $userName);
+
+            $stmt -> execute();
+
+            $stmt -> close();
+         }
+         else {
+            printf("(Update list) Prepared Statement Error: %s\n", $mysqli->error);
+         }
+      }
+      else {
+         if($stmt = $mysqli->prepare("INSERT INTO inkubator_npclists (userName, name, id, list, creation_date) VALUES (?, ?, ?, ?, NOW())")){
+
+            /* Bind parameters : s - string, b - blob, i - int, etc */
+            $stmt -> bind_param('ssss', $userName, $name, $uniqid, $list);
+
+            $stmt -> execute();
+
+            $stmt -> close();
+         }
+         else {
+            printf("(Save list) Prepared Statement Error: %s\n", $mysqli->error);
+         }
+      }
+   }
+   else {
+      printf("(Search existing list) Prepared Statement Error: %s\n", $mysqli->error);
+   }
 
    $mysqli->close();
 ?>
