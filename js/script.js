@@ -294,33 +294,40 @@ $(function () {
 			password = $('#login-password').val(),
 			trigger = $('#login').attr('data-event');
 
-		$.ajax({
-			type: 'POST',
-			url: 'php/addUser.php',
-        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        	data: {
-				password: password,
-				nickname: nickname
-        	},
-			success: function(data){
+		if (nickname != '' && password != '') {
 
-				if (data == 'Nickname already exists') {
-					notify('warning', 'Username already exists');
-				}
-				else if (data == 'user added') {
-					$(document).trigger(trigger);
-					closeModal();
-					notify('success', 'Welcome ' + nickname + '!');
-				}
-				else {
-					notify('error', 'sign up failed');
-				}
+			$.ajax({
+				type: 'POST',
+				url: 'php/addUser.php',
+				contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				data: {
+					password: password,
+					nickname: nickname
+				},
+				success: function(data){
 
-			},
-			error: function(xhr){
-				console.log(xhr);
-			}
-		});
+					if (data == 'Nickname already exists') {
+						notify('warning', 'Username already exists');
+					}
+					else if (data == 'user added') {
+						$(document).trigger(trigger);
+						closeModal();
+						notify('success', 'Welcome ' + nickname + '!');
+					}
+					else {
+						notify('error', 'sign up failed');
+					}
+
+				},
+				error: function(xhr){
+					console.log(xhr);
+				}
+			});
+		}
+		else {
+			notify('error', 'Login and password must be filled');
+		}
+
 	}
 
 	var login = function() {
@@ -329,33 +336,39 @@ $(function () {
 			password = $('#login-password').val(),
 			trigger = $('#login').attr('data-event');
 
-		$.ajax({
-			type: 'POST',
-        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
-			url: 'php/login.php',
-			data: {
-				password: password,
-				nickname: nickname
-			},
-			success: function(data){
+		if (nickname != '' && password != '') {
 
-				if (data.indexOf('authentified') != -1) {
+			$.ajax({
+				type: 'POST',
+				contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				url: 'php/login.php',
+				data: {
+					password: password,
+					nickname: nickname
+				},
+				success: function(data){
 
-					if (typeof trigger != 'undefined') {
-						$(document).trigger(trigger);
+					if (data.indexOf('authentified') != -1) {
+
+						if (typeof trigger != 'undefined') {
+							$(document).trigger(trigger);
+						}
+						closeModal();
+						checkSession();
+						notify('success', 'Successfully logged in');
 					}
-					closeModal();
-					checkSession();
-					notify('success', 'Successfully logged in');
+					else {
+						notify('error', 'Login failed');
+					}
+				},
+				error: function(xhr){
+					console.log(xhr);
 				}
-				else {
-					notify('error', 'Login failed');
-				}
-			},
-			error: function(xhr){
-				console.log(xhr);
-			}
-		});
+			});
+		}
+		else {
+			notify('warning', 'Login and/or password are empty');
+		}
 	}
 
 	var logout = function() {
