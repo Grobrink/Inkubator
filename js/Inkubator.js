@@ -533,7 +533,7 @@ Inkubator.prototype.setDescription = function(descriptions) {
 			hasFacialhair = (descriptionObj.facialhair.length != 0 && Inkubator.prototype.npc.gender == 'male');
 
 		descriptionStr += getElement(descriptionObj.weight);
-		descriptionStr += ' ';
+		descriptionStr += ' and ';
 		descriptionStr += getElement(descriptionObj.height);
 		descriptionStr += ' ';
 		descriptionStr += Inkubator.prototype.npc.race;
@@ -542,17 +542,30 @@ Inkubator.prototype.setDescription = function(descriptions) {
 		descriptionStr += ', ';
 		descriptionStr += getElement(descriptionObj.eyes);
 		descriptionStr += (hasFacialhair) ? ', ' : ' and ';
-		descriptionStr += haircolor;
-		descriptionStr += ' ';
+
+		var haircut = getElement(descriptionObj.haircut);
+
+		if (haircut != 'shaved') {
+			descriptionStr += haircolor;
+			descriptionStr += ' ';
+		}
+
 		descriptionStr += getElement(descriptionObj.haircut);
 
 		// Facial Hair
 		if (hasFacialhair) {
 
+			var facialhair = getElement(descriptionObj.facialhair);
+
 			descriptionStr += ' hair and ';
-			descriptionStr += haircolor;
-			descriptionStr += ' ';
-			descriptionStr += getElement(descriptionObj.facialhair);
+
+			if (facialhair != 'perfectly shaved beard' &&
+				facialhair != 'shaved beard') {
+				descriptionStr += haircolor;
+				descriptionStr += ' ';
+			}
+
+			descriptionStr += facialhair;
 		}
 		else {
 

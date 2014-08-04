@@ -383,7 +383,7 @@ $(function () {
 			},
 			error: function(xhr){
 				console.log(xhr);
-					notify('error', 'Logout failed');
+				notify('error', 'Logout failed');
 			}
 		});
 	}
@@ -395,7 +395,6 @@ $(function () {
 			contentType: "application/x-www-form-urlencoded;charset=utf-8",
 			url: 'php/countNpc.php',
 			success: function(data){
-				console.log(data);
 			},
 			error: function(xhr){
 				console.log(xhr);
