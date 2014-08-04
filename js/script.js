@@ -375,7 +375,7 @@ $(function () {
 
 		$.ajax({
 			type: 'POST',
-        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			contentType: "application/x-www-form-urlencoded;charset=utf-8",
 			url: 'php/logout.php',
 			success: function(data){
 				notify('warning', 'Successfully logged out');
@@ -384,6 +384,21 @@ $(function () {
 			error: function(xhr){
 				console.log(xhr);
 					notify('error', 'Logout failed');
+			}
+		});
+	}
+
+	var incrementNpcCount = function() {
+
+		$.ajax({
+			type: 'POST',
+			contentType: "application/x-www-form-urlencoded;charset=utf-8",
+			url: 'php/countNpc.php',
+			success: function(data){
+				console.log(data);
+			},
+			error: function(xhr){
+				console.log(xhr);
 			}
 		});
 	}
@@ -399,11 +414,11 @@ $(function () {
 			$.ajax({
 				type: 'POST',
 				url: 'php/saveList.php',
-	        	contentType: "application/x-www-form-urlencoded;charset=utf-8",
-	        	data: {
+				contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				data: {
 					name: namelist,
 					list: JSON.stringify(npcList)
-	        	},
+				},
 				success: function(data){
 					closeModal();
 					// $('#save-name').val('');
@@ -596,6 +611,7 @@ $(function () {
 	// Generate a new npc on the generate button
 	$(document).on('generateNpcEvent', function() {
 		generateNpc();
+		incrementNpcCount();
 	});
 
 	//
