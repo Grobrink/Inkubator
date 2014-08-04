@@ -24,8 +24,8 @@
 			$stmt->fetch();
 
 			// Update the account's last_login column
-			$stmt = $mysqli->prepare("UPDATE inkubator_users SET last_login = NOW() WHERE id = ?");
-			$stmt->bind_param('d', $id);
+			$stmt = $mysqli->prepare("UPDATE inkubator_users SET last_login = NOW() WHERE nickname = ?");
+			$stmt->bind_param('s', $name);
 			$stmt->execute();
 
 			session_start();

@@ -306,11 +306,13 @@ $(function () {
 				},
 				success: function(data){
 
-					if (data == 'Nickname already exists') {
+					if (data.indexOf('Nickname already exists') != -1) {
 						notify('warning', 'Username already exists');
 					}
-					else if (data == 'user added') {
-						$(document).trigger(trigger);
+					else if (data.indexOf('user added') != -1) {
+						if (typeof trigger != 'undefined') {
+							$(document).trigger(trigger);
+						}
 						closeModal();
 						notify('success', 'Welcome ' + nickname + '!');
 					}
@@ -407,8 +409,6 @@ $(function () {
 		if (checkSession() != 'false') {
 
 			var namelist = $('#save-name').val();
-
-			console.log(npcList);
 
 			$.ajax({
 				type: 'POST',

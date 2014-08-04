@@ -30,7 +30,7 @@
 
 	// Check if user nickname already exists before creating a new one
 	if($userExists) {
-		echo 'Nickname already exists';
+		// echo 'Nickname already exists';
 	}
 	else {
 
