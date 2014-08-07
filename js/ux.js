@@ -20,19 +20,14 @@ $(function () {
 
 			e.stopPropagation();
 
-			$firstStatBlock.find('menu').toggleClass('toggle');
-
+			if (!$firstStatBlock.find('.edit').hasClass('hidden')) {
+				$firstStatBlock.find('menu').toggleClass('toggle');
+				$firstStatBlock.find('button').attr('tabindex', '0');
+			}
 
 		});
 
-		// $firstStatBlock.hammer({ /* options */ }).on("tap", function(e) {
 
-		// 	e.stopPropagation();
-
-		// 	$firstStatBlock.find('menu').toggleClass('toggle');
-
-
-		// });
 
 		$firstStatBlock.find('.remove').on('click', function(e) {
 			e.stopPropagation();
@@ -58,6 +53,9 @@ $(function () {
 					$(document).trigger('generateNpcEvent');
 				}
 			});
+
+			// Give focus to generate npc button
+			$('#new-npc').focus();
 		});
 
 		$firstStatBlock.find('.edit').on('click', function(e) {
@@ -72,6 +70,9 @@ $(function () {
 
 			$currentStatBlock.find('.uneditable').addClass('hidden');
 			$currentStatBlock.find('.editable').removeClass('hidden');
+
+			// Give focus to te first input
+			$currentStatBlock.find('input:first').focus();
 
 		});
 
@@ -90,6 +91,8 @@ $(function () {
 
 			$(document).trigger('setNpcFromEditEvent', [$currentStatBlock, $currentStatBlock.index()]);
 
+			// Give focus to the generate npc button
+			$('#new-npc').focus();
 		});
 
 		$firstStatBlock.find('.cancel').on('click', function(e) {
@@ -105,6 +108,13 @@ $(function () {
 			$currentStatBlock.find('.uneditable').removeClass('hidden');
 			$currentStatBlock.find('.editable').addClass('hidden');
 
+			// Give focus to generate npc button
+			$('#new-npc').focus();
+
+			// Close the menu
+			$currentStatBlock.find('menu').toggleClass('toggle');
+			$currentStatBlock.find('button').attr('tabindex', '-1');
+
 		});
 
 		$firstStatBlock.find('label, input, textarea').on('click', function(e) {
@@ -113,6 +123,7 @@ $(function () {
 		});
 	}
 
+	// Remove, old stuff
 	var addSlideEvent = function() {
 
 		$('.stat-block').first().hammer({ /* options */ }).on("panleft panright", function(e) {
@@ -166,5 +177,48 @@ $(function () {
 
 	$('#settings-cta').on('click', function() {
 		$('#settings-panel').toggleClass('active');
+
+		if ($('#settings-panel').hasClass('active')) {
+			$('#male-cb').focus();
+		}
+		else {
+			// Give focus to generate npc button
+			$('#new-npc').focus();
+		}
 	})
+
+	// Make stat-block expendable on enter or space up
+	$(document).on('keyup', '.stat-block:focus', function(e) {
+
+		console.log(e.keyCode);
+
+		if (e.keyCode == "13" ||
+			e.keyCode == "32" ) {
+			// $(document).trigger('');
+
+			$(e.currentTarget).find('menu').toggleClass('toggle');
+			$(e.currentTarget).find('button').attr('tabindex', '0');
+
+			$(e.currentTarget).find('.edit').focus();
+
+		}
+	})
+
+	// Make stat-block expendable on enter or space up
+	$(document).on('keyup', '.stat-block', function(e) {
+
+		if (e.keyCode == "9") {
+		}
+	})
+
+	// Make stat-block expendable on enter or space up
+	$(document).on('keydown', '.stat-block input:last', function(e) {
+
+		console.log(e.keyCode);
+
+		if (e.keyCode == "9") {
+			$(e.currentTarget).closest('.stat-block').find('.validate').focus();
+		}
+	})
+
 });

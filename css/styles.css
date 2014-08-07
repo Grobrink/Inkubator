@@ -3500,6 +3500,9 @@ body {
   -o-transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
   transition: opacity 0.25s linear, max-height 0.25s ease-in-out;
 }
+.stat-block:focus {
+  outline: 2px dotted rgba(0, 0, 0, 0.2);
+}
 .stat-block > * {
   margin-bottom: 3px;
   padding: 3px 0;
@@ -3733,9 +3736,11 @@ td {
   -o-transition: all .1s linear;
   transition: all .1s linear;
 }
-#modal .close-modal:hover {
+#modal .close-modal:hover,
+#modal .close-modal:focus {
   font-size: 20px;
   right: 10px;
+  outline: none;
 }
 #modal .delete {
   height: 23px;

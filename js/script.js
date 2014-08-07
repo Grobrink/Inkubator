@@ -250,6 +250,9 @@ $(function () {
 		npc = $.extend(true, {}, inkubator.getNpc(settings));
 		fillBlock();
 
+		// Give focus to the new npc block
+		$('.stat-block:first').focus();
+
 		addNpcToList(npc);
 	}
 
@@ -538,10 +541,18 @@ $(function () {
 		else {
 			$('#' + id).addClass('visible');
 		}
+
+		$('#modal input, #modal button, #modal .close-modal').attr('tabindex', '0');
+
+		$('#modal .visible input:first').focus();
 	}
 
 	var closeModal = function() {
 		$('#modal > div').removeAttr('data-event').removeClass('visible');
+
+		$('#modal input, #modal button, #modal select, #modal .close-modal').attr('tabindex', '-1');
+
+		$('#new-npc').focus();
 	}
 
 	var notify = function(type, message) {
@@ -551,6 +562,26 @@ $(function () {
 			$('#notification').removeClass('visible');
 		}, 3500);
 	}
+
+
+	// Close modal on escape
+	$(document).on('keyup', '#modal', function(e) {
+
+		if (e.keyCode == "27") {
+			closeModal();
+		}
+	})
+
+
+	// Close modal on escape button keypress
+	$(document).on('keyup', '.close-modal', function(e) {
+
+		if (e.keyCode == "13" ||
+			e.keyCode == "32" ) {
+
+			closeModal();
+		}
+	})
 
 	// Trigger the generate NPC event on click
 	$(document).on('click', '#login-span', function() {

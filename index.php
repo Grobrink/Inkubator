@@ -42,7 +42,7 @@
 				</span>
 			</span>
 
-			<button id="new-npc" type="button" class="btn btn-default">Generate !</button>
+			<button id="new-npc" type="button" class="btn btn-default" autofocus>Generate !</button>
 
 			<div class="btn-group" id="saveAndLoad">
 				<button id="load-npclist" type="button" class="btn btn-default">Load</button>
@@ -51,13 +51,13 @@
 
 			<div id="container">
 
-				<div id="npc-template" class="dna-template stat-block inactive" data-movable="~~movable~~" data-index="~~index~~">
+				<div id="npc-template" class="dna-template stat-block inactive" data-movable="~~movable~~" data-index="~~index~~" tabindex="0">
 
 					<menu class="toolbar">
-						<button class="btn btn-default edit glyphicon glyphicon-pencil"></button>
-						<button class="btn btn-default validate glyphicon glyphicon-ok hidden"></button>
-						<button class="btn btn-default cancel glyphicon glyphicon-remove hidden"></button>
-						<button class="btn btn-default remove glyphicon glyphicon-trash"></button>
+						<button class="btn btn-default edit glyphicon glyphicon-pencil" tabindex="-1"></button>
+						<button class="btn btn-default validate glyphicon glyphicon-ok hidden" tabindex="-1"></button>
+						<button class="btn btn-default cancel glyphicon glyphicon-remove hidden" tabindex="-1"></button>
+						<button class="btn btn-default remove glyphicon glyphicon-trash" tabindex="-1"></button>
 					</menu>
 
 					<div>
@@ -269,17 +269,17 @@
 					<span class="modal-title">Login</span>
 					<span>
 						<label for="login-nickname">Nickname:</label>
-						<input id="login-nickname" type="text" />
+						<input id="login-nickname" type="text" tabindex="-1" />
 					</span>
 
 					<span>
 						<label for="login-password">Password:</label>
-						<input id="login-password" type="password" />
+						<input id="login-password" type="password" tabindex="-1" />
 					</span>
 
 					<div class="btn-group">
-						<button id="mod-signup" type="button" class="btn btn-default">Sign up</button>
-						<button id="mod-login" type="button" class="btn btn-default">Login</button>
+						<button id="mod-signup" type="button" class="btn btn-default" tabindex="-1">Sign up</button>
+						<button id="mod-login" type="button" class="btn btn-default" tabindex="-1">Login</button>
 					</div>
 					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 
@@ -289,10 +289,10 @@
 					<span class="modal-title">Save your list</span>
 					<span>
 						<label for="save-name">List name:</label>
-						<input id="save-name" type="text" />
+						<input id="save-name" type="text" tabindex="-1" />
 					</span>
 
-					<button id="mod-save" type="button" class="btn btn-default">Save</button>
+					<button id="mod-save" type="button" class="btn btn-default" tabindex="-1">Save</button>
 					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 				</div>
 
@@ -300,28 +300,12 @@
 					<span class="modal-title">Choose a list</span>
 					<span>
 						<label for="load-list">Lists:</label>
-						<select id="load-list">
+						<select id="load-list" tabindex="-1">
 						</select>
-						<button class="btn btn-default delete glyphicon glyphicon-trash"></button>
+						<button class="btn btn-default delete glyphicon glyphicon-trash" tabindex="-1"></button>
 					</span>
 
-					<button id="mod-load" type="button" class="btn btn-default">Load</button>
-					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
-				</div>
-
-				<div id="adduser">
-					<span class="modal-title">Sign up</span>
-					<span>
-						<label for="adduser-nickname">Nickname:</label>
-						<input id="adduser-nickname" type="text" />
-					</span>
-
-					<span>
-						<label for="adduser-password">Password:</label>
-						<input id="adduser-password" type="password" />
-					</span>
-
-					<button id="mod-adduser" type="button" class="btn btn-default">Register</button>
+					<button id="mod-load" type="button" class="btn btn-default" tabindex="-1">Load</button>
 					<span class="close-modal glyphicon glyphicon-remove" title="Close"></span>
 				</div>
 
