@@ -256,7 +256,7 @@
 							<label class="editable hidden">
 								<span class="secondary-stat">Challenge:</span>
 								<input type="number" min="1" step="1" class="challenge-input" value="~~challenge~~" />
-								( <input type="number" min="1" step="1" class="xp-input" value="~~xp~~" /> XP)
+								( <input type="number" min="1" step="1" class="xp-input last-input" value="~~xp~~" /> XP)
 							</label>
 						</div>
 					</div>

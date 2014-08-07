@@ -190,8 +190,6 @@ $(function () {
 	// Make stat-block expendable on enter or space up
 	$(document).on('keyup', '.stat-block:focus', function(e) {
 
-		console.log(e.keyCode);
-
 		if (e.keyCode == "13" ||
 			e.keyCode == "32" ) {
 			// $(document).trigger('');
@@ -212,9 +210,7 @@ $(function () {
 	})
 
 	// Make stat-block expendable on enter or space up
-	$(document).on('keydown', '.stat-block input:last', function(e) {
-
-		console.log(e.keyCode);
+	$(document).on('keyup', '.last-input', function(e) {
 
 		if (e.keyCode == "9") {
 			$(e.currentTarget).closest('.stat-block').find('.validate').focus();
